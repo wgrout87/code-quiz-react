@@ -1,9 +1,9 @@
 import React from "react";
 
-function Instructions({ setCurrentCategory, setVisibility }) {
+function Instructions({ setCurrentCategory, setVisibility, setTimerActive }) {
     return (
         <>
-            <div class="quiz" id="quiz">
+            <div className="quiz" id="quiz">
                 <h2>QUIZ EXPLANATION:</h2>
                 <p>
                     YOU WILL BE GIVEN 3 MINUTES TO ANSWER 15 QUESTIONS. INCORRECT ANSWERS WILL DEDUCT 10 SECONDS
@@ -12,12 +12,13 @@ function Instructions({ setCurrentCategory, setVisibility }) {
                     HAVE BEEN ANSWERED WILL BE CONVERTED TO ADDITIONAL POINTS.
                 </p>
             </div>
-            <div class="beginBtn" id="beginBtn">
+            <div className="beginBtn" id="beginBtn">
                 <button
                     type="button"
                     onClick={() => {
                         setCurrentCategory('quiz');
                         setVisibility(1);
+                        setTimerActive(true);
                     }
                     }
                 >

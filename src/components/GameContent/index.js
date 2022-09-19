@@ -1,20 +1,20 @@
 import React from "react";
 
-function GameContent({ visibility }) {
+function GameContent({ visibility, timeRemaining, combo, pointsMultiplier }) {
     return (
-        <div class="gameContent" id="gameContent" style={{ opacity: visibility }}>
-            <div class="timeRemaining">
-                <p>TIME REMAINING: <br /><span id="timeRemaining"></span>
+        <div className="gameContent" id="gameContent" style={{ opacity: visibility }}>
+            <div className="timeRemaining">
+                <p>TIME REMAINING: <br /><span id="timeRemaining">{timeRemaining}</span>
                 </p>
             </div>
             <div>
                 <p>
-                    COMBO: <span id="currentCombo"></span>
+                    COMBO: <span id="currentCombo">{combo}</span>
                 </p>
             </div>
             <div>
                 <p>
-                    POINTS MULTIPLIER: <br /><span id="currentPointsMultiplier"></span>
+                    POINTS MULTIPLIER: <br /><span id="currentPointsMultiplier">{pointsMultiplier.toPrecision(2)}</span>
                 </p>
             </div>
         </div>
