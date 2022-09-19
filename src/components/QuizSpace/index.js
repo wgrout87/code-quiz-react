@@ -1,36 +1,24 @@
 import React, { useState } from "react";
+import CurrentScore from "../CurrentScore";
+import GameContent from "../GameContent";
 import Instructions from '../Instructions';
 
 function QuizSpace() {
     const [currentCategory, setCurrentCategory] = useState('instructions');
+    const [visibility, setVisibility] = useState(0);
     return (
         <section>
             <div id="quizContent">
-                <div class="score" id="score">
-                    <p>CURRENT SCORE:</p>
-                    <p id="currentScore"></p>
-                </div>
+                <CurrentScore visibility={visibility} />
                 <div class="quizSpace">
-                    {currentCategory === 'instructions' && <Instructions setCurrentCategory={setCurrentCategory} />}
+                    {currentCategory === 'instructions' && <Instructions
+                        setCurrentCategory={setCurrentCategory}
+                        setVisibility={setVisibility}
+                    />}
                 </div>
-                <div id="timerBar"></div>
+                <div id="timerBar" style={{ opacity: visibility }}></div>
             </div>
-            <div class="gameContent" id="gameContent">
-                <div class="timeRemaining">
-                    <p>TIME REMAINING: <br /><span id="timeRemaining"></span>
-                    </p>
-                </div>
-                <div>
-                    <p>
-                        COMBO: <span id="currentCombo"></span>
-                    </p>
-                </div>
-                <div>
-                    <p>
-                        POINTS MULTIPLIER: <br /><span id="currentPointsMultiplier"></span>
-                    </p>
-                </div>
-            </div>
+            <GameContent visibility={visibility} />
         </section>
     )
 }

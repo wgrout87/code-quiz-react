@@ -1,6 +1,6 @@
 import React from "react";
 
-function Instructions() {
+function Instructions({ setCurrentCategory, setVisibility }) {
     return (
         <>
             <div class="quiz" id="quiz">
@@ -13,7 +13,14 @@ function Instructions() {
                 </p>
             </div>
             <div class="beginBtn" id="beginBtn">
-                <button type="button">
+                <button
+                    type="button"
+                    onClick={() => {
+                        setCurrentCategory('quiz');
+                        setVisibility(1);
+                    }
+                    }
+                >
                     TAKE THE QUIZ
                 </button>
             </div>

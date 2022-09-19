@@ -100,7 +100,6 @@ section {
   font-size: 1.3vw;
   padding: 5px;
   align-items: center;
-  opacity: 0;
   transition-duration: 1000ms;
 }
 
@@ -183,7 +182,6 @@ section {
   float: right;
   width: 300px;
   margin-top: 50px;
-  opacity: 0;
   transition-duration: 1000ms;
 }
 
