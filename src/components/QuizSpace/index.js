@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import CurrentScore from "../CurrentScore";
 import GameContent from "../GameContent";
 import Instructions from '../Instructions';
+import Question from "../Question";
 import TimerBar from "../TimerBar";
 
 function QuizSpace() {
@@ -36,6 +37,9 @@ function QuizSpace() {
                         setCurrentCategory={setCurrentCategory}
                         setVisibility={setVisibility}
                         setTimerActive={setTimerActive}
+                    />}
+                    {currentCategory === 'quiz' && <Question
+                        setCurrentCategory={setCurrentCategory}
                         setTimerBarActive={setTimerBarActive}
                     />}
                 </div>

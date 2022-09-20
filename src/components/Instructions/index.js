@@ -1,6 +1,6 @@
 import React from "react";
 
-function Instructions({ setCurrentCategory, setVisibility, setTimerActive, setTimerBarActive }) {
+function Instructions({ setCurrentCategory, setVisibility, setTimerActive }) {
     return (
         <>
             <div className="quiz" id="quiz">
@@ -19,9 +19,7 @@ function Instructions({ setCurrentCategory, setVisibility, setTimerActive, setTi
                         setCurrentCategory('quiz');
                         setVisibility(1);
                         setTimerActive(true);
-                        setTimerBarActive(true);
-                    }
-                    }
+                    }}
                 >
                     TAKE THE QUIZ
                 </button>
