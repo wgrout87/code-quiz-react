@@ -11,7 +11,7 @@ function QuizSpace() {
     const [timerActive, setTimerActive] = useState(false);
     const [combo, setPointsCombo] = useState(0);
     const [pointsMultiplier, setPointsMultiplier] = useState(1);
-    const [timerBarActive, setTimerBarActive] = useState(true);
+    const [timerBarActive, setTimerBarActive] = useState(false);
 
     useEffect(() => {
         if (timerActive && timeRemaining > 0) {
@@ -36,6 +36,7 @@ function QuizSpace() {
                         setCurrentCategory={setCurrentCategory}
                         setVisibility={setVisibility}
                         setTimerActive={setTimerActive}
+                        setTimerBarActive={setTimerBarActive}
                     />}
                 </div>
                 <TimerBar

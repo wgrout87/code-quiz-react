@@ -1,6 +1,6 @@
 import React from "react";
 
-function Instructions({ setCurrentCategory, setVisibility, setTimerActive }) {
+function Instructions({ setCurrentCategory, setVisibility, setTimerActive, setTimerBarActive }) {
     return (
         <>
             <div className="quiz" id="quiz">
@@ -19,6 +19,7 @@ function Instructions({ setCurrentCategory, setVisibility, setTimerActive }) {
                         setCurrentCategory('quiz');
                         setVisibility(1);
                         setTimerActive(true);
+                        setTimerBarActive(true);
                     }
                     }
                 >

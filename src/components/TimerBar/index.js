@@ -17,10 +17,10 @@ function TimerBar({ visibility, timerBarActive }) {
 
     useEffect(() => {
         if (timerBarActive) {
+            decreaseTimerBarWidth(timeLeft);
             const timer = setTimeout(() => {
                 if (timeLeft > 0) {
                     setTimeLeft(timeLeft - 1);
-                    decreaseTimerBarWidth(timeLeft);
                 };
             }, 1000);
 
