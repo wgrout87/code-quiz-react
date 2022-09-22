@@ -1,6 +1,17 @@
 import React, { useState } from "react";
 
-function Question({ setCurrentCategory, setTimerBarActive, setTimerBarWidth, setTimeLeft, combo, setCombo, pointsMultiplier, setPointsMultiplier }) {
+function Question({
+    setCurrentCategory,
+    setTimerBarActive,
+    setTimerBarWidth,
+    setTimeLeft,
+    combo,
+    setCombo,
+    pointsMultiplier,
+    setPointsMultiplier,
+    score,
+    setScore
+}) {
     const [answerValues, setAnswerValues] = useState([false, false, false, true])
 
     return (
@@ -15,6 +26,7 @@ function Question({ setCurrentCategory, setTimerBarActive, setTimerBarWidth, set
                             setTimerBarActive(true);
                             setCombo(combo + 1);
                             setPointsMultiplier(pointsMultiplier + .1);
+                            setScore(score + (1000 * pointsMultiplier));
                         } else {
                             setTimerBarActive(false);
                             setCombo(0);
@@ -34,6 +46,7 @@ function Question({ setCurrentCategory, setTimerBarActive, setTimerBarWidth, set
                             setTimerBarActive(true);
                             setCombo(combo + 1);
                             setPointsMultiplier(pointsMultiplier + .1);
+                            setScore(score + (1000 * pointsMultiplier));
                         } else {
                             setTimerBarActive(false);
                             setCombo(0);
@@ -51,6 +64,7 @@ function Question({ setCurrentCategory, setTimerBarActive, setTimerBarWidth, set
                             setTimerBarActive(true);
                             setCombo(combo + 1);
                             setPointsMultiplier(pointsMultiplier + .1);
+                            setScore(score + (1000 * pointsMultiplier));
                         } else {
                             setTimerBarActive(false);
                             setCombo(0);
@@ -68,6 +82,7 @@ function Question({ setCurrentCategory, setTimerBarActive, setTimerBarWidth, set
                             setTimerBarActive(true);
                             setCombo(combo + 1);
                             setPointsMultiplier(pointsMultiplier + .1);
+                            setScore(score + (1000 * pointsMultiplier));
                         } else {
                             setTimerBarActive(false);
                             setCombo(0);

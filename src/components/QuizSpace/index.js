@@ -10,11 +10,13 @@ function QuizSpace() {
     const [visibility, setVisibility] = useState(0);
     const [timeRemaining, setTimeRemaining] = useState(180);
     const [timerActive, setTimerActive] = useState(false);
+    const [timerBarActive, setTimerBarActive] = useState(false);
+    const [timerBarWidth, setTimerBarWidth] = useState('100.00%');
+    // timeLeft refers to the time left on the timer bar for increased combos
     const [timeLeft, setTimeLeft] = useState(15);
     const [combo, setCombo] = useState(0);
     const [pointsMultiplier, setPointsMultiplier] = useState(1);
-    const [timerBarActive, setTimerBarActive] = useState(false);
-    const [timerBarWidth, setTimerBarWidth] = useState('100.00%');
+    const [score, setScore] = useState(0);
 
     useEffect(() => {
         if (timerActive && timeRemaining > 0) {
@@ -33,7 +35,10 @@ function QuizSpace() {
     return (
         <section>
             <div id="quizContent">
-                <CurrentScore visibility={visibility} />
+                <CurrentScore
+                    visibility={visibility}
+                    score={score}
+                />
                 <div className="quizSpace">
                     {currentCategory === 'instructions' && <Instructions
                         setCurrentCategory={setCurrentCategory}
@@ -49,6 +54,8 @@ function QuizSpace() {
                         setCombo={setCombo}
                         pointsMultiplier={pointsMultiplier}
                         setPointsMultiplier={setPointsMultiplier}
+                        score={score}
+                        setScore={setScore}
                     />}
                 </div>
                 <TimerBar
