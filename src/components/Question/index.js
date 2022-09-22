@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Question({ setCurrentCategory, setTimerBarActive, setTimerBarWidth, setTimeLeft, combo, setCombo }) {
+function Question({ setCurrentCategory, setTimerBarActive, setTimerBarWidth, setTimeLeft, combo, setCombo, pointsMultiplier, setPointsMultiplier }) {
     const [answerValues, setAnswerValues] = useState([false, false, false, true])
 
     return (
@@ -14,9 +14,11 @@ function Question({ setCurrentCategory, setTimerBarActive, setTimerBarWidth, set
                         if (answerValues[e.target.getAttribute('data-index')]) {
                             setTimerBarActive(true);
                             setCombo(combo + 1);
+                            setPointsMultiplier(pointsMultiplier + .1);
                         } else {
                             setTimerBarActive(false);
                             setCombo(0);
+                            setPointsMultiplier(1);
                         };
                         setTimerBarWidth('100.00%');
                         setTimeLeft(15)
@@ -31,9 +33,11 @@ function Question({ setCurrentCategory, setTimerBarActive, setTimerBarWidth, set
                         if (answerValues[e.target.getAttribute('data-index')]) {
                             setTimerBarActive(true);
                             setCombo(combo + 1);
+                            setPointsMultiplier(pointsMultiplier + .1);
                         } else {
                             setTimerBarActive(false);
                             setCombo(0);
+                            setPointsMultiplier(1);
                         };
                         setTimerBarWidth('100.00%');
                         setTimeLeft(15);
@@ -46,9 +50,11 @@ function Question({ setCurrentCategory, setTimerBarActive, setTimerBarWidth, set
                         if (answerValues[e.target.getAttribute('data-index')]) {
                             setTimerBarActive(true);
                             setCombo(combo + 1);
+                            setPointsMultiplier(pointsMultiplier + .1);
                         } else {
                             setTimerBarActive(false);
                             setCombo(0);
+                            setPointsMultiplier(1);
                         };
                         setTimerBarWidth('100.00%');
                         setTimeLeft(15);
@@ -61,9 +67,11 @@ function Question({ setCurrentCategory, setTimerBarActive, setTimerBarWidth, set
                         if (answerValues[e.target.getAttribute('data-index')]) {
                             setTimerBarActive(true);
                             setCombo(combo + 1);
+                            setPointsMultiplier(pointsMultiplier + .1);
                         } else {
                             setTimerBarActive(false);
                             setCombo(0);
+                            setPointsMultiplier(1);
                         };
                         setTimerBarWidth('100.00%');
                         setTimeLeft(15);

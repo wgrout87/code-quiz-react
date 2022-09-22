@@ -47,6 +47,8 @@ function QuizSpace() {
                         setTimeLeft={setTimeLeft}
                         combo={combo}
                         setCombo={setCombo}
+                        pointsMultiplier={pointsMultiplier}
+                        setPointsMultiplier={setPointsMultiplier}
                     />}
                 </div>
                 <TimerBar
