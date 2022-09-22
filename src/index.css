@@ -100,7 +100,6 @@ section {
   font-size: 1.3vw;
   padding: 5px;
   align-items: center;
-  transition-duration: 1000ms;
 }
 
 /* Styles for the large white box in which the instructions, beginBtn, and later the quiz content go */
@@ -173,7 +172,6 @@ section {
   width: 550px;
   margin-top: 20px;
   opacity: 0;
-  transition-duration: 1000ms;
   transition-timing-function: linear;
 }
 
@@ -182,7 +180,6 @@ section {
   float: right;
   width: 300px;
   margin-top: 50px;
-  transition-duration: 1000ms;
 }
 
 /* Styles for <div> elements within the gameContent <div> */
@@ -197,6 +194,14 @@ section {
 /* Specific style for the time remaining <div>, which is at the top */
 .gameContent .timeRemaining {
   margin-top: 0px;
+}
+
+.transition {
+  transition-duration: 1000ms;
+}
+
+.transition-none {
+  transition: none;
 }
 
 /* Style for the results screen */

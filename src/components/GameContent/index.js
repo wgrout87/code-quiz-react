@@ -2,7 +2,7 @@ import React from "react";
 
 function GameContent({ visibility, timeRemaining, combo, pointsMultiplier }) {
     return (
-        <div className="gameContent" id="gameContent" style={{ opacity: visibility }}>
+        <div className="gameContent transition" id="gameContent" style={{ opacity: visibility }}>
             <div className="timeRemaining">
                 <p>TIME REMAINING: <br /><span id="timeRemaining">{timeRemaining}</span>
                 </p>

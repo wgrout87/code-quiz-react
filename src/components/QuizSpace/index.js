@@ -14,6 +14,7 @@ function QuizSpace() {
     const [timerBarWidth, setTimerBarWidth] = useState('100.00%');
     // timeLeft refers to the time left on the timer bar for increased combos
     const [timeLeft, setTimeLeft] = useState(15);
+    const [transition, setTransition] = useState('transition');
     const [combo, setCombo] = useState(0);
     const [pointsMultiplier, setPointsMultiplier] = useState(1);
     const [score, setScore] = useState(0);
@@ -34,7 +35,7 @@ function QuizSpace() {
 
     return (
         <section>
-            <div id="quizContent">
+            <div id="quizContent" className="transition">
                 <CurrentScore
                     visibility={visibility}
                     score={score}
@@ -50,6 +51,7 @@ function QuizSpace() {
                         setTimerBarActive={setTimerBarActive}
                         setTimerBarWidth={setTimerBarWidth}
                         setTimeLeft={setTimeLeft}
+                        setTransition={setTransition}
                         combo={combo}
                         setCombo={setCombo}
                         pointsMultiplier={pointsMultiplier}
@@ -65,6 +67,7 @@ function QuizSpace() {
                     setTimerBarWidth={setTimerBarWidth}
                     timeLeft={timeLeft}
                     setTimeLeft={setTimeLeft}
+                    transition={transition}
                 />
             </div>
             <GameContent

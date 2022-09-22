@@ -5,6 +5,7 @@ function Question({
     setTimerBarActive,
     setTimerBarWidth,
     setTimeLeft,
+    setTransition,
     combo,
     setCombo,
     pointsMultiplier,
@@ -13,6 +14,11 @@ function Question({
     setScore
 }) {
     const [answerValues, setAnswerValues] = useState([false, false, false, true])
+    function resetTimerBar(time) {
+        setTransition('tansition-none');
+        setTimerBarWidth('100.00%');
+        setTimeLeft(time);
+    };
 
     return (
         <div className="quiz" id="quiz">
@@ -23,17 +29,18 @@ function Question({
                     className="questionAnswer"
                     onClick={(e) => {
                         if (answerValues[e.target.getAttribute('data-index')]) {
-                            setTimerBarActive(true);
+                            setTimerBarActive(false);
                             setCombo(combo + 1);
                             setPointsMultiplier(pointsMultiplier + .1);
                             setScore(score + (1000 * pointsMultiplier));
+                            resetTimerBar(15);
+                            setTimerBarActive(false);
                         } else {
                             setTimerBarActive(false);
                             setCombo(0);
                             setPointsMultiplier(1);
+                            resetTimerBar(0)
                         };
-                        setTimerBarWidth('100.00%');
-                        setTimeLeft(15)
                     }}
                 >
                     Version control allows the codebase to be modified and tested without interrupting the user experience
@@ -43,17 +50,18 @@ function Question({
                     className="questionAnswer"
                     onClick={(e) => {
                         if (answerValues[e.target.getAttribute('data-index')]) {
-                            setTimerBarActive(true);
+                            setTimerBarActive(false);
                             setCombo(combo + 1);
                             setPointsMultiplier(pointsMultiplier + .1);
                             setScore(score + (1000 * pointsMultiplier));
+                            resetTimerBar(15);
+                            setTimerBarActive(true);
                         } else {
                             setTimerBarActive(false);
                             setCombo(0);
                             setPointsMultiplier(1);
+                            resetTimerBar(0)
                         };
-                        setTimerBarWidth('100.00%');
-                        setTimeLeft(15);
                     }}
                 >Version control allows changes to the codebase to be tested individually</button>
                 <button
@@ -61,17 +69,18 @@ function Question({
                     className="questionAnswer"
                     onClick={(e) => {
                         if (answerValues[e.target.getAttribute('data-index')]) {
-                            setTimerBarActive(true);
+                            setTimerBarActive(false);
                             setCombo(combo + 1);
                             setPointsMultiplier(pointsMultiplier + .1);
                             setScore(score + (1000 * pointsMultiplier));
+                            resetTimerBar(15);
+                            setTimerBarActive(true);
                         } else {
                             setTimerBarActive(false);
                             setCombo(0);
                             setPointsMultiplier(1);
+                            resetTimerBar(0)
                         };
-                        setTimerBarWidth('100.00%');
-                        setTimeLeft(15);
                     }}
                 >Version control allows teams to work on individual features synchronously</button>
                 <button
@@ -79,17 +88,19 @@ function Question({
                     className="questionAnswer"
                     onClick={(e) => {
                         if (answerValues[e.target.getAttribute('data-index')]) {
-                            setTimerBarActive(true);
+                            setTimerBarActive(false);
                             setCombo(combo + 1);
                             setPointsMultiplier(pointsMultiplier + .1);
                             setScore(score + (1000 * pointsMultiplier));
+                            resetTimerBar(15);
                         } else {
                             setTimerBarActive(false);
                             setCombo(0);
                             setPointsMultiplier(1);
+                            resetTimerBar(0)
                         };
-                        setTimerBarWidth('100.00%');
-                        setTimeLeft(15);
+                        setTimerBarActive(true);
+                        setTransition('transition');
                     }}
                 >Version control allows features to ship directly to the main branch</button>
             </div>
