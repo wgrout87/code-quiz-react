@@ -8,11 +8,13 @@ import TimerBar from "../TimerBar";
 function QuizSpace() {
     const [currentCategory, setCurrentCategory] = useState('instructions');
     const [visibility, setVisibility] = useState(0);
-    const [timeRemaining, setTimeRemaining] = useState(15);
+    const [timeRemaining, setTimeRemaining] = useState(180);
     const [timerActive, setTimerActive] = useState(false);
-    const [combo, setPointsCombo] = useState(0);
+    const [timeLeft, setTimeLeft] = useState(15);
+    const [combo, setCombo] = useState(0);
     const [pointsMultiplier, setPointsMultiplier] = useState(1);
     const [timerBarActive, setTimerBarActive] = useState(false);
+    const [timerBarWidth, setTimerBarWidth] = useState('100.00%');
 
     useEffect(() => {
         if (timerActive && timeRemaining > 0) {
@@ -41,11 +43,19 @@ function QuizSpace() {
                     {currentCategory === 'quiz' && <Question
                         setCurrentCategory={setCurrentCategory}
                         setTimerBarActive={setTimerBarActive}
+                        setTimerBarWidth={setTimerBarWidth}
+                        setTimeLeft={setTimeLeft}
+                        combo={combo}
+                        setCombo={setCombo}
                     />}
                 </div>
                 <TimerBar
                     visibility={visibility}
                     timerBarActive={timerBarActive}
+                    timerBarWidth={timerBarWidth}
+                    setTimerBarWidth={setTimerBarWidth}
+                    timeLeft={timeLeft}
+                    setTimeLeft={setTimeLeft}
                 />
             </div>
             <GameContent

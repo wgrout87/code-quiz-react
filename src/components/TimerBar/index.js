@@ -1,9 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function TimerBar({ visibility, timerBarActive }) {
-    const [timerBarWidth, setTimerBarWidth] = useState('100.00%');
-    const [timeLeft, setTimeLeft] = useState(15);
-
+function TimerBar({ visibility, timerBarActive, timerBarWidth, setTimerBarWidth, timeLeft, setTimeLeft }) {
     function decreaseTimerBarWidth(time) {
         let widthValue = parseFloat(timerBarWidth).toPrecision(4);
         widthValue -= 6.66;

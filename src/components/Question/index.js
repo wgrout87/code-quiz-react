@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-function Question() {
+function Question({ setCurrentCategory, setTimerBarActive, setTimerBarWidth, setTimeLeft, combo, setCombo }) {
     const [answerValues, setAnswerValues] = useState([false, false, false, true])
 
     return (
@@ -11,7 +11,15 @@ function Question() {
                     data-index={0}
                     className="questionAnswer"
                     onClick={(e) => {
-                        console.log(answerValues[e.target.getAttribute('data-index')]);
+                        if (answerValues[e.target.getAttribute('data-index')]) {
+                            setTimerBarActive(true);
+                            setCombo(combo + 1);
+                        } else {
+                            setTimerBarActive(false);
+                            setCombo(0);
+                        };
+                        setTimerBarWidth('100.00%');
+                        setTimeLeft(15)
                     }}
                 >
                     Version control allows the codebase to be modified and tested without interrupting the user experience
@@ -20,21 +28,45 @@ function Question() {
                     data-index={1}
                     className="questionAnswer"
                     onClick={(e) => {
-                        console.log(answerValues[e.target.getAttribute('data-index')]);
+                        if (answerValues[e.target.getAttribute('data-index')]) {
+                            setTimerBarActive(true);
+                            setCombo(combo + 1);
+                        } else {
+                            setTimerBarActive(false);
+                            setCombo(0);
+                        };
+                        setTimerBarWidth('100.00%');
+                        setTimeLeft(15);
                     }}
                 >Version control allows changes to the codebase to be tested individually</button>
                 <button
                     data-index={2}
                     className="questionAnswer"
                     onClick={(e) => {
-                        console.log(answerValues[e.target.getAttribute('data-index')]);
+                        if (answerValues[e.target.getAttribute('data-index')]) {
+                            setTimerBarActive(true);
+                            setCombo(combo + 1);
+                        } else {
+                            setTimerBarActive(false);
+                            setCombo(0);
+                        };
+                        setTimerBarWidth('100.00%');
+                        setTimeLeft(15);
                     }}
                 >Version control allows teams to work on individual features synchronously</button>
                 <button
                     data-index={3}
                     className="questionAnswer"
                     onClick={(e) => {
-                        console.log(answerValues[e.target.getAttribute('data-index')]);
+                        if (answerValues[e.target.getAttribute('data-index')]) {
+                            setTimerBarActive(true);
+                            setCombo(combo + 1);
+                        } else {
+                            setTimerBarActive(false);
+                            setCombo(0);
+                        };
+                        setTimerBarWidth('100.00%');
+                        setTimeLeft(15);
                     }}
                 >Version control allows features to ship directly to the main branch</button>
             </div>
