@@ -4,6 +4,7 @@ import GameContent from "../GameContent";
 import Instructions from '../Instructions';
 import Question from "../Question";
 import TimerBar from "../TimerBar";
+import { questions } from "../../questions";
 
 function QuizSpace() {
     const [currentCategory, setCurrentCategory] = useState('instructions');

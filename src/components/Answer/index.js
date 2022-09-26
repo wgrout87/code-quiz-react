@@ -27,7 +27,10 @@ function Answer({
                     setTimerBarActive(false);
                     setCombo(0);
                     setPointsMultiplier(1);
-                    resetTimerBar(0)
+                    resetTimerBar(0);
+                    e.target.style.opacity = 0;
+                    e.target.style.cursor = 'initial';
+                    e.target.disabled = true;
                 };
             }}
         >
