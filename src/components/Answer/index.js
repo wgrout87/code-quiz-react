@@ -2,10 +2,9 @@ import React from "react";
 
 function Answer({
     answer,
-    answerValue,
+    answerCorrect,
     resetTimerBar,
     setTimerBarActive,
-    setTransition,
     combo,
     setCombo,
     pointsMultiplier,
@@ -18,8 +17,8 @@ function Answer({
             data-index={0}
             className="questionAnswer"
             onClick={(e) => {
-                if (answerValue) {
-                    setTimerBarActive(false);
+                if (answerCorrect) {
+                    setTimerBarActive(true);
                     setCombo(combo + 1);
                     setPointsMultiplier(pointsMultiplier + .1);
                     setScore(score + (1000 * pointsMultiplier));
@@ -30,8 +29,6 @@ function Answer({
                     setPointsMultiplier(1);
                     resetTimerBar(0)
                 };
-                setTimerBarActive(true);
-                setTransition('transition');
             }}
         >
             {answer}

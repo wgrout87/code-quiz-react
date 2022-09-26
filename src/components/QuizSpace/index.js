@@ -14,10 +14,29 @@ function QuizSpace() {
     const [timerBarWidth, setTimerBarWidth] = useState('100.00%');
     // timeLeft refers to the time left on the timer bar for increased combos
     const [timeLeft, setTimeLeft] = useState(15);
-    const [transition, setTransition] = useState('transition');
     const [combo, setCombo] = useState(0);
     const [pointsMultiplier, setPointsMultiplier] = useState(1);
     const [score, setScore] = useState(0);
+
+    const question = 'Which of the following is NOT a good reason for version control?';
+    const answers = [
+        {
+            value: 'Version control allows the codebase to be modified and tested without interrupting the user experience',
+            correct: false
+        },
+        {
+            value: 'Version control allows changes to the codebase to be tested individually',
+            correct: false
+        },
+        {
+            value: 'Version control allows teams to work on individual features synchronously',
+            correct: false
+        },
+        {
+            value: 'Version control allows features to ship directly to the main branch',
+            correct: true
+        },
+    ]
 
     useEffect(() => {
         if (timerActive && timeRemaining > 0) {
@@ -34,7 +53,6 @@ function QuizSpace() {
     }, [currentCategory, timeRemaining, timerActive]);
 
     useEffect(() => {
-        console.log(timeLeft);
         if (timeLeft === 0) {
             setCombo(0);
             setPointsMultiplier(1);
@@ -55,11 +73,12 @@ function QuizSpace() {
                         setTimerActive={setTimerActive}
                     />}
                     {currentCategory === 'quiz' && <Question
+                        question={question}
+                        answers={answers}
                         setCurrentCategory={setCurrentCategory}
                         setTimerBarActive={setTimerBarActive}
                         setTimerBarWidth={setTimerBarWidth}
                         setTimeLeft={setTimeLeft}
-                        setTransition={setTransition}
                         combo={combo}
                         setCombo={setCombo}
                         pointsMultiplier={pointsMultiplier}
@@ -75,7 +94,6 @@ function QuizSpace() {
                     setTimerBarWidth={setTimerBarWidth}
                     timeLeft={timeLeft}
                     setTimeLeft={setTimeLeft}
-                    transition={transition}
                 />
             </div>
             <GameContent

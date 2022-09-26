@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-function TimerBar({ visibility, timerBarActive, timerBarWidth, setTimerBarWidth, timeLeft, setTimeLeft, transition }) {
+function TimerBar({ visibility, timerBarActive, timerBarWidth, setTimerBarWidth, timeLeft, setTimeLeft }) {
     function decreaseTimerBarWidth(time) {
         let widthValue = parseFloat(timerBarWidth).toPrecision(4);
         widthValue -= 6.66;
@@ -26,7 +26,7 @@ function TimerBar({ visibility, timerBarActive, timerBarWidth, setTimerBarWidth,
     }, [timerBarActive, timeLeft]);
 
     return (
-        <div id="timerBar" className={transition} style={{ opacity: visibility, width: timerBarWidth }}></div>
+        <div id="timerBar" className="transition" style={{ opacity: visibility, width: timerBarWidth }}></div>
     )
 }
 

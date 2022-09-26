@@ -200,10 +200,6 @@ section {
   transition-duration: 1000ms;
 }
 
-.transition-none {
-  transition: none;
-}
-
 /* Style for the results screen */
 .results {
   text-align: center;
