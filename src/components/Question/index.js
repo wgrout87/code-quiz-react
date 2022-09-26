@@ -34,7 +34,6 @@ function Question({
                             setPointsMultiplier(pointsMultiplier + .1);
                             setScore(score + (1000 * pointsMultiplier));
                             resetTimerBar(15);
-                            setTimerBarActive(false);
                         } else {
                             setTimerBarActive(false);
                             setCombo(0);

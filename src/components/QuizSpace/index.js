@@ -33,6 +33,14 @@ function QuizSpace() {
         };
     }, [currentCategory, timeRemaining, timerActive]);
 
+    useEffect(() => {
+        console.log(timeLeft);
+        if (timeLeft === 0) {
+            setCombo(0);
+            setPointsMultiplier(1);
+        }
+    }, [timeLeft]);
+
     return (
         <section>
             <div id="quizContent" className="transition">
