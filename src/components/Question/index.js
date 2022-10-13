@@ -30,7 +30,7 @@ function Question({
                     questions[quizQuestions[currentQuestion]].answers.map((answer, index) => {
                         return (
                             <Answer
-                                key={answer.answerString}
+                                key={answer.answerString + currentQuestion}
                                 answer={answer.answerString}
                                 answerCorrect={answer.answerValue}
                                 currentQuestion={currentQuestion}
