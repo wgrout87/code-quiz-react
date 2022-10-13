@@ -10,8 +10,6 @@ function Instructions({ questions, quizQuestions, setQuizQuestions, setCurrentCa
                 setQuizQuestions(quizQuestions);
             }
         }
-        // console.log(quizQuestions);
-        // console.log(questions[quizQuestions[0]]);
     }, [quizQuestions, setQuizQuestions, questions]);
 
     return (
@@ -29,7 +27,6 @@ function Instructions({ questions, quizQuestions, setQuizQuestions, setCurrentCa
                 <button
                     type="button"
                     onClick={() => {
-                        console.log(quizQuestions);
                         setCurrentCategory('quiz');
                         setVisibility(1);
                         setTimerActive(true);
