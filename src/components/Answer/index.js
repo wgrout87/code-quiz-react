@@ -3,6 +3,8 @@ import React from "react";
 function Answer({
     answer,
     answerCorrect,
+    currentQuestion,
+    setCurrentQuestion,
     resetTimerBar,
     setTimerBarActive,
     combo,
@@ -18,6 +20,7 @@ function Answer({
             className="questionAnswer"
             onClick={(e) => {
                 if (answerCorrect) {
+                    setCurrentQuestion(currentQuestion + 1);
                     setTimerBarActive(true);
                     setCombo(combo + 1);
                     setPointsMultiplier(pointsMultiplier + .1);
