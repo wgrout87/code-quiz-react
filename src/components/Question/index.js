@@ -1,9 +1,9 @@
-import React, { useState } from "react";
 import Answer from "../Answer";
+import { useEffect } from "react";
 
 function Question({
-    question,
-    answers,
+    quizQuestions,
+    questions,
     setCurrentCategory,
     setTimerBarActive,
     setTimerBarWidth,
@@ -15,7 +15,8 @@ function Question({
     score,
     setScore
 }) {
-    const [answerValues, setAnswerValues] = useState([false, false, false, true])
+    useEffect(() => console.log(quizQuestions), [quizQuestions]);
+
     function resetTimerBar(time) {
         setTimerBarWidth('100.00%');
         setTimeLeft(time);
@@ -23,15 +24,15 @@ function Question({
 
     return (
         <div className="quiz" id="quiz">
-            <p className="question">{question}</p>
+            <p className="question">{questions[quizQuestions[0]].question}</p>
             <div className="quizAnswers">
                 {
-                    answers.map((answer, index) => {
+                    questions[quizQuestions[0]].answers.map((answer, index) => {
                         return (
                             <Answer
                                 key={index}
-                                answer={answer.value}
-                                answerCorrect={answer.correct}
+                                answer={answer.answerString}
+                                answerCorrect={answer.answerValue}
                                 resetTimerBar={resetTimerBar}
                                 setTimerBarActive={setTimerBarActive}
                                 combo={combo}

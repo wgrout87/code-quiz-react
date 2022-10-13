@@ -1,6 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 
-function Instructions({ setCurrentCategory, setVisibility, setTimerActive }) {
+function Instructions({ questions, quizQuestions, setQuizQuestions, setCurrentCategory, setVisibility, setTimerActive }) {
+    useEffect(() => {
+        while (quizQuestions.length < 15) {
+            let possibleQuestion = Math.floor(Math.random() * questions.length);
+
+            if (quizQuestions.indexOf(possibleQuestion) === -1) {
+                quizQuestions.push(possibleQuestion)
+                setQuizQuestions(quizQuestions);
+            }
+        }
+        // console.log(quizQuestions);
+        // console.log(questions[quizQuestions[0]]);
+    }, [quizQuestions, setQuizQuestions, questions]);
+
     return (
         <>
             <div className="quiz" id="quiz">
@@ -16,6 +29,7 @@ function Instructions({ setCurrentCategory, setVisibility, setTimerActive }) {
                 <button
                     type="button"
                     onClick={() => {
+                        console.log(quizQuestions);
                         setCurrentCategory('quiz');
                         setVisibility(1);
                         setTimerActive(true);

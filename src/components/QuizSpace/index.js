@@ -7,6 +7,7 @@ import TimerBar from "../TimerBar";
 import { questions } from "../../questions";
 
 function QuizSpace() {
+    const [quizQuestions, setQuizQuestions] = useState([]);
     const [currentCategory, setCurrentCategory] = useState('instructions');
     const [visibility, setVisibility] = useState(0);
     const [timeRemaining, setTimeRemaining] = useState(180);
@@ -18,26 +19,6 @@ function QuizSpace() {
     const [combo, setCombo] = useState(0);
     const [pointsMultiplier, setPointsMultiplier] = useState(1);
     const [score, setScore] = useState(0);
-
-    const question = 'Which of the following is NOT a good reason for version control?';
-    const answers = [
-        {
-            value: 'Version control allows the codebase to be modified and tested without interrupting the user experience',
-            correct: false
-        },
-        {
-            value: 'Version control allows changes to the codebase to be tested individually',
-            correct: false
-        },
-        {
-            value: 'Version control allows teams to work on individual features synchronously',
-            correct: false
-        },
-        {
-            value: 'Version control allows features to ship directly to the main branch',
-            correct: true
-        },
-    ]
 
     useEffect(() => {
         if (timerActive && timeRemaining > 0) {
@@ -69,13 +50,16 @@ function QuizSpace() {
                 />
                 <div className="quizSpace">
                     {currentCategory === 'instructions' && <Instructions
+                        questions={questions}
+                        quizQuestions={quizQuestions}
+                        setQuizQuestions={setQuizQuestions}
                         setCurrentCategory={setCurrentCategory}
                         setVisibility={setVisibility}
                         setTimerActive={setTimerActive}
                     />}
                     {currentCategory === 'quiz' && <Question
-                        question={question}
-                        answers={answers}
+                        quizQuestions={quizQuestions}
+                        questions={questions}
                         setCurrentCategory={setCurrentCategory}
                         setTimerBarActive={setTimerBarActive}
                         setTimerBarWidth={setTimerBarWidth}
