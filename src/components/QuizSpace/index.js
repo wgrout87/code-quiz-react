@@ -19,19 +19,29 @@ function QuizSpace() {
     const [combo, setCombo] = useState(0);
     const [pointsMultiplier, setPointsMultiplier] = useState(1);
     const [score, setScore] = useState(0);
+    const [correctAnswerGiven, setCorrectAnswerGiven] = useState(true);
+
+    function updateTimer() {
+        setTimeRemaining(timeRemaining - 1);
+    }
 
     useEffect(() => {
         if (timerActive && timeRemaining > 0) {
-            setTimeout(() => {
-                // If there is time remaining, the timer will be updated every second                
-                setTimeRemaining(timeRemaining - 1);
+            if (correctAnswerGiven) {
+                setTimeout(() => {
+                    // If there is time remaining, the timer will be updated every second                
+                    updateTimer();
 
-                // If time has run out, the quiz is ended
-                // else {
-                //     endQuiz();
-                // }
-            }, 1000);
-        };
+                    // If time has run out, the quiz is ended
+                    // else {
+                    //     endQuiz();
+                    // }
+                }, 1000);
+            }
+            else {
+                setCorrectAnswerGiven(true);
+            }
+        }
     }, [currentCategory, timeRemaining, timerActive]);
 
     useEffect(() => {
@@ -60,6 +70,8 @@ function QuizSpace() {
                     {currentCategory === 'quiz' && <Question
                         quizQuestions={quizQuestions}
                         questions={questions}
+                        timeRemaining={timeRemaining}
+                        setTimeRemaining={setTimeRemaining}
                         setCurrentCategory={setCurrentCategory}
                         setTimerBarActive={setTimerBarActive}
                         setTimerBarWidth={setTimerBarWidth}
@@ -70,6 +82,7 @@ function QuizSpace() {
                         setPointsMultiplier={setPointsMultiplier}
                         score={score}
                         setScore={setScore}
+                        setCorrectAnswerGiven={setCorrectAnswerGiven}
                     />}
                 </div>
                 <TimerBar

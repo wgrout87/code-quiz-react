@@ -4,6 +4,8 @@ import { useState } from "react";
 function Question({
     quizQuestions,
     questions,
+    timeRemaining,
+    setTimeRemaining,
     setCurrentCategory,
     setTimerBarActive,
     setTimerBarWidth,
@@ -13,7 +15,8 @@ function Question({
     pointsMultiplier,
     setPointsMultiplier,
     score,
-    setScore
+    setScore,
+    setCorrectAnswerGiven
 }) {
     const [currentQuestion, setCurrentQuestion] = useState(0);
 
@@ -35,6 +38,8 @@ function Question({
                                 answerCorrect={answer.answerValue}
                                 currentQuestion={currentQuestion}
                                 setCurrentQuestion={setCurrentQuestion}
+                                timeRemaining={timeRemaining}
+                                setTimeRemaining={setTimeRemaining}
                                 resetTimerBar={resetTimerBar}
                                 setTimerBarActive={setTimerBarActive}
                                 combo={combo}
@@ -43,6 +48,8 @@ function Question({
                                 setPointsMultiplier={setPointsMultiplier}
                                 score={score}
                                 setScore={setScore}
+                                setCurrentCategory={setCurrentCategory}
+                                setCorrectAnswerGiven={setCorrectAnswerGiven}
                             />
                         )
                     })

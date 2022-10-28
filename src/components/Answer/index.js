@@ -5,6 +5,8 @@ function Answer({
     answerCorrect,
     currentQuestion,
     setCurrentQuestion,
+    timeRemaining,
+    setTimeRemaining,
     resetTimerBar,
     setTimerBarActive,
     combo,
@@ -12,7 +14,9 @@ function Answer({
     pointsMultiplier,
     setPointsMultiplier,
     score,
-    setScore
+    setScore,
+    setCurrentCategory,
+    setCorrectAnswerGiven
 }) {
     return (
         <button
@@ -20,13 +24,18 @@ function Answer({
             className="questionAnswer"
             onClick={(e) => {
                 if (answerCorrect) {
-                    setCurrentQuestion(currentQuestion + 1);
+                    if (currentQuestion < 15) {
+                        setCurrentQuestion(currentQuestion + 1);
+                    } else {
+                        setCurrentCategory('gameOver');
+                    };
                     setTimerBarActive(true);
                     setCombo(combo + 1);
                     setPointsMultiplier(pointsMultiplier + .1);
                     setScore(score + (1000 * pointsMultiplier));
                     resetTimerBar(15);
                 } else {
+                    setTimeRemaining(Math.max(0, (timeRemaining - 10)));
                     setTimerBarActive(false);
                     setCombo(0);
                     setPointsMultiplier(1);
@@ -34,6 +43,7 @@ function Answer({
                     e.target.style.opacity = 0;
                     e.target.style.cursor = 'initial';
                     e.target.disabled = true;
+                    setCorrectAnswerGiven(false);
                 };
             }}
         >
