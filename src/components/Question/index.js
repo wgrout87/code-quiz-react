@@ -16,7 +16,9 @@ function Question({
     setPointsMultiplier,
     score,
     setScore,
-    setCorrectAnswerGiven
+    setCorrectAnswerGiven,
+    timerBarKey,
+    setTimerBarKey
 }) {
     const [currentQuestion, setCurrentQuestion] = useState(0);
 
@@ -50,6 +52,8 @@ function Question({
                                 setScore={setScore}
                                 setCurrentCategory={setCurrentCategory}
                                 setCorrectAnswerGiven={setCorrectAnswerGiven}
+                                timerBarKey={timerBarKey}
+                                setTimerBarKey={setTimerBarKey}
                             />
                         )
                     })

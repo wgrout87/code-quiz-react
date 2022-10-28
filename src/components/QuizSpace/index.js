@@ -21,6 +21,7 @@ function QuizSpace() {
     const [score, setScore] = useState(0);
     const [correctAnswerGiven, setCorrectAnswerGiven] = useState(true);
     const [updateTimer, setUpdateTimer] = useState(false);
+    const [timerBarKey, setTimerBarKey] = useState(0);
 
     // Updates the timer whenever timeRemaining changes
     useEffect(() => {
@@ -90,9 +91,12 @@ function QuizSpace() {
                         score={score}
                         setScore={setScore}
                         setCorrectAnswerGiven={setCorrectAnswerGiven}
+                        timerBarKey={timerBarKey}
+                        setTimerBarKey={setTimerBarKey}
                     />}
                 </div>
                 <TimerBar
+                    key={timerBarKey}
                     visibility={visibility}
                     timerBarActive={timerBarActive}
                     timerBarWidth={timerBarWidth}

@@ -16,13 +16,16 @@ function Answer({
     score,
     setScore,
     setCurrentCategory,
-    setCorrectAnswerGiven
+    setCorrectAnswerGiven,
+    timerBarKey,
+    setTimerBarKey
 }) {
     return (
         <button
             data-index={0}
             className="questionAnswer"
             onClick={(e) => {
+                setTimerBarKey(timerBarKey + 1);
                 if (answerCorrect) {
                     if (currentQuestion < 15) {
                         setCurrentQuestion(currentQuestion + 1);
