@@ -20,17 +20,21 @@ function QuizSpace() {
     const [pointsMultiplier, setPointsMultiplier] = useState(1);
     const [score, setScore] = useState(0);
     const [correctAnswerGiven, setCorrectAnswerGiven] = useState(true);
+    const [updateTimer, setUpdateTimer] = useState(false);
 
-    function updateTimer() {
-        setTimeRemaining(timeRemaining - 1);
-    }
+    useEffect(() => {
+        if (updateTimer) {
+            setTimeRemaining(Math.max(0, (timeRemaining - 1)));
+        }
+        setUpdateTimer(false);
+    }, [updateTimer])
 
     useEffect(() => {
         if (timerActive && timeRemaining > 0) {
             if (correctAnswerGiven) {
                 setTimeout(() => {
                     // If there is time remaining, the timer will be updated every second                
-                    updateTimer();
+                    setUpdateTimer(true);
 
                     // If time has run out, the quiz is ended
                     // else {
