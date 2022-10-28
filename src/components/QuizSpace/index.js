@@ -22,15 +22,10 @@ function QuizSpace() {
     const [correctAnswerGiven, setCorrectAnswerGiven] = useState(true);
     const [updateTimer, setUpdateTimer] = useState(false);
 
-    useEffect(() => {
-        if (updateTimer) {
-            setTimeRemaining(Math.max(0, (timeRemaining - 1)));
-        }
-        setUpdateTimer(false);
-    }, [updateTimer])
-
+    // Updates the timer whenever timeRemaining changes
     useEffect(() => {
         if (timerActive && timeRemaining > 0) {
+            // Won't start a new timeout when an incorrect answer is given and timeRemaining is changed
             if (correctAnswerGiven) {
                 setTimeout(() => {
                     // If there is time remaining, the timer will be updated every second                
@@ -47,6 +42,14 @@ function QuizSpace() {
             }
         }
     }, [currentCategory, timeRemaining, timerActive]);
+
+    // Updates the timer using the current timeRemaining
+    useEffect(() => {
+        if (updateTimer) {
+            setTimeRemaining(Math.max(0, (timeRemaining - 1)));
+        }
+        setUpdateTimer(false);
+    }, [updateTimer]);
 
     useEffect(() => {
         if (timeLeft === 0) {
