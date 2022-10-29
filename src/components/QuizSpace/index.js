@@ -70,7 +70,7 @@ function QuizSpace() {
         if (timeRemaining === 0 || currentQuestion === 15) {
             setCurrentCategory('gameOver');
             setTimerBarActive(false);
-            resetTimerBar(0);
+            resetTimerBar(15);
             setTimerBarKey(timerBarKey + 1);
             setTimerActive(false);
         }
