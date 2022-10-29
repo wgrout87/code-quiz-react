@@ -25,6 +25,11 @@ function QuizSpace() {
     const [timerBarKey, setTimerBarKey] = useState(0);
     const [currentQuestion, setCurrentQuestion] = useState(0);
 
+    function resetTimerBar(time) {
+        setTimerBarWidth('100.00%');
+        setTimeLeft(time);
+    };
+
     // Updates the timer whenever timeRemaining changes
     useEffect(() => {
         if (timerActive && timeRemaining > 0) {
@@ -65,6 +70,8 @@ function QuizSpace() {
         if (timeRemaining === 0 || currentQuestion === 15) {
             setCurrentCategory('gameOver');
             setTimerBarActive(false);
+            resetTimerBar(0);
+            setTimerBarKey(timerBarKey + 1);
             setTimerActive(false);
         }
     }, [timeRemaining, currentQuestion]);
@@ -105,6 +112,7 @@ function QuizSpace() {
                         setTimerBarKey={setTimerBarKey}
                         currentQuestion={currentQuestion}
                         setCurrentQuestion={setCurrentQuestion}
+                        resetTimerBar={resetTimerBar}
                     />}
                     {currentCategory === 'gameOver' && <GameOver />}
                 </div>

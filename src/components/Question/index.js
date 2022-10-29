@@ -20,12 +20,9 @@ function Question({
     timerBarKey,
     setTimerBarKey,
     currentQuestion,
-    setCurrentQuestion
+    setCurrentQuestion,
+    resetTimerBar
 }) {
-    function resetTimerBar(time) {
-        setTimerBarWidth('100.00%');
-        setTimeLeft(time);
-    };
 
     return (
         <div className="quiz" id="quiz">
