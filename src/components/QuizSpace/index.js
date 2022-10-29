@@ -64,6 +64,8 @@ function QuizSpace() {
     useEffect(() => {
         if (timeRemaining === 0 || currentQuestion === 15) {
             setCurrentCategory('gameOver');
+            setTimerBarActive(false);
+            setTimerActive(false);
         }
     }, [timeRemaining, currentQuestion]);
 
