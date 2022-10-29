@@ -18,10 +18,10 @@ function Question({
     setScore,
     setCorrectAnswerGiven,
     timerBarKey,
-    setTimerBarKey
+    setTimerBarKey,
+    currentQuestion,
+    setCurrentQuestion
 }) {
-    const [currentQuestion, setCurrentQuestion] = useState(0);
-
     function resetTimerBar(time) {
         setTimerBarWidth('100.00%');
         setTimeLeft(time);

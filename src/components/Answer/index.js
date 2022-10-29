@@ -27,11 +27,7 @@ function Answer({
             onClick={(e) => {
                 setTimerBarKey(timerBarKey + 1);
                 if (answerCorrect) {
-                    if (currentQuestion < 15) {
-                        setCurrentQuestion(currentQuestion + 1);
-                    } else {
-                        setCurrentCategory('gameOver');
-                    };
+                    setCurrentQuestion(currentQuestion + 1);
                     setTimerBarActive(true);
                     setCombo(combo + 1);
                     setPointsMultiplier(pointsMultiplier + .1);
