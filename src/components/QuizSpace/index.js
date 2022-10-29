@@ -5,6 +5,7 @@ import Instructions from '../Instructions';
 import Question from "../Question";
 import TimerBar from "../TimerBar";
 import { questions } from "../../questions";
+import GameOver from "../GameOver";
 
 function QuizSpace() {
     const [quizQuestions, setQuizQuestions] = useState([]);
@@ -59,6 +60,12 @@ function QuizSpace() {
         }
     }, [timeLeft]);
 
+    useEffect(() => {
+        if (timeRemaining === 0) {
+            setCurrentCategory('gameOver');
+        }
+    }, [timeRemaining])
+
     return (
         <section>
             <div id="quizContent" className="transition">
@@ -94,6 +101,7 @@ function QuizSpace() {
                         timerBarKey={timerBarKey}
                         setTimerBarKey={setTimerBarKey}
                     />}
+                    {currentCategory === 'gameOver' && <GameOver />}
                 </div>
                 <TimerBar
                     key={timerBarKey}
