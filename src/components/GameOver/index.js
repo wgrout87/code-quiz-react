@@ -13,49 +13,63 @@ function GameOver({
     const [removeBlink, setRemoveBlink] = useState();
 
     useEffect(() => {
-        if (initial > 0) {
-            clearInterval(clearIntervalID);
-            removeBlink.classList.remove('blink');
-        }
-        if (initial < 3) {
-            let cursor = document.querySelector(`.initials :nth-child(${initial + 1})`);
-            setRemoveBlink(cursor);
-            let interval = setInterval(() => cursor.classList.toggle("blink"), 400);
-            setClearIntervalID(interval);
+        if (score > 0) {
+            if (initial > 0) {
+                clearInterval(clearIntervalID);
+                removeBlink.classList.remove('blink');
+            }
+            if (initial < 3) {
+                let cursor = document.querySelector(`.initials :nth-child(${initial + 1})`);
+                setRemoveBlink(cursor);
+                let interval = setInterval(() => cursor.classList.toggle("blink"), 400);
+                setClearIntervalID(interval);
+            }
         }
     }, [initial]);
 
     return (
-        <>
+        <div>
             <h2 className="results">
                 You scored {score} points!
             </h2>
-            <p className="results">
-                {scoreResults}
-            </p>
-            <div className="initials centered">
-                <div className={initial === 0 ? "blink" : ""}>{fullInitials[0]}</div>
-                <div>{fullInitials[1]}</div>
-                <div>{fullInitials[2]}</div>
-            </div>
-            <h2 className="results">
-                Please enter your initials:
-            </h2>
-            <div className="btnDiv centered">
-                {letters.map((letter, index) => <button
-                    className="charBtn"
-                    key={index}
-                    onClick={() => {
-                        if (initial <= 2) {
-                            setFullInitials([...fullInitials, letter]);
-                            setInitial(initial + 1)
-                        }
-                    }}
-                >
-                    {letter}
-                </button>)}
-            </div>
-        </>
+            {score > 0 ?
+                <div>
+                    <p className="results">
+                        {scoreResults}
+                    </p>
+                    <div className="initials centered">
+                        <div className={initial === 0 ? "blink" : ""}>{fullInitials[0]}</div>
+                        <div>{fullInitials[1]}</div>
+                        <div>{fullInitials[2]}</div>
+                    </div>
+                    <h2 className="results">
+                        Please enter your initials:
+                    </h2>
+                    <div className="btnDiv centered">
+                        {letters.map((letter, index) => <button
+                            className="charBtn"
+                            key={index}
+                            onClick={() => {
+                                if (initial <= 2) {
+                                    setFullInitials([...fullInitials, letter]);
+                                    setInitial(initial + 1)
+                                }
+                            }}
+                        >
+                            {letter}
+                        </button>)}
+                    </div>
+                </div>
+                :
+                <div className="playAgainPrompt centered">
+                    <h2>Would you like to play again?</h2>
+                    <div className="promptButtons">
+                        <button className="charBtn">Y</button>
+                        <div className="btnBetween">/</div>
+                        <button className="charBtn">N</button>
+                    </div>
+                </div>}
+        </div>
     )
 }
 

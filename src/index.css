@@ -115,14 +115,14 @@ section {
 }
 
 /* Styles for all <h2> elements that ends up in the quiz <div> */
-.quizSpace .quiz h2 {
+.quizSpace h2 {
   font-size: 1.4vw;
   font-weight: normal;
   margin-bottom: 10px;
 }
 
 /* Styles for all <p> elements that ends up in the quiz <div> */
-.quizSpace .quiz p {
+.quizSpace p {
   font-size: .8vw;
   line-height: 1.5;
   word-spacing: 4px;
@@ -138,7 +138,7 @@ section {
 }
 
 /* Styles the <div> element in which all of the answers will be placed */
-.quizSpace .quiz .quizAnswers {
+.quizSpace .quizAnswers {
   margin-top: 20px;
   display: flex;
   flex-direction: column;
@@ -146,7 +146,7 @@ section {
 }
 
 /* Styles the answer buttons */
-.quizSpace .quiz .quizAnswers button {
+.quizSpace .quizAnswers button {
   margin: 5px 20px 0px 20px;
   text-align: left;
   padding: 5px;
@@ -155,13 +155,13 @@ section {
 }
 
 /* Adds a hover style on the answer buttons */
-.quizSpace .quiz .quizAnswers button:hover {
+.quizSpace .quizAnswers button:hover {
   background-color: var(--font-color);
   color: var(--background);
 }
 
 /* Font size for the answer buttons */
-.quizSpace .quiz .questionAnswer {
+.quizSpace .questionAnswer {
   font-size: .8vw;
 }
 
@@ -261,12 +261,12 @@ section {
 }
 
 /* Styles the font-size for the saved entries on the high scores screen */
-.quizSpace .quiz .highScoreListItem p {
+.quizSpace .highScoreListItem p {
   font-size: 1vw;
 }
 
 /* Font size for the "Play Again" button on the high score screen */
-.quizSpace .quiz #playAgain {
+.quizSpace #playAgain {
   font-size: 1vw;
   margin: 0px auto;
 }
@@ -295,11 +295,11 @@ section {
     padding: 5px;
   }
 
-  .quizSpace .quiz h2 {
+  .quizSpace h2 {
     font-size: 2vw;
   }
 
-  .quizSpace .quiz p {
+  .quizSpace p {
     font-size: 1.5vw;
   }
 
@@ -307,7 +307,7 @@ section {
     font-size: 2vw;
   }
 
-  .quizSpace .quiz .questionAnswer {
+  .quizSpace .questionAnswer {
     font-size: 1.5vw;
   }
 
@@ -320,11 +320,11 @@ section {
     width: 180px;
   }
 
-  .quizSpace .quiz .highScoreListItem p {
+  .quizSpace .highScoreListItem p {
     font-size: 1.8vw;
   }
 
-  .quizSpace .quiz #playAgain {
+  .quizSpace #playAgain {
     font-size: 1.8vw;
   }
 }
@@ -359,11 +359,11 @@ section {
     padding: 5px;
   }
 
-  .quizSpace .quiz h2 {
+  .quizSpace h2 {
     font-size: 2.3vw;
   }
 
-  .quizSpace .quiz p {
+  .quizSpace p {
     font-size: 1.7vw;
   }
 
@@ -371,7 +371,7 @@ section {
     font-size: 2.3vw;
   }
 
-  .quizSpace .quiz .questionAnswer {
+  .quizSpace .questionAnswer {
     font-size: 2vw;
   }
 
@@ -408,11 +408,11 @@ section {
     padding: 5px;
   }
 
-  .quizSpace .quiz h2 {
+  .quizSpace h2 {
     font-size: 3vw;
   }
 
-  .quizSpace .quiz p {
+  .quizSpace p {
     font-size: 2.4vw;
   }
 
@@ -438,11 +438,11 @@ section {
     height: 40px;
   }
 
-  .quizSpace .quiz .highScoreListItem p {
+  .quizSpace .highScoreListItem p {
     font-size: 2.4vw;
   }
 
-  .quizSpace .quiz #playAgain {
+  .quizSpace #playAgain {
     font-size: 2.4vw;
   }
 }
@@ -451,8 +451,8 @@ section {
 
 /* BEGIN FADE-IN EFFECT STYLES */
 /* These fade-in effects were learned from https://blog.hubspot.com/website/css-fade-in */
-.quizSpace .quiz .question,
-.quizSpace .quiz .questionAnswer {
+.quizSpace .question,
+.quizSpace .questionAnswer {
   animation: fadeIn linear 1000ms;
   -webkit-animation: fadeIn linear 1000ms;
   -moz-animation: fadeIn linear 1000ms;
