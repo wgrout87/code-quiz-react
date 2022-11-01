@@ -8,13 +8,22 @@ function GameOver({
     setScoreResults,
 }) {
     const [initial, setInitial] = useState(0);
-    const [btnPress, setBtnPress] = useState("");
     const [fullInitials, setFullInitials] = useState([]);
+    const [clearIntervalID, setClearIntervalID] = useState(0);
+    const [removeBlink, setRemoveBlink] = useState();
 
     useEffect(() => {
-        let initialsDisplay = document.querySelector(`.initials :nth-child(${initial + 1})`);
-        console.log(initialsDisplay);
-    }, [fullInitials]);
+        if (initial > 0) {
+            clearInterval(clearIntervalID);
+            removeBlink.classList.remove('blink');
+        }
+        if (initial < 3) {
+            let cursor = document.querySelector(`.initials :nth-child(${initial + 1})`);
+            setRemoveBlink(cursor);
+            let interval = setInterval(() => cursor.classList.toggle("blink"), 400);
+            setClearIntervalID(interval);
+        }
+    }, [initial]);
 
     return (
         <>
@@ -38,7 +47,6 @@ function GameOver({
                     key={index}
                     onClick={() => {
                         if (initial <= 2) {
-                            setBtnPress(letter);
                             setFullInitials([...fullInitials, letter]);
                             setInitial(initial + 1)
                         }
