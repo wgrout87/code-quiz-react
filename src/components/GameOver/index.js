@@ -7,14 +7,16 @@ function GameOver({
     setCurrentCategory,
     setCurrentQuestion,
     setScore,
+    setTimeRemaining,
 }) {
     const [initial, setInitial] = useState(0);
     const [fullInitials, setFullInitials] = useState([]);
     const [clearIntervalID, setClearIntervalID] = useState(0);
     const [removeBlink, setRemoveBlink] = useState();
+    const [newHighScore, setNewHighScore] = useState(false);
 
     useEffect(() => {
-        if (score > 0) {
+        if (newHighScore) {
             if (initial > 0) {
                 clearInterval(clearIntervalID);
                 removeBlink.classList.remove('blink');
@@ -68,9 +70,10 @@ function GameOver({
                         <button
                             className="charBtn"
                             onClick={() => {
-                                setCurrentCategory("quiz");
                                 setCurrentQuestion(0);
+                                setCurrentCategory("quiz");
                                 setScore(0);
+                                setTimeRemaining(10);
                             }
                             }
                         >
