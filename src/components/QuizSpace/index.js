@@ -11,7 +11,7 @@ function QuizSpace() {
     const [quizQuestions, setQuizQuestions] = useState([]);
     const [currentCategory, setCurrentCategory] = useState('instructions');
     const [visibility, setVisibility] = useState(0);
-    const [timeRemaining, setTimeRemaining] = useState(180);
+    const [timeRemaining, setTimeRemaining] = useState(1);
     const [timerActive, setTimerActive] = useState(false);
     const [timerBarActive, setTimerBarActive] = useState(false);
     const [timerBarWidth, setTimerBarWidth] = useState('100.00%');

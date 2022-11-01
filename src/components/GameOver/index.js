@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
@@ -9,6 +9,12 @@ function GameOver({
 }) {
     const [initial, setInitial] = useState(0);
     const [btnPress, setBtnPress] = useState("");
+    const [fullInitials, setFullInitials] = useState([]);
+
+    useEffect(() => {
+        let initialsDisplay = document.querySelector(`.initials :nth-child(${initial + 1})`);
+        console.log(initialsDisplay);
+    }, [fullInitials]);
 
     return (
         <>
@@ -19,9 +25,9 @@ function GameOver({
                 {scoreResults}
             </p>
             <div className="initials centered">
-                <div>{btnPress}</div>
-                <div>{btnPress}</div>
-                <div>{btnPress}</div>
+                <div className={initial === 0 ? "blink" : ""}>{fullInitials[0]}</div>
+                <div>{fullInitials[1]}</div>
+                <div>{fullInitials[2]}</div>
             </div>
             <h2 className="results">
                 Please enter your initials:
@@ -31,8 +37,9 @@ function GameOver({
                     className="charBtn"
                     key={index}
                     onClick={() => {
-                        setBtnPress(letter);
                         if (initial <= 2) {
+                            setBtnPress(letter);
+                            setFullInitials([...fullInitials, letter]);
                             setInitial(initial + 1)
                         }
                     }}
