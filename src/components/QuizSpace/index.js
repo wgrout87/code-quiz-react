@@ -118,6 +118,7 @@ function QuizSpace() {
                         score={score}
                         setCurrentCategory={setCurrentCategory}
                         setCurrentQuestion={setCurrentQuestion}
+                        setScore={setScore}
                     />}
                 </div>
                 <TimerBar

@@ -6,6 +6,7 @@ function GameOver({
     score,
     setCurrentCategory,
     setCurrentQuestion,
+    setScore,
 }) {
     const [initial, setInitial] = useState(0);
     const [fullInitials, setFullInitials] = useState([]);
@@ -32,7 +33,7 @@ function GameOver({
             <h2 className="results">
                 You scored {score} points!
             </h2>
-            {score > 0 ?
+            {score > 2000 ?
                 <div>
                     <p className="results">
                         New high score!
@@ -69,6 +70,7 @@ function GameOver({
                             onClick={() => {
                                 setCurrentCategory("quiz");
                                 setCurrentQuestion(0);
+                                setScore(0);
                             }
                             }
                         >
