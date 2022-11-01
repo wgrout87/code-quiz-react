@@ -24,7 +24,6 @@ function QuizSpace() {
     const [updateTimer, setUpdateTimer] = useState(false);
     const [timerBarKey, setTimerBarKey] = useState(0);
     const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [scoreResults, setScoreResults] = useState("New high score!");
 
     function resetTimerBar(time) {
         setTimerBarWidth('100.00%');
@@ -117,8 +116,8 @@ function QuizSpace() {
                     />}
                     {currentCategory === 'gameOver' && <GameOver
                         score={score}
-                        scoreResults={scoreResults}
-                        setScoreResults={setScoreResults}
+                        setCurrentCategory={setCurrentCategory}
+                        setCurrentQuestion={setCurrentQuestion}
                     />}
                 </div>
                 <TimerBar

@@ -4,8 +4,8 @@ const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M"
 
 function GameOver({
     score,
-    scoreResults,
-    setScoreResults,
+    setCurrentCategory,
+    setCurrentQuestion,
 }) {
     const [initial, setInitial] = useState(0);
     const [fullInitials, setFullInitials] = useState([]);
@@ -35,7 +35,7 @@ function GameOver({
             {score > 0 ?
                 <div>
                     <p className="results">
-                        {scoreResults}
+                        New high score!
                     </p>
                     <div className="initials centered">
                         <div className={initial === 0 ? "blink" : ""}>{fullInitials[0]}</div>
@@ -64,7 +64,16 @@ function GameOver({
                 <div className="playAgainPrompt centered">
                     <h2>Would you like to play again?</h2>
                     <div className="promptButtons">
-                        <button className="charBtn">Y</button>
+                        <button
+                            className="charBtn"
+                            onClick={() => {
+                                setCurrentCategory("quiz");
+                                setCurrentQuestion(0);
+                            }
+                            }
+                        >
+                            Y
+                        </button>
                         <div className="btnBetween">/</div>
                         <button className="charBtn">N</button>
                     </div>
