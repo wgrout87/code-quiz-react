@@ -13,7 +13,6 @@ function QuizSpace() {
     const [visibility, setVisibility] = useState(0);
     // Set the timer here
     const [timeRemaining, setTimeRemaining] = useState(10);
-    const [timerKey, setTimerKey] = useState(0);
     const [timerActive, setTimerActive] = useState(false);
     const [timerBarActive, setTimerBarActive] = useState(false);
     const [timerBarWidth, setTimerBarWidth] = useState('100.00%');
@@ -122,8 +121,6 @@ function QuizSpace() {
                         setCurrentQuestion={setCurrentQuestion}
                         setScore={setScore}
                         setTimeRemaining={setTimeRemaining}
-                        timerKey={timerKey}
-                        setTimerKey={setTimerKey}
                         setTimerActive={setTimerActive}
                         setUpdateTimer={setUpdateTimer}
                     />}
@@ -141,8 +138,6 @@ function QuizSpace() {
             <GameContent
                 visibility={visibility}
                 timeRemaining={timeRemaining}
-                timerKey={timerKey}
-                setTimerKey={setTimerKey}
                 combo={combo}
                 pointsMultiplier={pointsMultiplier}
             />

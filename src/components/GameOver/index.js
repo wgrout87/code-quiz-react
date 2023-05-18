@@ -8,8 +8,6 @@ function GameOver({
     setCurrentQuestion,
     setScore,
     setTimeRemaining,
-    timerKey,
-    setTimerKey,
     setTimerActive,
     setUpdateTimer
 }) {
@@ -79,9 +77,11 @@ function GameOver({
                                 setScore(0);
                                 // Set the timer here
                                 setTimeRemaining(10);
-                                setTimerKey(timerKey + 1);
-                                setUpdateTimer(true);
                                 setTimerActive(true);
+                                setTimeout(() => {
+                                    // If there is time remaining, the timer will be updated every second                
+                                    setUpdateTimer(true);
+                                }, 1000);
                             }
                             }
                         >
