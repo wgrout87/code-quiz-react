@@ -9,7 +9,9 @@ function GameOver({
     setScore,
     setTimeRemaining,
     timerKey,
-    setTimerKey
+    setTimerKey,
+    setTimerActive,
+    setUpdateTimer
 }) {
     const [initial, setInitial] = useState(0);
     const [fullInitials, setFullInitials] = useState([]);
@@ -78,6 +80,8 @@ function GameOver({
                                 // Set the timer here
                                 setTimeRemaining(10);
                                 setTimerKey(timerKey + 1);
+                                setUpdateTimer(true);
+                                setTimerActive(true);
                             }
                             }
                         >

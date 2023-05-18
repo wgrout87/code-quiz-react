@@ -124,6 +124,8 @@ function QuizSpace() {
                         setTimeRemaining={setTimeRemaining}
                         timerKey={timerKey}
                         setTimerKey={setTimerKey}
+                        setTimerActive={setTimerActive}
+                        setUpdateTimer={setUpdateTimer}
                     />}
                 </div>
                 <TimerBar
