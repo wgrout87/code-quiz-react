@@ -8,6 +8,8 @@ function GameOver({
     setCurrentQuestion,
     setScore,
     setTimeRemaining,
+    timerKey,
+    setTimerKey
 }) {
     const [initial, setInitial] = useState(0);
     const [fullInitials, setFullInitials] = useState([]);
@@ -73,7 +75,9 @@ function GameOver({
                                 setCurrentQuestion(0);
                                 setCurrentCategory("quiz");
                                 setScore(0);
-                                setTimeRemaining(180);
+                                // Set the timer here
+                                setTimeRemaining(10);
+                                setTimerKey(timerKey + 1);
                             }
                             }
                         >

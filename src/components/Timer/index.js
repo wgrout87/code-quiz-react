@@ -4,6 +4,7 @@ export default function Timer({ timeRemaining }) {
     const [secondPassed, setSecondPassed] = useState(true);
     const [timerRunning, setTimerRunning] = useState(false);
 
+    // Runs a countdown timer, but is protected agains multiple setTimeout calls
     function countdown() {
         setSecondPassed(false);
         if (!timerRunning && timeRemaining > 0) {
@@ -15,6 +16,10 @@ export default function Timer({ timeRemaining }) {
             }, 1000)
         }
     };
+
+    useEffect(() => {
+        console.log("A new timer instance!")
+    }, []);
 
     useEffect(() => {
         if (secondPassed) {
