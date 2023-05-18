@@ -73,7 +73,7 @@ function GameOver({
                                 setCurrentQuestion(0);
                                 setCurrentCategory("quiz");
                                 setScore(0);
-                                setTimeRemaining(10);
+                                setTimeRemaining(180);
                             }
                             }
                         >
