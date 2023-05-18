@@ -1,12 +1,10 @@
 import React from "react";
+import Timer from "../Timer/timer";
 
 function GameContent({ visibility, timeRemaining, combo, pointsMultiplier }) {
     return (
         <div className="gameContent transition" id="gameContent" style={{ opacity: visibility }}>
-            <div className="timeRemaining">
-                <p>TIME REMAINING: <br /><span id="timeRemaining">{timeRemaining}</span>
-                </p>
-            </div>
+            <Timer timeRemaining={timeRemaining} />
             <div>
                 <p>
                     COMBO: <span id="currentCombo">{combo}</span>
