@@ -12,7 +12,7 @@ function QuizSpace() {
     const [currentCategory, setCurrentCategory] = useState('instructions');
     const [visibility, setVisibility] = useState(0);
     // Set the timer here
-    const [timeRemaining, setTimeRemaining] = useState(10);
+    const [timeRemaining, setTimeRemaining] = useState(180);
     const [timerActive, setTimerActive] = useState(false);
     const [timerBarActive, setTimerBarActive] = useState(false);
     const [timerBarWidth, setTimerBarWidth] = useState('100.00%');
