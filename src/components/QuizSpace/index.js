@@ -6,6 +6,7 @@ import Question from "../Question";
 import TimerBar from "../TimerBar";
 import { questions } from "../../questions";
 import GameOver from "../GameOver";
+import HighScores from "../HighScores";
 
 function QuizSpace() {
     const [quizQuestions, setQuizQuestions] = useState([]);
@@ -25,6 +26,7 @@ function QuizSpace() {
     const [updateTimer, setUpdateTimer] = useState(false);
     const [timerBarKey, setTimerBarKey] = useState(0);
     const [currentQuestion, setCurrentQuestion] = useState(0);
+    const [initials, setInitials] = useState("");
 
     function resetTimerBar(time) {
         setTimerBarWidth('100.00%');
@@ -123,6 +125,13 @@ function QuizSpace() {
                         setTimeRemaining={setTimeRemaining}
                         setTimerActive={setTimerActive}
                         setUpdateTimer={setUpdateTimer}
+                        initials={initials}
+                        setInitials={setInitials}
+                    />}
+                    {currentCategory === 'highScores' && <HighScores
+                        place={1}
+                        initials={initials}
+                        score={score}
                     />}
                 </div>
                 <TimerBar
