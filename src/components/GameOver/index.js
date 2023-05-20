@@ -37,6 +37,12 @@ function GameOver({
         (score > 2000) ? setNewHighScore(true) : setNewHighScore(false);
     }, []);
 
+    useEffect(() => {
+        if (initial === 3) {
+            setCurrentCategory("highScores");
+        }
+    }, [initial]);
+
     return (
         <div>
             <h2 className="results">
@@ -60,7 +66,6 @@ function GameOver({
                             className="charBtn"
                             key={index}
                             onClick={() => {
-                                console.log(initial, letter);
                                 if (initial <= 2) {
                                     setFullInitials([...fullInitials, letter]);
                                     setInitial(initial + 1)
