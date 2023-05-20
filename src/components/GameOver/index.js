@@ -9,10 +9,11 @@ function GameOver({
     setScore,
     setTimeRemaining,
     setTimerActive,
-    setUpdateTimer
+    setUpdateTimer,
+    fullInitials,
+    setFullInitials
 }) {
     const [initial, setInitial] = useState(0);
-    const [fullInitials, setFullInitials] = useState([]);
     const [clearIntervalID, setClearIntervalID] = useState(0);
     const [removeBlink, setRemoveBlink] = useState();
     const [newHighScore, setNewHighScore] = useState(false);
@@ -59,6 +60,7 @@ function GameOver({
                             className="charBtn"
                             key={index}
                             onClick={() => {
+                                console.log(initial, letter);
                                 if (initial <= 2) {
                                     setFullInitials([...fullInitials, letter]);
                                     setInitial(initial + 1)

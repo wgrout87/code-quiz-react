@@ -26,7 +26,7 @@ function QuizSpace() {
     const [updateTimer, setUpdateTimer] = useState(false);
     const [timerBarKey, setTimerBarKey] = useState(0);
     const [currentQuestion, setCurrentQuestion] = useState(0);
-    const [initials, setInitials] = useState("");
+    const [fullInitials, setFullInitials] = useState([]);
 
     function resetTimerBar(time) {
         setTimerBarWidth('100.00%');
@@ -125,12 +125,12 @@ function QuizSpace() {
                         setTimeRemaining={setTimeRemaining}
                         setTimerActive={setTimerActive}
                         setUpdateTimer={setUpdateTimer}
-                        initials={initials}
-                        setInitials={setInitials}
+                        fullInitials={fullInitials}
+                        setFullInitials={setFullInitials}
                     />}
                     {currentCategory === 'highScores' && <HighScores
                         place={1}
-                        initials={initials}
+                        fullInitials={fullInitials}
                         score={score}
                     />}
                 </div>
