@@ -1,5 +1,4 @@
 import Answer from "../Answer";
-import { useState } from "react";
 
 function Question({
     quizQuestions,
@@ -8,8 +7,6 @@ function Question({
     setTimeRemaining,
     setCurrentCategory,
     setTimerBarActive,
-    setTimerBarWidth,
-    setTimeLeft,
     combo,
     setCombo,
     pointsMultiplier,

@@ -30,7 +30,11 @@ function GameOver({
                 setClearIntervalID(interval);
             }
         }
-    }, [initial]);
+    }, [initial, newHighScore]);
+
+    useEffect(() => {
+        (score > 2000) ? setNewHighScore(true) : setNewHighScore(false);
+    }, []);
 
     return (
         <div>
@@ -76,7 +80,7 @@ function GameOver({
                                 setCurrentCategory("quiz");
                                 setScore(0);
                                 // Set the timer here
-                                setTimeRemaining(10);
+                                setTimeRemaining(180);
                                 setTimerActive(true);
                                 setTimeout(() => {
                                     // If there is time remaining, the timer will be updated every second                
