@@ -3,13 +3,17 @@ import './App.css';
 import Header from './components/Header';
 import QuizSpace from './components/QuizSpace';
 
+import { SiteProvider } from './utils/GlobalState';
+
 function App() {
   return (
     <div className="App">
-      <Header />
-      <main>
-        <QuizSpace />
-      </main>
+      <SiteProvider>
+        <Header />
+        <main>
+          <QuizSpace />
+        </main>
+      </SiteProvider>
     </div>
   );
 }
