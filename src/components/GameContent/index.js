@@ -1,7 +1,11 @@
 import React from "react";
 import Timer from "../Timer";
+import { useSiteContext } from "../../utils/GlobalState";
 
 function GameContent({ visibility, timeRemaining, combo, pointsMultiplier }) {
+    const [state, dispatch] = useSiteContext();
+
+    console.log(state);
     return (
         <div className="gameContent transition" id="gameContent" style={{ opacity: visibility }}>
             <Timer
