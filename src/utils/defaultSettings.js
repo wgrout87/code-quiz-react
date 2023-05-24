@@ -1,4 +1,4 @@
-import { questions } from "../../questions";
+import { questions } from "../questions";
 
 export const defaultSettings = {
     questions: questions,
