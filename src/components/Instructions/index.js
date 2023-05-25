@@ -3,6 +3,7 @@ import React, { useEffect } from "react";
 function Instructions({ questions, quizQuestions, setQuizQuestions, setCurrentCategory, setVisibility, setTimerActive }) {
     useEffect(() => {
         while (quizQuestions.length < 15) {
+            // convert quizQuestions to state.quizQuestions
             let possibleQuestion = Math.floor(Math.random() * questions.length);
 
             if (quizQuestions.indexOf(possibleQuestion) === -1) {
