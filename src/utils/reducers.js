@@ -1,16 +1,15 @@
 import { useReducer } from "react";
 import {
-    UPDATE_USERNAME_AND_PASSWORD,
+    UPDATE_QUIZQUESTIONS,
 } from "./actions";
 
 export const reducer = (state, action) => {
     switch (action.type) {
-        case UPDATE_USERNAME_AND_PASSWORD:
-            console.log("Username and password updated!");
+        case UPDATE_QUIZQUESTIONS:
+            console.log("Quiz Questions Updated");
             return {
                 ...state,
-                username: action.username,
-                password: action.password,
+                quizQuestions: action.quizQuestions,
             };
 
         default:
