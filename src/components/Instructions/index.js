@@ -2,12 +2,11 @@ import React, { useEffect } from "react";
 import { useSiteContext } from "../../utils/GlobalState";
 import { UPDATE_QUIZQUESTIONS } from "../../utils/actions"
 
-function Instructions({ questions, setQuizQuestions, setCurrentCategory, setVisibility, setTimerActive }) {
+function Instructions({ setCurrentCategory, setVisibility, setTimerActive }) {
     const [state, dispatch] = useSiteContext();
     const quizQuestions = [];
     useEffect(() => {
         while (quizQuestions.length < 15) {
-            // convert quizQuestions to state.quizQuestions
             let possibleQuestion = Math.floor(Math.random() * state.questions.length);
 
             if (quizQuestions.indexOf(possibleQuestion) === -1) {

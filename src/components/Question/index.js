@@ -2,7 +2,6 @@ import Answer from "../Answer";
 import { useSiteContext } from "../../utils/GlobalState";
 
 export default function Question({
-    quizQuestions,
     questions,
     timeRemaining,
     setTimeRemaining,

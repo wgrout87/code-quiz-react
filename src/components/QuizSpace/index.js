@@ -9,7 +9,6 @@ import GameOver from "../GameOver";
 import HighScores from "../HighScores";
 
 function QuizSpace() {
-    const [quizQuestions, setQuizQuestions] = useState([]);
     const [currentCategory, setCurrentCategory] = useState('instructions');
     const [visibility, setVisibility] = useState(0);
     // Set the timer here
@@ -89,14 +88,11 @@ function QuizSpace() {
                 <div className="quizSpace">
                     {currentCategory === 'instructions' && <Instructions
                         questions={questions}
-                        quizQuestions={quizQuestions}
-                        setQuizQuestions={setQuizQuestions}
                         setCurrentCategory={setCurrentCategory}
                         setVisibility={setVisibility}
                         setTimerActive={setTimerActive}
                     />}
                     {(currentCategory === 'quiz' && currentQuestion < 15) && <Question
-                        quizQuestions={quizQuestions}
                         questions={questions}
                         timeRemaining={timeRemaining}
                         setTimeRemaining={setTimeRemaining}
