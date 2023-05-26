@@ -29,6 +29,11 @@ export const reducer = (state, action) => {
                 ...state,
                 currentCategory: action.currentCategory,
             };
+        case UPDATE_VISIBILITY:
+            return {
+                ...state,
+                visibility: action.visibility,
+            };
 
         default:
             return {
