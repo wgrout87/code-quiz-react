@@ -1,17 +1,24 @@
 import React, { useEffect } from "react";
+import { useSiteContext } from "../../utils/GlobalState";
+import { UPDATE_QUIZQUESTIONS } from "../../utils/actions"
 
-function Instructions({ questions, quizQuestions, setQuizQuestions, setCurrentCategory, setVisibility, setTimerActive }) {
+function Instructions({ questions, setQuizQuestions, setCurrentCategory, setVisibility, setTimerActive }) {
+    const [state, dispatch] = useSiteContext();
+    const quizQuestions = [];
     useEffect(() => {
         while (quizQuestions.length < 15) {
             // convert quizQuestions to state.quizQuestions
-            let possibleQuestion = Math.floor(Math.random() * questions.length);
+            let possibleQuestion = Math.floor(Math.random() * state.questions.length);
 
             if (quizQuestions.indexOf(possibleQuestion) === -1) {
                 quizQuestions.push(possibleQuestion)
-                setQuizQuestions(quizQuestions);
+                dispatch({
+                    type: UPDATE_QUIZQUESTIONS,
+                    quizQuestions: quizQuestions
+                });
             }
         }
-    }, [quizQuestions, setQuizQuestions, questions]);
+    }, []);
 
     return (
         <>

@@ -6,7 +6,6 @@ import {
 export const reducer = (state, action) => {
     switch (action.type) {
         case UPDATE_QUIZQUESTIONS:
-            console.log("Quiz Questions Updated");
             return {
                 ...state,
                 quizQuestions: action.quizQuestions,
