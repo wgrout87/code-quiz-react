@@ -27,7 +27,7 @@ export const reducer = (state, action) => {
         case UPDATE_CURRENTCATEGORY:
             return {
                 ...state,
-                quizQuestions: action.quizQuestions,
+                currentCategory: action.currentCategory,
             };
 
         default:
