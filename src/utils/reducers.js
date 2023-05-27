@@ -39,6 +39,11 @@ export const reducer = (state, action) => {
                 ...state,
                 timeRemaining: action.timeRemaining,
             };
+        case UPDATE_TIMERACTIVE:
+            return {
+                ...state,
+                timerActive: action.timerActive,
+            };
 
         default:
             return {
