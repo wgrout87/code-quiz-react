@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSiteContext } from "../../utils/GlobalState";
+import { UPDATE_TIMELEFT } from "../../utils/actions";
 
-function TimerBar({ timerBarActive, timerBarWidth, setTimerBarWidth, timeLeft, setTimeLeft }) {
+function TimerBar({ timerBarActive, timerBarWidth, setTimerBarWidth, timeLeft }) {
     const [state, dispatch] = useSiteContext();
 
     function decreaseTimerBarWidth(time) {
@@ -17,10 +18,13 @@ function TimerBar({ timerBarActive, timerBarWidth, setTimerBarWidth, timeLeft, s
 
     useEffect(() => {
         if (timerBarActive) {
-            decreaseTimerBarWidth(timeLeft);
+            decreaseTimerBarWidth(state.timeLeft);
             const timer = setTimeout(() => {
-                if (timeLeft > 0) {
-                    setTimeLeft(timeLeft - 1);
+                if (state.timeLeft > 0) {
+                    dispatch({
+                        type: UPDATE_TIMELEFT,
+                        timeLeft: (state.timeLeft - 1),
+                    });
                 };
             }, 1000);
 

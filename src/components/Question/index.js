@@ -5,7 +5,6 @@ export default function Question({
     questions,
     timeRemaining,
     setTimeRemaining,
-    setCurrentCategory,
     setTimerBarActive,
     combo,
     setCombo,
@@ -45,7 +44,6 @@ export default function Question({
                                 setPointsMultiplier={setPointsMultiplier}
                                 score={score}
                                 setScore={setScore}
-                                setCurrentCategory={setCurrentCategory}
                                 setCorrectAnswerGiven={setCorrectAnswerGiven}
                                 timerBarKey={timerBarKey}
                                 setTimerBarKey={setTimerBarKey}

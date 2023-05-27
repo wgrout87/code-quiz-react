@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { useSiteContext } from "../../utils/GlobalState";
-import { UPDATE_QUIZQUESTIONS, UPDATE_VISIBILITY } from "../../utils/actions"
+import { UPDATE_QUIZQUESTIONS, UPDATE_VISIBILITY, UPDATE_CURRENTCATEGORY } from "../../utils/actions"
 
-function Instructions({ setCurrentCategory, setVisibility, setTimerActive }) {
+function Instructions({ setTimerActive }) {
     const [state, dispatch] = useSiteContext();
     const quizQuestions = [];
     useEffect(() => {
@@ -34,7 +34,10 @@ function Instructions({ setCurrentCategory, setVisibility, setTimerActive }) {
                 <button
                     type="button"
                     onClick={() => {
-                        setCurrentCategory('quiz');
+                        dispatch({
+                            type: UPDATE_CURRENTCATEGORY,
+                            currentCategory: "quiz"
+                        });
                         dispatch({
                             type: UPDATE_VISIBILITY,
                             visibility: 1

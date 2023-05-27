@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
+import { UPDATE_CURRENTCATEGORY } from "../../utils/actions";
+import { useSiteContext } from "../../utils/GlobalState";
 
 const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
 function GameOver({
     score,
-    setCurrentCategory,
     setCurrentQuestion,
     setScore,
     setTimeRemaining,
@@ -13,6 +14,7 @@ function GameOver({
     fullInitials,
     setFullInitials
 }) {
+    const [state, dispatch] = useSiteContext();
     const [initial, setInitial] = useState(0);
     const [clearIntervalID, setClearIntervalID] = useState(0);
     const [removeBlink, setRemoveBlink] = useState();
@@ -39,7 +41,10 @@ function GameOver({
 
     useEffect(() => {
         if (initial === 3) {
-            setCurrentCategory("highScores");
+            dispatch({
+                type: UPDATE_CURRENTCATEGORY,
+                currentCategory: "highScores"
+            });
         }
     }, [initial]);
 
@@ -84,7 +89,10 @@ function GameOver({
                             className="charBtn"
                             onClick={() => {
                                 setCurrentQuestion(0);
-                                setCurrentCategory("quiz");
+                                dispatch({
+                                    type: UPDATE_CURRENTCATEGORY,
+                                    currentCategory: "quiz"
+                                });
                                 setScore(0);
                                 // Set the timer here
                                 setTimeRemaining(180);

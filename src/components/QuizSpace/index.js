@@ -7,9 +7,11 @@ import TimerBar from "../TimerBar";
 import { questions } from "../../questions";
 import GameOver from "../GameOver";
 import HighScores from "../HighScores";
+import { UPDATE_TIMELEFT, UPDATE_CURRENTCATEGORY } from "../../utils/actions";
+import { useSiteContext } from "../../utils/GlobalState";
 
 function QuizSpace() {
-    const [currentCategory, setCurrentCategory] = useState('instructions');
+    const [state, dispatch] = useSiteContext();
     const [visibility, setVisibility] = useState(0);
     // Set the timer here
     const [timeRemaining, setTimeRemaining] = useState(180);
@@ -29,7 +31,10 @@ function QuizSpace() {
 
     function resetTimerBar(time) {
         setTimerBarWidth('100.00%');
-        setTimeLeft(time);
+        dispatch({
+            type: UPDATE_TIMELEFT,
+            timeLeft: time,
+        });
     };
 
     // Updates the timer whenever timeRemaining changes
@@ -51,7 +56,7 @@ function QuizSpace() {
                 setCorrectAnswerGiven(true);
             }
         }
-    }, [currentCategory, timeRemaining, timerActive]);
+    }, [timeRemaining, timerActive]);
 
     // Updates the timer using the current timeRemaining
     useEffect(() => {
@@ -70,7 +75,10 @@ function QuizSpace() {
 
     useEffect(() => {
         if (timeRemaining === 0 || currentQuestion === 15) {
-            setCurrentCategory('gameOver');
+            dispatch({
+                type: UPDATE_CURRENTCATEGORY,
+                currentCategory: "gameOver"
+            });
             setTimerBarActive(false);
             resetTimerBar(15);
             setTimerBarKey(timerBarKey + 1);
@@ -86,20 +94,17 @@ function QuizSpace() {
                     score={score}
                 />
                 <div className="quizSpace">
-                    {currentCategory === 'instructions' && <Instructions
+                    {state.currentCategory === 'instructions' && <Instructions
                         questions={questions}
-                        setCurrentCategory={setCurrentCategory}
                         setVisibility={setVisibility}
                         setTimerActive={setTimerActive}
                     />}
-                    {(currentCategory === 'quiz' && currentQuestion < 15) && <Question
+                    {(state.currentCategory === 'quiz' && currentQuestion < 15) && <Question
                         questions={questions}
                         timeRemaining={timeRemaining}
                         setTimeRemaining={setTimeRemaining}
-                        setCurrentCategory={setCurrentCategory}
                         setTimerBarActive={setTimerBarActive}
                         setTimerBarWidth={setTimerBarWidth}
-                        setTimeLeft={setTimeLeft}
                         combo={combo}
                         setCombo={setCombo}
                         pointsMultiplier={pointsMultiplier}
@@ -113,9 +118,8 @@ function QuizSpace() {
                         setCurrentQuestion={setCurrentQuestion}
                         resetTimerBar={resetTimerBar}
                     />}
-                    {currentCategory === 'gameOver' && <GameOver
+                    {state.currentCategory === 'gameOver' && <GameOver
                         score={score}
-                        setCurrentCategory={setCurrentCategory}
                         setCurrentQuestion={setCurrentQuestion}
                         setScore={setScore}
                         setTimeRemaining={setTimeRemaining}
@@ -124,7 +128,7 @@ function QuizSpace() {
                         fullInitials={fullInitials}
                         setFullInitials={setFullInitials}
                     />}
-                    {currentCategory === 'highScores' && <HighScores
+                    {state.currentCategory === 'highScores' && <HighScores
                         place={1}
                         fullInitials={fullInitials}
                         score={score}
@@ -137,7 +141,6 @@ function QuizSpace() {
                     timerBarWidth={timerBarWidth}
                     setTimerBarWidth={setTimerBarWidth}
                     timeLeft={timeLeft}
-                    setTimeLeft={setTimeLeft}
                 />
             </div>
             <GameContent
