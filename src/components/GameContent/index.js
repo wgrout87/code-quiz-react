@@ -13,12 +13,12 @@ function GameContent({ visibility, timeRemaining, combo, pointsMultiplier }) {
             />
             <div>
                 <p>
-                    COMBO: <span id="currentCombo">{combo}</span>
+                    COMBO: <span id="currentCombo">{state.combo}</span>
                 </p>
             </div>
             <div>
                 <p>
-                    POINTS MULTIPLIER: <br /><span id="currentPointsMultiplier">{pointsMultiplier.toPrecision(2)}</span>
+                    POINTS MULTIPLIER: <br /><span id="currentPointsMultiplier">{state.pointsMultiplier.toPrecision(2)}</span>
                 </p>
             </div>
         </div>

@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { useSiteContext } from "../../utils/GlobalState";
 
 function TimerBar({ visibility, timerBarActive, timerBarWidth, setTimerBarWidth, timeLeft, setTimeLeft }) {
+    const [state, dispatch] = useSiteContext();
+
     function decreaseTimerBarWidth(time) {
         let widthValue = parseFloat(timerBarWidth).toPrecision(4);
         widthValue -= 6.66;
