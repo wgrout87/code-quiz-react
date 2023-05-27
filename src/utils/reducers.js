@@ -5,7 +5,7 @@ import {
     UPDATE_VISIBILITY,
     UPDATE_TIMEREMAINING,
     UPDATE_TIMERACTIVE,
-    UPDATE_TIMERWIDTH,
+    UPDATE_TIMERBARWIDTH,
     UPDATE_TIMELEFT,
     UPDATE_COMBO,
     UPDATE_POINTSMULTIPLIER,
@@ -43,6 +43,11 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 timerActive: action.timerActive,
+            };
+        case UPDATE_TIMERBARWIDTH:
+            return {
+                ...state,
+                timerBarWidth: action.timerBarWidth,
             };
 
         default:
