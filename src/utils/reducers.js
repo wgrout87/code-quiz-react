@@ -54,6 +54,11 @@ export const reducer = (state, action) => {
                 ...state,
                 timeLeft: action.timeLeft,
             };
+        case UPDATE_COMBO:
+            return {
+                ...state,
+                combo: action.combo,
+            };
 
         default:
             return {
