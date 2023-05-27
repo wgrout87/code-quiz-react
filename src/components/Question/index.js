@@ -3,8 +3,6 @@ import { useSiteContext } from "../../utils/GlobalState";
 
 export default function Question({
     questions,
-    timeRemaining,
-    setTimeRemaining,
     setTimerBarActive,
     combo,
     setCombo,
@@ -34,8 +32,6 @@ export default function Question({
                                 answerCorrect={answer.answerValue}
                                 currentQuestion={currentQuestion}
                                 setCurrentQuestion={setCurrentQuestion}
-                                timeRemaining={timeRemaining}
-                                setTimeRemaining={setTimeRemaining}
                                 resetTimerBar={resetTimerBar}
                                 setTimerBarActive={setTimerBarActive}
                                 combo={combo}

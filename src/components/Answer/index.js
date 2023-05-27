@@ -1,12 +1,12 @@
 import React from "react";
+import { UPDATE_TIMEREMAINING } from "../../utils/actions";
+import { useSiteContext } from "../../utils/GlobalState";
 
 function Answer({
     answer,
     answerCorrect,
     currentQuestion,
     setCurrentQuestion,
-    timeRemaining,
-    setTimeRemaining,
     resetTimerBar,
     setTimerBarActive,
     combo,
@@ -19,6 +19,7 @@ function Answer({
     timerBarKey,
     setTimerBarKey
 }) {
+    const [state, dispatch] = useSiteContext();
     return (
         <button
             data-index={0}
@@ -33,7 +34,10 @@ function Answer({
                     setScore(score + (1000 * pointsMultiplier));
                     resetTimerBar(15);
                 } else {
-                    setTimeRemaining(Math.max(0, (timeRemaining - 10)));
+                    dispatch({
+                        type: UPDATE_TIMEREMAINING,
+                        timeRemaining: Math.max(0, (state.timeRemaining - 10)),
+                    });
                     setTimerBarActive(false);
                     setCombo(0);
                     setPointsMultiplier(1);

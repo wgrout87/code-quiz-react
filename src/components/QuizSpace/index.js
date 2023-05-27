@@ -7,13 +7,11 @@ import TimerBar from "../TimerBar";
 import { questions } from "../../questions";
 import GameOver from "../GameOver";
 import HighScores from "../HighScores";
-import { UPDATE_TIMELEFT, UPDATE_CURRENTCATEGORY } from "../../utils/actions";
+import { UPDATE_TIMELEFT, UPDATE_CURRENTCATEGORY, UPDATE_TIMEREMAINING } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 
 function QuizSpace() {
     const [state, dispatch] = useSiteContext();
-    // Set the timer here
-    const [timeRemaining, setTimeRemaining] = useState(180);
     const [timerActive, setTimerActive] = useState(false);
     const [timerBarActive, setTimerBarActive] = useState(false);
     const [timerBarWidth, setTimerBarWidth] = useState('100.00%');
@@ -38,7 +36,7 @@ function QuizSpace() {
 
     // Updates the timer whenever timeRemaining changes
     useEffect(() => {
-        if (timerActive && timeRemaining > 0) {
+        if (timerActive && state.timeRemaining > 0) {
             // Won't start a new timeout when an incorrect answer is given and timeRemaining is changed
             if (correctAnswerGiven) {
                 setTimeout(() => {
@@ -55,12 +53,15 @@ function QuizSpace() {
                 setCorrectAnswerGiven(true);
             }
         }
-    }, [timeRemaining, timerActive]);
+    }, [state.timeRemaining, timerActive]);
 
     // Updates the timer using the current timeRemaining
     useEffect(() => {
         if (updateTimer) {
-            setTimeRemaining(Math.max(0, (timeRemaining - 1)));
+            dispatch({
+                type: UPDATE_TIMEREMAINING,
+                timeRemaining: Math.max(0, (state.timeRemaining - 1)),
+            });
         }
         setUpdateTimer(false);
     }, [updateTimer]);
@@ -73,7 +74,7 @@ function QuizSpace() {
     }, [timeLeft]);
 
     useEffect(() => {
-        if (timeRemaining === 0 || currentQuestion === 15) {
+        if (state.timeRemaining === 0 || currentQuestion === 15) {
             dispatch({
                 type: UPDATE_CURRENTCATEGORY,
                 currentCategory: "gameOver"
@@ -83,7 +84,7 @@ function QuizSpace() {
             setTimerBarKey(timerBarKey + 1);
             setTimerActive(false);
         }
-    }, [timeRemaining, currentQuestion]);
+    }, [state.timeRemaining, currentQuestion]);
 
     return (
         <section>
@@ -98,8 +99,6 @@ function QuizSpace() {
                     />}
                     {(state.currentCategory === 'quiz' && currentQuestion < 15) && <Question
                         questions={questions}
-                        timeRemaining={timeRemaining}
-                        setTimeRemaining={setTimeRemaining}
                         setTimerBarActive={setTimerBarActive}
                         setTimerBarWidth={setTimerBarWidth}
                         combo={combo}
@@ -119,7 +118,6 @@ function QuizSpace() {
                         score={score}
                         setCurrentQuestion={setCurrentQuestion}
                         setScore={setScore}
-                        setTimeRemaining={setTimeRemaining}
                         setTimerActive={setTimerActive}
                         setUpdateTimer={setUpdateTimer}
                         fullInitials={fullInitials}
@@ -140,7 +138,6 @@ function QuizSpace() {
                 />
             </div>
             <GameContent
-                timeRemaining={timeRemaining}
                 combo={combo}
                 pointsMultiplier={pointsMultiplier}
             />

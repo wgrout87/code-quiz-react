@@ -8,9 +8,7 @@ function GameContent({ timeRemaining }) {
     // console.log(state);
     return (
         <div className="gameContent transition" id="gameContent" style={{ opacity: state.visibility }}>
-            <Timer
-                timeRemaining={timeRemaining}
-            />
+            <Timer />
             <div>
                 <p>
                     COMBO: <span id="currentCombo">{state.combo}</span>

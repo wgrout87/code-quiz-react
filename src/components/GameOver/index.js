@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { UPDATE_CURRENTCATEGORY } from "../../utils/actions";
+import { UPDATE_CURRENTCATEGORY, UPDATE_TIMEREMAINING } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 
 const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
@@ -8,7 +8,6 @@ function GameOver({
     score,
     setCurrentQuestion,
     setScore,
-    setTimeRemaining,
     setTimerActive,
     setUpdateTimer,
     fullInitials,
@@ -95,7 +94,10 @@ function GameOver({
                                 });
                                 setScore(0);
                                 // Set the timer here
-                                setTimeRemaining(180);
+                                dispatch({
+                                    type: UPDATE_TIMEREMAINING,
+                                    timeRemaining: 180,
+                                });
                                 setTimerActive(true);
                                 setTimeout(() => {
                                     // If there is time remaining, the timer will be updated every second                
