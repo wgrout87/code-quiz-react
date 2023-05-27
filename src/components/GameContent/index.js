@@ -2,12 +2,12 @@ import React from "react";
 import Timer from "../Timer";
 import { useSiteContext } from "../../utils/GlobalState";
 
-function GameContent({ visibility, timeRemaining, combo, pointsMultiplier }) {
+function GameContent({ visibility, timeRemaining }) {
     const [state, dispatch] = useSiteContext();
 
     // console.log(state);
     return (
-        <div className="gameContent transition" id="gameContent" style={{ opacity: visibility }}>
+        <div className="gameContent transition" id="gameContent" style={{ opacity: state.visibility }}>
             <Timer
                 timeRemaining={timeRemaining}
             />
