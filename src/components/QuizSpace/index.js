@@ -12,16 +12,14 @@ import {
     UPDATE_CURRENTCATEGORY,
     UPDATE_TIMEREMAINING,
     UPDATE_TIMERACTIVE,
-    UPDATE_COMBO
+    UPDATE_COMBO,
+    UPDATE_TIMERBARWIDTH
 } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 
 function QuizSpace() {
     const [state, dispatch] = useSiteContext();
     const [timerBarActive, setTimerBarActive] = useState(false);
-    const [timerBarWidth, setTimerBarWidth] = useState('100.00%');
-    // timeLeft refers to the time left on the timer bar for increased combos
-    const [timeLeft, setTimeLeft] = useState(15);
     const [pointsMultiplier, setPointsMultiplier] = useState(1);
     const [score, setScore] = useState(0);
     const [correctAnswerGiven, setCorrectAnswerGiven] = useState(true);
@@ -31,7 +29,10 @@ function QuizSpace() {
     const [fullInitials, setFullInitials] = useState([]);
 
     function resetTimerBar(time) {
-        setTimerBarWidth('100.00%');
+        dispatch({
+            type: UPDATE_TIMERBARWIDTH,
+            timerBarWidth: '100.00%'
+        });
         dispatch({
             type: UPDATE_TIMELEFT,
             timeLeft: time,
@@ -71,14 +72,14 @@ function QuizSpace() {
     }, [updateTimer]);
 
     useEffect(() => {
-        if (timeLeft === 0) {
+        if (state.timeLeft === 0) {
             dispatch({
                 type: UPDATE_COMBO,
                 combo: 0,
             });
             setPointsMultiplier(1);
         }
-    }, [timeLeft]);
+    }, [state.timeLeft]);
 
     useEffect(() => {
         if (state.timeRemaining === 0 || currentQuestion === 15) {
@@ -109,7 +110,6 @@ function QuizSpace() {
                     {(state.currentCategory === 'quiz' && currentQuestion < 15) && <Question
                         questions={questions}
                         setTimerBarActive={setTimerBarActive}
-                        setTimerBarWidth={setTimerBarWidth}
                         pointsMultiplier={pointsMultiplier}
                         setPointsMultiplier={setPointsMultiplier}
                         score={score}
@@ -138,9 +138,6 @@ function QuizSpace() {
                 <TimerBar
                     key={timerBarKey}
                     timerBarActive={timerBarActive}
-                    timerBarWidth={timerBarWidth}
-                    setTimerBarWidth={setTimerBarWidth}
-                    timeLeft={timeLeft}
                 />
             </div>
             <GameContent
