@@ -1,5 +1,5 @@
 import React from "react";
-import { UPDATE_TIMEREMAINING } from "../../utils/actions";
+import { UPDATE_TIMEREMAINING, UPDATE_COMBO } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 
 function Answer({
@@ -9,8 +9,6 @@ function Answer({
     setCurrentQuestion,
     resetTimerBar,
     setTimerBarActive,
-    combo,
-    setCombo,
     pointsMultiplier,
     setPointsMultiplier,
     score,
@@ -29,7 +27,10 @@ function Answer({
                 if (answerCorrect) {
                     setCurrentQuestion(currentQuestion + 1);
                     setTimerBarActive(true);
-                    setCombo(combo + 1);
+                    dispatch({
+                        type: UPDATE_COMBO,
+                        combo: state.combo + 1,
+                    });
                     setPointsMultiplier(pointsMultiplier + .1);
                     setScore(score + (1000 * pointsMultiplier));
                     resetTimerBar(15);
@@ -39,7 +40,10 @@ function Answer({
                         timeRemaining: Math.max(0, (state.timeRemaining - 10)),
                     });
                     setTimerBarActive(false);
-                    setCombo(0);
+                    dispatch({
+                        type: UPDATE_COMBO,
+                        combo: 0,
+                    });
                     setPointsMultiplier(1);
                     resetTimerBar(0);
                     e.target.style.opacity = 0;

@@ -7,7 +7,13 @@ import TimerBar from "../TimerBar";
 import { questions } from "../../questions";
 import GameOver from "../GameOver";
 import HighScores from "../HighScores";
-import { UPDATE_TIMELEFT, UPDATE_CURRENTCATEGORY, UPDATE_TIMEREMAINING, UPDATE_TIMERACTIVE } from "../../utils/actions";
+import {
+    UPDATE_TIMELEFT,
+    UPDATE_CURRENTCATEGORY,
+    UPDATE_TIMEREMAINING,
+    UPDATE_TIMERACTIVE,
+    UPDATE_COMBO
+} from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 
 function QuizSpace() {
@@ -16,7 +22,6 @@ function QuizSpace() {
     const [timerBarWidth, setTimerBarWidth] = useState('100.00%');
     // timeLeft refers to the time left on the timer bar for increased combos
     const [timeLeft, setTimeLeft] = useState(15);
-    const [combo, setCombo] = useState(0);
     const [pointsMultiplier, setPointsMultiplier] = useState(1);
     const [score, setScore] = useState(0);
     const [correctAnswerGiven, setCorrectAnswerGiven] = useState(true);
@@ -67,7 +72,10 @@ function QuizSpace() {
 
     useEffect(() => {
         if (timeLeft === 0) {
-            setCombo(0);
+            dispatch({
+                type: UPDATE_COMBO,
+                combo: 0,
+            });
             setPointsMultiplier(1);
         }
     }, [timeLeft]);
@@ -102,8 +110,6 @@ function QuizSpace() {
                         questions={questions}
                         setTimerBarActive={setTimerBarActive}
                         setTimerBarWidth={setTimerBarWidth}
-                        combo={combo}
-                        setCombo={setCombo}
                         pointsMultiplier={pointsMultiplier}
                         setPointsMultiplier={setPointsMultiplier}
                         score={score}
@@ -138,7 +144,6 @@ function QuizSpace() {
                 />
             </div>
             <GameContent
-                combo={combo}
                 pointsMultiplier={pointsMultiplier}
             />
         </section>
