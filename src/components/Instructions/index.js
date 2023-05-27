@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useSiteContext } from "../../utils/GlobalState";
-import { UPDATE_QUIZQUESTIONS, UPDATE_VISIBILITY, UPDATE_CURRENTCATEGORY } from "../../utils/actions"
+import { UPDATE_QUIZQUESTIONS, UPDATE_VISIBILITY, UPDATE_CURRENTCATEGORY, UPDATE_TIMERACTIVE } from "../../utils/actions"
 
 function Instructions({ setTimerActive }) {
     const [state, dispatch] = useSiteContext();
@@ -42,7 +42,10 @@ function Instructions({ setTimerActive }) {
                             type: UPDATE_VISIBILITY,
                             visibility: 1
                         });
-                        setTimerActive(true);
+                        dispatch({
+                            type: UPDATE_TIMERACTIVE,
+                            timerActive: true,
+                        });
                     }}
                 >
                     TAKE THE QUIZ
