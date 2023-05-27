@@ -12,7 +12,6 @@ import { useSiteContext } from "../../utils/GlobalState";
 
 function QuizSpace() {
     const [state, dispatch] = useSiteContext();
-    const [visibility, setVisibility] = useState(0);
     // Set the timer here
     const [timeRemaining, setTimeRemaining] = useState(180);
     const [timerActive, setTimerActive] = useState(false);
@@ -90,13 +89,11 @@ function QuizSpace() {
         <section>
             <div id="quizContent" className="transition">
                 <CurrentScore
-                    visibility={visibility}
                     score={score}
                 />
                 <div className="quizSpace">
                     {state.currentCategory === 'instructions' && <Instructions
                         questions={questions}
-                        setVisibility={setVisibility}
                         setTimerActive={setTimerActive}
                     />}
                     {(state.currentCategory === 'quiz' && currentQuestion < 15) && <Question
@@ -136,7 +133,6 @@ function QuizSpace() {
                 </div>
                 <TimerBar
                     key={timerBarKey}
-                    visibility={visibility}
                     timerBarActive={timerBarActive}
                     timerBarWidth={timerBarWidth}
                     setTimerBarWidth={setTimerBarWidth}
@@ -144,7 +140,6 @@ function QuizSpace() {
                 />
             </div>
             <GameContent
-                visibility={visibility}
                 timeRemaining={timeRemaining}
                 combo={combo}
                 pointsMultiplier={pointsMultiplier}
