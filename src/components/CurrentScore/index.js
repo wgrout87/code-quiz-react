@@ -1,8 +1,8 @@
 import React from "react";
 import { useSiteContext } from "../../utils/GlobalState";
 
-function CurrentScore({ visibility, score }) {
-    const [state, dispatch] = useSiteContext();
+function CurrentScore() {
+    const [state] = useSiteContext();
     return (
         <div className="score transition" id="score" style={{ opacity: state.visibility }}>
             <p>CURRENT SCORE:</p>

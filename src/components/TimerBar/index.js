@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSiteContext } from "../../utils/GlobalState";
 
-function TimerBar({ visibility, timerBarActive, timerBarWidth, setTimerBarWidth, timeLeft, setTimeLeft }) {
+function TimerBar({ timerBarActive, timerBarWidth, setTimerBarWidth, timeLeft, setTimeLeft }) {
     const [state, dispatch] = useSiteContext();
 
     function decreaseTimerBarWidth(time) {
@@ -29,7 +29,7 @@ function TimerBar({ visibility, timerBarActive, timerBarWidth, setTimerBarWidth,
     }, [timerBarActive, timeLeft]);
 
     return (
-        <div id="timerBar" className="transition" style={{ opacity: visibility, width: timerBarWidth }}></div>
+        <div id="timerBar" className="transition" style={{ opacity: state.visibility, width: timerBarWidth }}></div>
     )
 }
 
