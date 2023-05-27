@@ -34,6 +34,11 @@ export const reducer = (state, action) => {
                 ...state,
                 visibility: action.visibility,
             };
+        case UPDATE_TIMEREMAINING:
+            return {
+                ...state,
+                timeRemaining: action.timeRemaining,
+            };
 
         default:
             return {
