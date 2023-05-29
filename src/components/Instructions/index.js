@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useSiteContext } from "../../utils/GlobalState";
 import { UPDATE_QUIZQUESTIONS, UPDATE_VISIBILITY, UPDATE_CURRENTCATEGORY, UPDATE_TIMERACTIVE } from "../../utils/actions"
 
-function Instructions({ setTimerActive }) {
+function Instructions() {
     const [state, dispatch] = useSiteContext();
     const quizQuestions = [];
     useEffect(() => {
