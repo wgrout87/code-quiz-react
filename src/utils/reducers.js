@@ -59,6 +59,11 @@ export const reducer = (state, action) => {
                 ...state,
                 combo: action.combo,
             };
+        case UPDATE_POINTSMULTIPLIER:
+            return {
+                ...state,
+                pointsMulitiplier: action.pointsMulitiplier,
+            };
 
         default:
             return {
