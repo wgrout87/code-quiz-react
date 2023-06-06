@@ -13,14 +13,14 @@ import {
     UPDATE_TIMEREMAINING,
     UPDATE_TIMERACTIVE,
     UPDATE_COMBO,
-    UPDATE_TIMERBARWIDTH
+    UPDATE_TIMERBARWIDTH,
+    UPDATE_POINTSMULTIPLIER
 } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 
 function QuizSpace() {
     const [state, dispatch] = useSiteContext();
     const [timerBarActive, setTimerBarActive] = useState(false);
-    const [pointsMultiplier, setPointsMultiplier] = useState(1);
     const [score, setScore] = useState(0);
     const [correctAnswerGiven, setCorrectAnswerGiven] = useState(true);
     const [updateTimer, setUpdateTimer] = useState(false);
@@ -77,7 +77,10 @@ function QuizSpace() {
                 type: UPDATE_COMBO,
                 combo: 0,
             });
-            setPointsMultiplier(1);
+            dispatch({
+                type: UPDATE_POINTSMULTIPLIER,
+                pointsMultiplier: 1,
+            });
         }
     }, [state.timeLeft]);
 
@@ -108,8 +111,6 @@ function QuizSpace() {
                     {(state.currentCategory === 'quiz' && currentQuestion < 15) && <Question
                         questions={questions}
                         setTimerBarActive={setTimerBarActive}
-                        pointsMultiplier={pointsMultiplier}
-                        setPointsMultiplier={setPointsMultiplier}
                         score={score}
                         setScore={setScore}
                         setCorrectAnswerGiven={setCorrectAnswerGiven}

@@ -62,7 +62,7 @@ export const reducer = (state, action) => {
         case UPDATE_POINTSMULTIPLIER:
             return {
                 ...state,
-                pointsMulitiplier: action.pointsMulitiplier,
+                pointsMultiplier: action.pointsMultiplier,
             };
 
         default:
