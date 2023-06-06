@@ -3,7 +3,7 @@ import Timer from "../Timer";
 import { useSiteContext } from "../../utils/GlobalState";
 
 function GameContent({ timeRemaining }) {
-    const [state, dispatch] = useSiteContext();
+    const [state] = useSiteContext();
 
     // console.log(state);
     return (
