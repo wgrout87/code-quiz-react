@@ -104,9 +104,7 @@ function QuizSpace() {
                     score={score}
                 />
                 <div className="quizSpace">
-                    {state.currentCategory === 'instructions' && <Instructions
-                        questions={questions}
-                    />}
+                    {state.currentCategory === 'instructions' && <Instructions />}
                     {(state.currentCategory === 'quiz' && currentQuestion < 15) && <Question
                         questions={questions}
                         setTimerBarActive={setTimerBarActive}
@@ -140,9 +138,7 @@ function QuizSpace() {
                     timerBarActive={timerBarActive}
                 />
             </div>
-            <GameContent
-                pointsMultiplier={pointsMultiplier}
-            />
+            <GameContent />
         </section>
     )
 }

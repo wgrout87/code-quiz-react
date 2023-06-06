@@ -2,7 +2,7 @@ import React from "react";
 import Timer from "../Timer";
 import { useSiteContext } from "../../utils/GlobalState";
 
-function GameContent({ timeRemaining }) {
+function GameContent() {
     const [state] = useSiteContext();
 
     // console.log(state);
