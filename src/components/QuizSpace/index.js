@@ -24,7 +24,6 @@ import { useSiteContext } from "../../utils/GlobalState";
 function QuizSpace() {
     const [state, dispatch] = useSiteContext();
     const [timerBarActive, setTimerBarActive] = useState(false);
-    const [fullInitials, setFullInitials] = useState([]);
 
     function resetTimerBar(time) {
         dispatch({
@@ -123,13 +122,9 @@ function QuizSpace() {
                         setTimerBarActive={setTimerBarActive}
                         resetTimerBar={resetTimerBar}
                     />}
-                    {state.currentCategory === 'gameOver' && <GameOver
-                        fullInitials={fullInitials}
-                        setFullInitials={setFullInitials}
-                    />}
+                    {state.currentCategory === 'gameOver' && <GameOver />}
                     {state.currentCategory === 'highScores' && <HighScores
                         place={1}
-                        fullInitials={fullInitials}
                     />}
                 </div>
                 <TimerBar

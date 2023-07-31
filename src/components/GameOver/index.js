@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { UPDATE_CURRENTCATEGORY, UPDATE_CURRENTQUESTION, UPDATE_SCORE, UPDATE_TIMERACTIVE, UPDATE_TIMEREMAINING, UPDATE_UPDATETIMER } from "../../utils/actions";
+import { UPDATE_CURRENTCATEGORY, UPDATE_CURRENTQUESTION, UPDATE_FULLINITIALS, UPDATE_SCORE, UPDATE_TIMERACTIVE, UPDATE_TIMEREMAINING, UPDATE_UPDATETIMER } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 
 const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
-function GameOver({
-    fullInitials,
-    setFullInitials
-}) {
+function GameOver() {
     const [state, dispatch] = useSiteContext();
     const [initial, setInitial] = useState(0);
     const [clearIntervalID, setClearIntervalID] = useState(0);
@@ -53,9 +50,9 @@ function GameOver({
                         New high score!
                     </p>
                     <div className="initials centered">
-                        <div className={initial === 0 ? "blink" : ""}>{fullInitials[0]}</div>
-                        <div>{fullInitials[1]}</div>
-                        <div>{fullInitials[2]}</div>
+                        <div className={initial === 0 ? "blink" : ""}>{state.fullInitials[0]}</div>
+                        <div>{state.fullInitials[1]}</div>
+                        <div>{state.fullInitials[2]}</div>
                     </div>
                     <h2 className="results">
                         Please enter your initials:
@@ -66,7 +63,10 @@ function GameOver({
                             key={index}
                             onClick={() => {
                                 if (initial <= 2) {
-                                    setFullInitials([...fullInitials, letter]);
+                                    dispatch({
+                                        type: UPDATE_FULLINITIALS,
+                                        fullInitials: [...state.fullInitials, letter]
+                                    })
                                     setInitial(initial + 1)
                                 }
                             }}
