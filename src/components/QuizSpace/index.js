@@ -16,14 +16,14 @@ import {
     UPDATE_TIMERBARWIDTH,
     UPDATE_POINTSMULTIPLIER,
     UPDATE_CORRECTANSWERGIVEN,
-    UPDATE_UPDATETIMER
+    UPDATE_UPDATETIMER,
+    UPDATE_TIMERBARKEY
 } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 
 function QuizSpace() {
     const [state, dispatch] = useSiteContext();
     const [timerBarActive, setTimerBarActive] = useState(false);
-    const [timerBarKey, setTimerBarKey] = useState(0);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [fullInitials, setFullInitials] = useState([]);
 
@@ -100,7 +100,10 @@ function QuizSpace() {
             });
             setTimerBarActive(false);
             resetTimerBar(15);
-            setTimerBarKey(timerBarKey + 1);
+            dispatch({
+                type: UPDATE_TIMERBARKEY,
+                timerBarKey: state.timerBarKey + 1
+            })
             dispatch({
                 type: UPDATE_TIMERACTIVE,
                 timerActive: false,
@@ -119,8 +122,6 @@ function QuizSpace() {
                     {(state.currentCategory === 'quiz' && currentQuestion < 15) && <Question
                         questions={questions}
                         setTimerBarActive={setTimerBarActive}
-                        timerBarKey={timerBarKey}
-                        setTimerBarKey={setTimerBarKey}
                         currentQuestion={currentQuestion}
                         setCurrentQuestion={setCurrentQuestion}
                         resetTimerBar={resetTimerBar}
@@ -136,7 +137,7 @@ function QuizSpace() {
                     />}
                 </div>
                 <TimerBar
-                    key={timerBarKey}
+                    key={state.timerBarKey}
                     timerBarActive={timerBarActive}
                 />
             </div>

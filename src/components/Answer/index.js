@@ -1,5 +1,5 @@
 import React from "react";
-import { UPDATE_TIMEREMAINING, UPDATE_COMBO, UPDATE_POINTSMULTIPLIER, UPDATE_SCORE, UPDATE_CORRECTANSWERGIVEN } from "../../utils/actions";
+import { UPDATE_TIMEREMAINING, UPDATE_COMBO, UPDATE_POINTSMULTIPLIER, UPDATE_SCORE, UPDATE_CORRECTANSWERGIVEN, UPDATE_TIMERBARKEY } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 
 function Answer({
@@ -9,8 +9,6 @@ function Answer({
     setCurrentQuestion,
     resetTimerBar,
     setTimerBarActive,
-    timerBarKey,
-    setTimerBarKey
 }) {
     const [state, dispatch] = useSiteContext();
     return (
@@ -18,7 +16,10 @@ function Answer({
             data-index={0}
             className="questionAnswer"
             onClick={(e) => {
-                setTimerBarKey(timerBarKey + 1);
+                dispatch({
+                    type: UPDATE_TIMERBARKEY,
+                    timerBarKey: state.timerBarKey + 1
+                })
                 if (answerCorrect) {
                     setCurrentQuestion(currentQuestion + 1);
                     setTimerBarActive(true);
