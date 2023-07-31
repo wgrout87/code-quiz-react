@@ -128,7 +128,6 @@ function QuizSpace() {
                     />}
                 </div>
                 <TimerBar
-                    key={state.timerBarKey}
                     timerBarActive={timerBarActive}
                 />
             </div>

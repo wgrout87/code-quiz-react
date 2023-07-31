@@ -18,3 +18,7 @@ export const defaultSettings = {
     currentQuestion: 0,
     fullInitials: []
 }
+
+// timerBarActive
+// questions
+// resetTimerBar()
