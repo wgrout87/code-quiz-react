@@ -24,7 +24,6 @@ import { useSiteContext } from "../../utils/GlobalState";
 function QuizSpace() {
     const [state, dispatch] = useSiteContext();
     const [timerBarActive, setTimerBarActive] = useState(false);
-    const [currentQuestion, setCurrentQuestion] = useState(0);
     const [fullInitials, setFullInitials] = useState([]);
 
     function resetTimerBar(time) {
@@ -93,7 +92,7 @@ function QuizSpace() {
     }, [state.timeLeft]);
 
     useEffect(() => {
-        if (state.timeRemaining === 0 || currentQuestion === 15) {
+        if (state.timeRemaining === 0 || state.currentQuestion === 15) {
             dispatch({
                 type: UPDATE_CURRENTCATEGORY,
                 currentCategory: "gameOver"
@@ -109,7 +108,7 @@ function QuizSpace() {
                 timerActive: false,
             });
         }
-    }, [state.timeRemaining, currentQuestion]);
+    }, [state.timeRemaining, state.currentQuestion]);
 
     return (
         <section>
@@ -119,15 +118,12 @@ function QuizSpace() {
                 />
                 <div className="quizSpace">
                     {state.currentCategory === 'instructions' && <Instructions />}
-                    {(state.currentCategory === 'quiz' && currentQuestion < 15) && <Question
+                    {(state.currentCategory === 'quiz' && state.currentQuestion < 15) && <Question
                         questions={questions}
                         setTimerBarActive={setTimerBarActive}
-                        currentQuestion={currentQuestion}
-                        setCurrentQuestion={setCurrentQuestion}
                         resetTimerBar={resetTimerBar}
                     />}
                     {state.currentCategory === 'gameOver' && <GameOver
-                        setCurrentQuestion={setCurrentQuestion}
                         fullInitials={fullInitials}
                         setFullInitials={setFullInitials}
                     />}

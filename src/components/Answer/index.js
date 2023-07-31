@@ -1,12 +1,10 @@
 import React from "react";
-import { UPDATE_TIMEREMAINING, UPDATE_COMBO, UPDATE_POINTSMULTIPLIER, UPDATE_SCORE, UPDATE_CORRECTANSWERGIVEN, UPDATE_TIMERBARKEY } from "../../utils/actions";
+import { UPDATE_TIMEREMAINING, UPDATE_COMBO, UPDATE_POINTSMULTIPLIER, UPDATE_SCORE, UPDATE_CORRECTANSWERGIVEN, UPDATE_TIMERBARKEY, UPDATE_CURRENTQUESTION } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 
 function Answer({
     answer,
     answerCorrect,
-    currentQuestion,
-    setCurrentQuestion,
     resetTimerBar,
     setTimerBarActive,
 }) {
@@ -21,7 +19,10 @@ function Answer({
                     timerBarKey: state.timerBarKey + 1
                 })
                 if (answerCorrect) {
-                    setCurrentQuestion(currentQuestion + 1);
+                    dispatch({
+                        type: UPDATE_CURRENTQUESTION,
+                        currentQuestion: state.currentQuestion + 1
+                    })
                     setTimerBarActive(true);
                     dispatch({
                         type: UPDATE_COMBO,

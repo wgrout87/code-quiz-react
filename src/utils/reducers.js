@@ -84,6 +84,11 @@ export const reducer = (state, action) => {
                 ...state,
                 timerBarKey: action.timerBarKey,
             };
+        case UPDATE_CURRENTQUESTION:
+            return {
+                ...state,
+                currentQuestion: action.currentQuestion,
+            };
 
         default:
             return {
