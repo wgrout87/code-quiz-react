@@ -89,6 +89,11 @@ export const reducer = (state, action) => {
                 ...state,
                 currentQuestion: action.currentQuestion,
             };
+        case UPDATE_FULLINITIALS:
+            return {
+                ...state,
+                fullInitials: action.fullInitials,
+            };
 
         default:
             return {
