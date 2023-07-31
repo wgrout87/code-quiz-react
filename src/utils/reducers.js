@@ -69,6 +69,11 @@ export const reducer = (state, action) => {
                 ...state,
                 score: action.score,
             };
+        case UPDATE_CORRECTANSWERGIVEN:
+            return {
+                ...state,
+                correctAnswerGiven: action.correctAnswerGiven,
+            };
 
         default:
             return {
