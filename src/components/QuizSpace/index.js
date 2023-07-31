@@ -21,7 +21,6 @@ import { useSiteContext } from "../../utils/GlobalState";
 function QuizSpace() {
     const [state, dispatch] = useSiteContext();
     const [timerBarActive, setTimerBarActive] = useState(false);
-    const [score, setScore] = useState(0);
     const [correctAnswerGiven, setCorrectAnswerGiven] = useState(true);
     const [updateTimer, setUpdateTimer] = useState(false);
     const [timerBarKey, setTimerBarKey] = useState(0);
@@ -104,15 +103,13 @@ function QuizSpace() {
         <section>
             <div id="quizContent" className="transition">
                 <CurrentScore
-                    score={score}
+                    score={state.score}
                 />
                 <div className="quizSpace">
                     {state.currentCategory === 'instructions' && <Instructions />}
                     {(state.currentCategory === 'quiz' && currentQuestion < 15) && <Question
                         questions={questions}
                         setTimerBarActive={setTimerBarActive}
-                        score={score}
-                        setScore={setScore}
                         setCorrectAnswerGiven={setCorrectAnswerGiven}
                         timerBarKey={timerBarKey}
                         setTimerBarKey={setTimerBarKey}
@@ -121,9 +118,7 @@ function QuizSpace() {
                         resetTimerBar={resetTimerBar}
                     />}
                     {state.currentCategory === 'gameOver' && <GameOver
-                        score={score}
                         setCurrentQuestion={setCurrentQuestion}
-                        setScore={setScore}
                         setUpdateTimer={setUpdateTimer}
                         fullInitials={fullInitials}
                         setFullInitials={setFullInitials}
@@ -131,7 +126,6 @@ function QuizSpace() {
                     {state.currentCategory === 'highScores' && <HighScores
                         place={1}
                         fullInitials={fullInitials}
-                        score={score}
                     />}
                 </div>
                 <TimerBar

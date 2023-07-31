@@ -5,7 +5,7 @@ export const defaultSettings = {
     quizQuestions: [],
     currentCategory: 'instructions',
     visibility: 0,
-    timeRemaining: 180,
+    timeRemaining: 10,
     timerActive: false,
     timerWidth: '100.00%',
     timeLeft: 15,

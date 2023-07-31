@@ -64,6 +64,11 @@ export const reducer = (state, action) => {
                 ...state,
                 pointsMultiplier: action.pointsMultiplier,
             };
+        case UPDATE_SCORE:
+            return {
+                ...state,
+                score: action.score,
+            };
 
         default:
             return {

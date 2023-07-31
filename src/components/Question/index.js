@@ -4,8 +4,6 @@ import { useSiteContext } from "../../utils/GlobalState";
 export default function Question({
     questions,
     setTimerBarActive,
-    score,
-    setScore,
     setCorrectAnswerGiven,
     timerBarKey,
     setTimerBarKey,
@@ -30,8 +28,6 @@ export default function Question({
                                 setCurrentQuestion={setCurrentQuestion}
                                 resetTimerBar={resetTimerBar}
                                 setTimerBarActive={setTimerBarActive}
-                                score={score}
-                                setScore={setScore}
                                 setCorrectAnswerGiven={setCorrectAnswerGiven}
                                 timerBarKey={timerBarKey}
                                 setTimerBarKey={setTimerBarKey}

@@ -9,7 +9,6 @@ export default function HighScores({ place, fullInitials, score }) {
                 <HighScoreListItem
                     place={place}
                     fullInitials={fullInitials}
-                    score={score}
                 />
             </ol>
         </>
