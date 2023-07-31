@@ -10,8 +10,8 @@ function Header() {
             <div className="highScore">
                 <p>CURRENT HIGH SCORE</p>
                 <div className="record">
-                    <p id="highScoreInitials">{state.highScoreInitials}</p>
-                    <p id="highScorePoints">{state.highScorePoints}</p>
+                    <p id="highScoreInitials">{state.highScoreInitials ?? '---'}</p>
+                    <p id="highScorePoints">{state.highScorePoints ?? '-'}</p>
                 </div>
                 <button id="viewTheScoreboard">
                     VIEW THE SCOREBOARD
