@@ -11,7 +11,7 @@ import {
     UPDATE_POINTSMULTIPLIER,
     UPDATE_SCORE,
     UPDATE_CORRECTANSWERGIVEN,
-    UPDATE_TIMER,
+    UPDATE_UPDATETIMER,
     UPDATE_TIMERBARKEY,
     UPDATE_CURRENTQUESTION,
     UPDATE_FULLINITIALS
@@ -74,10 +74,10 @@ export const reducer = (state, action) => {
                 ...state,
                 correctAnswerGiven: action.correctAnswerGiven,
             };
-        case UPDATE_TIMER:
+        case UPDATE_UPDATETIMER:
             return {
                 ...state,
-                timer: action.timer,
+                updateTimer: action.updateTimer,
             };
 
         default:

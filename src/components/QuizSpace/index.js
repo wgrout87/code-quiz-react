@@ -15,14 +15,14 @@ import {
     UPDATE_COMBO,
     UPDATE_TIMERBARWIDTH,
     UPDATE_POINTSMULTIPLIER,
-    UPDATE_CORRECTANSWERGIVEN
+    UPDATE_CORRECTANSWERGIVEN,
+    UPDATE_UPDATETIMER
 } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 
 function QuizSpace() {
     const [state, dispatch] = useSiteContext();
     const [timerBarActive, setTimerBarActive] = useState(false);
-    const [updateTimer, setUpdateTimer] = useState(false);
     const [timerBarKey, setTimerBarKey] = useState(0);
     const [currentQuestion, setCurrentQuestion] = useState(0);
     const [fullInitials, setFullInitials] = useState([]);
@@ -44,8 +44,11 @@ function QuizSpace() {
             // Won't start a new timeout when an incorrect answer is given and timeRemaining is changed
             if (state.correctAnswerGiven) {
                 setTimeout(() => {
-                    // If there is time remaining, the timer will be updated every second                
-                    setUpdateTimer(true);
+                    // If there is time remaining, the timer will be updated every second
+                    dispatch({
+                        type: UPDATE_UPDATETIMER,
+                        updateTimer: true
+                    })
 
                     // If time has run out, the quiz is ended
                     // else {
@@ -64,14 +67,17 @@ function QuizSpace() {
 
     // Updates the timer using the current timeRemaining
     useEffect(() => {
-        if (updateTimer) {
+        if (state.updateTimer) {
             dispatch({
                 type: UPDATE_TIMEREMAINING,
                 timeRemaining: Math.max(0, (state.timeRemaining - 1)),
             });
         }
-        setUpdateTimer(false);
-    }, [updateTimer]);
+        dispatch({
+            type: UPDATE_UPDATETIMER,
+            updateTimer: false
+        })
+    }, [state.updateTimer]);
 
     useEffect(() => {
         if (state.timeLeft === 0) {
@@ -121,7 +127,6 @@ function QuizSpace() {
                     />}
                     {state.currentCategory === 'gameOver' && <GameOver
                         setCurrentQuestion={setCurrentQuestion}
-                        setUpdateTimer={setUpdateTimer}
                         fullInitials={fullInitials}
                         setFullInitials={setFullInitials}
                     />}
