@@ -1,5 +1,5 @@
 import React from "react";
-import { UPDATE_TIMEREMAINING, UPDATE_COMBO, UPDATE_POINTSMULTIPLIER, UPDATE_SCORE } from "../../utils/actions";
+import { UPDATE_TIMEREMAINING, UPDATE_COMBO, UPDATE_POINTSMULTIPLIER, UPDATE_SCORE, UPDATE_CORRECTANSWERGIVEN } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 
 function Answer({
@@ -9,7 +9,6 @@ function Answer({
     setCurrentQuestion,
     resetTimerBar,
     setTimerBarActive,
-    setCorrectAnswerGiven,
     timerBarKey,
     setTimerBarKey
 }) {
@@ -54,7 +53,10 @@ function Answer({
                     e.target.style.opacity = 0;
                     e.target.style.cursor = 'initial';
                     e.target.disabled = true;
-                    setCorrectAnswerGiven(false);
+                    dispatch({
+                        type: UPDATE_CORRECTANSWERGIVEN,
+                        correctAnswerGiven: false
+                    });
                 };
             }}
         >

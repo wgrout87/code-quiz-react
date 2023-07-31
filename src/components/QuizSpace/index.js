@@ -14,14 +14,14 @@ import {
     UPDATE_TIMERACTIVE,
     UPDATE_COMBO,
     UPDATE_TIMERBARWIDTH,
-    UPDATE_POINTSMULTIPLIER
+    UPDATE_POINTSMULTIPLIER,
+    UPDATE_CORRECTANSWERGIVEN
 } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 
 function QuizSpace() {
     const [state, dispatch] = useSiteContext();
     const [timerBarActive, setTimerBarActive] = useState(false);
-    const [correctAnswerGiven, setCorrectAnswerGiven] = useState(true);
     const [updateTimer, setUpdateTimer] = useState(false);
     const [timerBarKey, setTimerBarKey] = useState(0);
     const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -42,7 +42,7 @@ function QuizSpace() {
     useEffect(() => {
         if (state.timerActive && state.timeRemaining > 0) {
             // Won't start a new timeout when an incorrect answer is given and timeRemaining is changed
-            if (correctAnswerGiven) {
+            if (state.correctAnswerGiven) {
                 setTimeout(() => {
                     // If there is time remaining, the timer will be updated every second                
                     setUpdateTimer(true);
@@ -54,7 +54,10 @@ function QuizSpace() {
                 }, 1000);
             }
             else {
-                setCorrectAnswerGiven(true);
+                dispatch({
+                    type: UPDATE_CORRECTANSWERGIVEN,
+                    correctAnswerGiven: true
+                })
             }
         }
     }, [state.timeRemaining, state.timerActive]);
@@ -110,7 +113,6 @@ function QuizSpace() {
                     {(state.currentCategory === 'quiz' && currentQuestion < 15) && <Question
                         questions={questions}
                         setTimerBarActive={setTimerBarActive}
-                        setCorrectAnswerGiven={setCorrectAnswerGiven}
                         timerBarKey={timerBarKey}
                         setTimerBarKey={setTimerBarKey}
                         currentQuestion={currentQuestion}
