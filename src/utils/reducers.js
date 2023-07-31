@@ -74,6 +74,11 @@ export const reducer = (state, action) => {
                 ...state,
                 correctAnswerGiven: action.correctAnswerGiven,
             };
+        case UPDATE_TIMER:
+            return {
+                ...state,
+                timer: action.timer,
+            };
 
         default:
             return {
