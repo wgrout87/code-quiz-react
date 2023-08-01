@@ -20,6 +20,5 @@ export const defaultSettings = {
     timerBarActive: false,
 }
 
-// timerBarActive
 // questions
 // resetTimerBar()

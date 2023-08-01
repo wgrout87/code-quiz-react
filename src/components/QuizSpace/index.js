@@ -1,10 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import CurrentScore from "../CurrentScore";
 import GameContent from "../GameContent";
 import Instructions from '../Instructions';
 import Question from "../Question";
 import TimerBar from "../TimerBar";
-import { questions } from "../../questions";
 import GameOver from "../GameOver";
 import HighScores from "../HighScores";
 import {
@@ -121,7 +120,6 @@ function QuizSpace() {
                 <div className="quizSpace">
                     {state.currentCategory === 'instructions' && <Instructions />}
                     {(state.currentCategory === 'quiz' && state.currentQuestion < 15) && <Question
-                        questions={questions}
                         resetTimerBar={resetTimerBar}
                     />}
                     {state.currentCategory === 'gameOver' && <GameOver />}

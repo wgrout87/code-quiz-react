@@ -2,7 +2,6 @@ import Answer from "../Answer";
 import { useSiteContext } from "../../utils/GlobalState";
 
 export default function Question({
-    questions,
     resetTimerBar
 }) {
     const [state, dispatch] = useSiteContext();
@@ -12,7 +11,7 @@ export default function Question({
             <p className="question">{state.questions[state.quizQuestions[state.currentQuestion]].question}</p>
             <div className="quizAnswers">
                 {
-                    questions[state.quizQuestions[state.currentQuestion]].answers.map((answer, index) => {
+                    state.questions[state.quizQuestions[state.currentQuestion]].answers.map((answer, index) => {
                         return (
                             <Answer
                                 key={answer.answerString + state.currentQuestion}
