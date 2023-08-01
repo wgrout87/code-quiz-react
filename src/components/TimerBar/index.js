@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSiteContext } from "../../utils/GlobalState";
 import { UPDATE_TIMELEFT, UPDATE_TIMERBARWIDTH } from "../../utils/actions";
 
-function TimerBar({ timerBarActive }) {
+function TimerBar() {
     const [state, dispatch] = useSiteContext();
 
     function decreaseTimerBarWidth(time) {
@@ -23,7 +23,7 @@ function TimerBar({ timerBarActive }) {
     };
 
     useEffect(() => {
-        if (timerBarActive) {
+        if (state.timerBarActive) {
             decreaseTimerBarWidth(state.timeLeft);
             const timer = setTimeout(() => {
                 if (state.timeLeft > 0) {
@@ -36,7 +36,7 @@ function TimerBar({ timerBarActive }) {
 
             return () => clearTimeout(timer);
         }
-    }, [timerBarActive, state.timeLeft]);
+    }, [state.timerBarActive, state.timeLeft]);
 
     return (
         <div id="timerBar" className="transition" style={{ opacity: state.visibility, width: state.timerBarWidth }}></div>

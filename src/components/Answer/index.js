@@ -1,12 +1,11 @@
 import React from "react";
-import { UPDATE_TIMEREMAINING, UPDATE_COMBO, UPDATE_POINTSMULTIPLIER, UPDATE_SCORE, UPDATE_CORRECTANSWERGIVEN, UPDATE_TIMERBARKEY, UPDATE_CURRENTQUESTION } from "../../utils/actions";
+import { UPDATE_TIMEREMAINING, UPDATE_COMBO, UPDATE_POINTSMULTIPLIER, UPDATE_SCORE, UPDATE_CORRECTANSWERGIVEN, UPDATE_TIMERBARKEY, UPDATE_CURRENTQUESTION, UPDATE_TIMERBARACTIVE } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 
 function Answer({
     answer,
     answerCorrect,
     resetTimerBar,
-    setTimerBarActive,
 }) {
     const [state, dispatch] = useSiteContext();
     return (
@@ -23,7 +22,10 @@ function Answer({
                         type: UPDATE_CURRENTQUESTION,
                         currentQuestion: state.currentQuestion + 1
                     })
-                    setTimerBarActive(true);
+                    dispatch({
+                        type: UPDATE_TIMERBARACTIVE,
+                        timerBarActive: true
+                    })
                     dispatch({
                         type: UPDATE_COMBO,
                         combo: state.combo + 1,
@@ -42,7 +44,10 @@ function Answer({
                         type: UPDATE_TIMEREMAINING,
                         timeRemaining: Math.max(0, (state.timeRemaining - 10)),
                     });
-                    setTimerBarActive(false);
+                    dispatch({
+                        type: UPDATE_TIMERBARACTIVE,
+                        timerBarActive: false
+                    })
                     dispatch({
                         type: UPDATE_COMBO,
                         combo: 0,

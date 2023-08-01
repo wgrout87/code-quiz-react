@@ -3,7 +3,6 @@ import { useSiteContext } from "../../utils/GlobalState";
 
 export default function Question({
     questions,
-    setTimerBarActive,
     resetTimerBar
 }) {
     const [state, dispatch] = useSiteContext();
@@ -20,7 +19,6 @@ export default function Question({
                                 answer={answer.answerString}
                                 answerCorrect={answer.answerValue}
                                 resetTimerBar={resetTimerBar}
-                                setTimerBarActive={setTimerBarActive}
                             />
                         )
                     })
