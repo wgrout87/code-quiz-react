@@ -5,9 +5,9 @@ export const defaultSettings = {
     quizQuestions: [],
     currentCategory: 'instructions',
     visibility: 0,
-    timeRemaining: 15,
+    timeRemaining: 150,
     timerActive: false,
-    timerWidth: '100.00%',
+    timerBarWidth: '100.00%',
     timeLeft: 15,
     combo: 0,
     pointsMultiplier: 1,
@@ -18,6 +18,8 @@ export const defaultSettings = {
     currentQuestion: 0,
     fullInitials: [],
     timerBarActive: false,
+    resetTimerBar: function (time) {
+        this.timeLeft = time;
+        this.timerBarWidth = '100.00%';
+    }
 }
-
-// resetTimerBar()

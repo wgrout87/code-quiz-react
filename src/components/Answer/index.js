@@ -5,7 +5,6 @@ import { useSiteContext } from "../../utils/GlobalState";
 function Answer({
     answer,
     answerCorrect,
-    resetTimerBar,
 }) {
     const [state, dispatch] = useSiteContext();
     return (
@@ -38,7 +37,7 @@ function Answer({
                         type: UPDATE_SCORE,
                         score: state.score + (1000 * state.pointsMultiplier),
                     });
-                    resetTimerBar(15);
+                    state.resetTimerBar(15);
                 } else {
                     dispatch({
                         type: UPDATE_TIMEREMAINING,
@@ -56,7 +55,7 @@ function Answer({
                         type: UPDATE_POINTSMULTIPLIER,
                         pointsMultiplier: 1,
                     });
-                    resetTimerBar(0);
+                    state.resetTimerBar(0);
                     e.target.style.opacity = 0;
                     e.target.style.cursor = 'initial';
                     e.target.disabled = true;

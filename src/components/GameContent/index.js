@@ -5,7 +5,6 @@ import { useSiteContext } from "../../utils/GlobalState";
 function GameContent() {
     const [state] = useSiteContext();
 
-    // console.log(state);
     return (
         <div className="gameContent transition" id="gameContent" style={{ opacity: state.visibility }}>
             <Timer />

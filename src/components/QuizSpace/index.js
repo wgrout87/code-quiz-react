@@ -24,17 +24,6 @@ import { useSiteContext } from "../../utils/GlobalState";
 function QuizSpace() {
     const [state, dispatch] = useSiteContext();
 
-    function resetTimerBar(time) {
-        dispatch({
-            type: UPDATE_TIMERBARWIDTH,
-            timerBarWidth: '100.00%'
-        });
-        dispatch({
-            type: UPDATE_TIMELEFT,
-            timeLeft: time,
-        });
-    };
-
     // Updates the timer whenever timeRemaining changes
     useEffect(() => {
         if (state.timerActive && state.timeRemaining > 0) {
@@ -99,7 +88,7 @@ function QuizSpace() {
                 type: UPDATE_TIMERBARACTIVE,
                 timerBarActive: false
             })
-            resetTimerBar(15);
+            state.resetTimerBar(15);
             dispatch({
                 type: UPDATE_TIMERBARKEY,
                 timerBarKey: state.timerBarKey + 1
@@ -119,9 +108,7 @@ function QuizSpace() {
                 />
                 <div className="quizSpace">
                     {state.currentCategory === 'instructions' && <Instructions />}
-                    {(state.currentCategory === 'quiz' && state.currentQuestion < 15) && <Question
-                        resetTimerBar={resetTimerBar}
-                    />}
+                    {(state.currentCategory === 'quiz' && state.currentQuestion < 15) && <Question />}
                     {state.currentCategory === 'gameOver' && <GameOver />}
                     {state.currentCategory === 'highScores' && <HighScores
                         place={1}

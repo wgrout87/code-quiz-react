@@ -8,10 +8,11 @@ function TimerBar() {
     function decreaseTimerBarWidth(time) {
         let widthValue = parseFloat(state.timerBarWidth).toPrecision(4);
         widthValue -= 6.66;
+        console.log(state.timerBarWidth);
         if (time > 0) {
             dispatch({
                 type: UPDATE_TIMERBARWIDTH,
-                timerBarWidth: (widthValue.toPrecision(4) + '%'),
+                timerBarWidth: (widthValue + '%'),
             });
         };
         if (time === 1) {
