@@ -16,7 +16,8 @@ export const defaultSettings = {
     updateTimer: false,
     timerBarKey: 0,
     currentQuestion: 0,
-    fullInitials: []
+    fullInitials: [],
+    timerBarActive: false,
 }
 
 // timerBarActive

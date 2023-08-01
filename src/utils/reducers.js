@@ -14,7 +14,8 @@ import {
     UPDATE_UPDATETIMER,
     UPDATE_TIMERBARKEY,
     UPDATE_CURRENTQUESTION,
-    UPDATE_FULLINITIALS
+    UPDATE_FULLINITIALS,
+    UPDATE_TIMERBARACTIVE
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -93,6 +94,11 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 fullInitials: action.fullInitials,
+            };
+        case UPDATE_TIMERBARACTIVE:
+            return {
+                ...state,
+                timerBarActive: action.timerBarActive,
             };
 
         default:
