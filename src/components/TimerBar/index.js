@@ -39,7 +39,7 @@ function TimerBar() {
     }, [state.timerBarActive, state.timeLeft]);
 
     return (
-        <div id="timerBar" className="transition" style={{ opacity: state.visibility, width: state.timerBarWidth }}></div>
+        <div id="timerBar" key={state.timerBarKey} className="transition" style={{ opacity: state.visibility, width: state.timerBarWidth }}></div>
     )
 }
 

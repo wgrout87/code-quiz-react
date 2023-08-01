@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { UPDATE_CURRENTCATEGORY, UPDATE_CURRENTQUESTION, UPDATE_FULLINITIALS, UPDATE_SCORE, UPDATE_TIMERACTIVE, UPDATE_TIMEREMAINING, UPDATE_UPDATETIMER } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
+import { defaultSettings } from "../../utils/defaultSettings";
 
 const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
@@ -92,12 +93,12 @@ function GameOver() {
                                 });
                                 dispatch({
                                     type: UPDATE_SCORE,
-                                    score: 0
+                                    score: defaultSettings.score
                                 })
                                 // Set the timer here
                                 dispatch({
                                     type: UPDATE_TIMEREMAINING,
-                                    timeRemaining: 180,
+                                    timeRemaining: defaultSettings.timeRemaining,
                                 });
                                 dispatch({
                                     type: UPDATE_TIMERACTIVE,

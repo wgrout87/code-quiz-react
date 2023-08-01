@@ -5,13 +5,13 @@ export const defaultSettings = {
     quizQuestions: [],
     currentCategory: 'instructions',
     visibility: 0,
-    timeRemaining: 10,
+    timeRemaining: 15,
     timerActive: false,
     timerWidth: '100.00%',
     timeLeft: 15,
     combo: 0,
     pointsMultiplier: 1,
-    score: 0,
+    score: 2000,
     correctAnswerGiven: true,
     updateTimer: false,
     timerBarKey: 0,
@@ -20,5 +20,4 @@ export const defaultSettings = {
     timerBarActive: false,
 }
 
-// questions
 // resetTimerBar()
