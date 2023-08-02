@@ -7,22 +7,34 @@ import TimerBar from "../TimerBar";
 import GameOver from "../GameOver";
 import HighScores from "../HighScores";
 import {
-    UPDATE_TIMELEFT,
     UPDATE_CURRENTCATEGORY,
     UPDATE_TIMEREMAINING,
     UPDATE_TIMERACTIVE,
     UPDATE_COMBO,
-    UPDATE_TIMERBARWIDTH,
     UPDATE_POINTSMULTIPLIER,
     UPDATE_CORRECTANSWERGIVEN,
     UPDATE_UPDATETIMER,
     UPDATE_TIMERBARKEY,
-    UPDATE_TIMERBARACTIVE
+    UPDATE_TIMERBARACTIVE,
+    UPDATE_HIGHSCORES
 } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
+import { retrieveHighScores } from "../../utils/highScores";
 
 function QuizSpace() {
     const [state, dispatch] = useSiteContext();
+
+    useEffect(() => {
+        const currentHighScores = retrieveHighScores();
+        dispatch({
+            type: UPDATE_HIGHSCORES,
+            highScores: currentHighScores
+        });
+    }, []);
+
+    useEffect(() => {
+        console.log(state.highScores);
+    }, [state.highScores]);
 
     // Updates the timer whenever timeRemaining changes
     useEffect(() => {
@@ -35,11 +47,6 @@ function QuizSpace() {
                         type: UPDATE_UPDATETIMER,
                         updateTimer: true
                     })
-
-                    // If time has run out, the quiz is ended
-                    // else {
-                    //     endQuiz();
-                    // }
                 }, 1000);
             }
             else {

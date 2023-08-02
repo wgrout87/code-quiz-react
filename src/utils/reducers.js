@@ -15,7 +15,8 @@ import {
     UPDATE_TIMERBARKEY,
     UPDATE_CURRENTQUESTION,
     UPDATE_FULLINITIALS,
-    UPDATE_TIMERBARACTIVE
+    UPDATE_TIMERBARACTIVE,
+    UPDATE_HIGHSCORES
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -99,6 +100,11 @@ export const reducer = (state, action) => {
             return {
                 ...state,
                 timerBarActive: action.timerBarActive,
+            };
+        case UPDATE_HIGHSCORES:
+            return {
+                ...state,
+                highScores: action.highScores,
             };
 
         default:

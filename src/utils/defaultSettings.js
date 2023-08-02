@@ -21,5 +21,6 @@ export const defaultSettings = {
     resetTimerBar: function (time) {
         this.timeLeft = time;
         this.timerBarWidth = '100.00%';
-    }
+    },
+    highScores: []
 }

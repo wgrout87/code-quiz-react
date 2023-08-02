@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import { useSiteContext } from "../../utils/GlobalState";
 import { UPDATE_TIMELEFT, UPDATE_TIMERBARWIDTH } from "../../utils/actions";
 
@@ -8,7 +8,6 @@ function TimerBar() {
     function decreaseTimerBarWidth(time) {
         let widthValue = parseFloat(state.timerBarWidth).toPrecision(4);
         widthValue -= 6.66;
-        console.log(state.timerBarWidth);
         if (time > 0) {
             dispatch({
                 type: UPDATE_TIMERBARWIDTH,
