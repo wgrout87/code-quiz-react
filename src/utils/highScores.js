@@ -7,19 +7,12 @@ export function retrieveHighScores() {
 }
 
 export function determineNewHighScore(highScoresArray, currentScore) {
-    let results = {
-        newHighScore: false,
-        positionInArray: null
-    };
-    let i = 0;
+    let result = 0;
 
-    while (i < highScoresArray.length && !results.newHighScore) {
-        if (currentScore > highScoresArray[i] || highScoresArray[i] === null) {
-            results.newHighScore = true;
-            results.positionInArray = i;
-        }
-        i++;
+    // Increments result variable if the length of the highScoresArray is at least as long as the current value of result and the current score is less than or equal to the highscore held at the same index as the current value of result. So a tie will land after a saved score of equal points.
+    while (result <= highScoresArray.length && currentScore <= highScoresArray[result]) {
+        result++;
     }
-
-    return results;
+    
+    return result;
 }
