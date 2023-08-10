@@ -11,16 +11,15 @@ export function determineNewHighScore(highScoresArray, currentScore) {
         newHighScore: false,
         positionInArray: null
     };
+    let i = 0;
 
-    if (highScoresArray.length === 0) {
-        results.newHighScore = true;
-        results.positionInArray = 0;
-    };
-
-    if (highScoresArray.length < 10 && highScoresArray.length > 0) {
-        results.newHighScore = true;
-        // !!! determine if currentScore is greater than a score in the highScoresArray
-    };
+    while (i < highScoresArray.length && !results.newHighScore) {
+        if (currentScore > highScoresArray[i] || highScoresArray[i] === null) {
+            results.newHighScore = true;
+            results.positionInArray = i;
+        }
+        i++;
+    }
 
     return results;
 }
