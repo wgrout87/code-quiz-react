@@ -6,7 +6,7 @@ export default function HighScoreListItem({ place }) {
 
     return (
         <li className="highScoreListItem">
-            <p>{`${place} ${state.fullInitials.toString().replaceAll(",", "")}`}</p>
+            <p>{`${place.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}. ${state.fullInitials.toString().replaceAll(",", "")}`}</p>
             <p>{`${state.score}`}</p>
         </li>
     );

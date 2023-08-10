@@ -1,7 +1,7 @@
-import { retrieveHighScores, determineNewHighScore } from "./highScores";
+import { retrieveHighScores, determineNewHighScore } from "../highScores";
 
 test('determineNewHighScore', () => {
-    const result = determineNewHighScore([], 2500);
+    const result = determineNewHighScore([], 1000);
     expect(result).toEqual(0);
 });
 

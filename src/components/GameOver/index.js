@@ -29,8 +29,9 @@ function GameOver() {
     }, [initial, newHighScore]);
 
     useEffect(() => {
-        console.log(determineNewHighScore(state.highScores, state.score));
-        (state.score > 2000) ? setNewHighScore(true) : setNewHighScore(false);
+        const newHighScorePosition = determineNewHighScore(state.highScores, state.score);
+        console.log(newHighScorePosition);
+        (newHighScorePosition < 10) ? setNewHighScore(true) : setNewHighScore(false);
     }, []);
 
     useEffect(() => {
@@ -47,7 +48,7 @@ function GameOver() {
             <h2 className="results">
                 You scored {state.score} points!
             </h2>
-            {state.score > 2000 ?
+            {state.score > 0 && newHighScore ?
                 <div>
                     <p className="results">
                         New high score!

@@ -11,7 +11,7 @@ export const defaultSettings = {
     timeLeft: 15,
     combo: 0,
     pointsMultiplier: 1,
-    score: 2500,
+    score: 0,
     correctAnswerGiven: true,
     updateTimer: false,
     timerBarKey: 0,
