@@ -41,10 +41,8 @@ function GameOver() {
             let newHighScoresArray;
             const newHighScorePosition = determineNewHighScore(state.highScores, state.score);
             if (newHighScorePosition < 10) {
-                console.log(state.highScores);
                 newHighScoresArray = [...state.highScores];
                 newHighScoresArray.splice(newHighScorePosition, 0, {fullInitials: state.fullInitials, score: state.score});
-                console.log(newHighScoresArray);
                 dispatch({
                     type: UPDATE_HIGHSCORES,
                     highScores: newHighScoresArray

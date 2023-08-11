@@ -118,9 +118,7 @@ function QuizSpace() {
                     {state.currentCategory === 'instructions' && <Instructions />}
                     {(state.currentCategory === 'quiz' && state.currentQuestion < 15) && <Question />}
                     {state.currentCategory === 'gameOver' && <GameOver />}
-                    {state.currentCategory === 'highScores' && <HighScores
-                        place={1}
-                    />}
+                    {state.currentCategory === 'highScores' && <HighScores />}
                 </div>
                 <TimerBar />
             </div>
