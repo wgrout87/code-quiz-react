@@ -29,9 +29,24 @@ function GameOver() {
     }, [initial, newHighScore]);
 
     useEffect(() => {
+        console.log("Hello World");
         const newHighScorePosition = determineNewHighScore(state.highScores, state.score);
         (newHighScorePosition < 10) ? setNewHighScore(true) : setNewHighScore(false);
     }, []);
+
+    useEffect(() => {
+        if (state.fullInitials.length === 3) {
+            const newHighScorePosition = determineNewHighScore(state.highScores, state.score);
+            if (newHighScorePosition < 10) {
+                console.log(state.highScores);
+                let newHighScoresArray = [...state.highScores];
+                newHighScoresArray.splice(newHighScorePosition, 0, {fullInitials: state.fullInitials, score: state.score});
+                console.log(newHighScoresArray);
+            }
+            console.log("Initials entered: ", state.fullInitials);
+
+        }
+    }, [state.fullInitials]);
 
     useEffect(() => {
         if (initial === 3) {
