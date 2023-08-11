@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { UPDATE_CURRENTCATEGORY, UPDATE_CURRENTQUESTION, UPDATE_FULLINITIALS, UPDATE_SCORE, UPDATE_TIMERACTIVE, UPDATE_TIMEREMAINING, UPDATE_UPDATETIMER } from "../../utils/actions";
+import { UPDATE_CURRENTCATEGORY, UPDATE_CURRENTQUESTION, UPDATE_FULLINITIALS, UPDATE_HIGHSCORES, UPDATE_SCORE, UPDATE_TIMERACTIVE, UPDATE_TIMEREMAINING, UPDATE_UPDATETIMER } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 import { defaultSettings } from "../../utils/defaultSettings";
 import { determineNewHighScore } from "../../utils/highScores";
@@ -29,24 +29,30 @@ function GameOver() {
     }, [initial, newHighScore]);
 
     useEffect(() => {
-        console.log("Hello World");
         const newHighScorePosition = determineNewHighScore(state.highScores, state.score);
         (newHighScorePosition < 10) ? setNewHighScore(true) : setNewHighScore(false);
     }, []);
 
     useEffect(() => {
         if (state.fullInitials.length === 3) {
+            let newHighScoresArray;
             const newHighScorePosition = determineNewHighScore(state.highScores, state.score);
             if (newHighScorePosition < 10) {
                 console.log(state.highScores);
-                let newHighScoresArray = [...state.highScores];
+                newHighScoresArray = [...state.highScores];
                 newHighScoresArray.splice(newHighScorePosition, 0, {fullInitials: state.fullInitials, score: state.score});
                 console.log(newHighScoresArray);
             }
-            console.log("Initials entered: ", state.fullInitials);
-
+            dispatch({
+                type: UPDATE_HIGHSCORES,
+                highScores: newHighScoresArray
+            })
         }
     }, [state.fullInitials]);
+
+    useEffect(() => {
+        console.log(state.highScores);
+    }, [state.highScores]);
 
     useEffect(() => {
         if (initial === 3) {
