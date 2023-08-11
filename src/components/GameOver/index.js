@@ -14,7 +14,7 @@ function GameOver() {
     const [newHighScore, setNewHighScore] = useState(false);
 
     useEffect(() => {
-        if (newHighScore) {
+        if (state.score > 0 && newHighScore) {
             if (initial > 0) {
                 clearInterval(clearIntervalID);
                 removeBlink.classList.remove('blink');
@@ -30,7 +30,6 @@ function GameOver() {
 
     useEffect(() => {
         const newHighScorePosition = determineNewHighScore(state.highScores, state.score);
-        console.log(newHighScorePosition);
         (newHighScorePosition < 10) ? setNewHighScore(true) : setNewHighScore(false);
     }, []);
 

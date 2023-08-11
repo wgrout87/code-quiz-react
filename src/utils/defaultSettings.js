@@ -1,4 +1,5 @@
 import { questions } from "../questions";
+import { retrieveHighScores } from "./highScores";
 
 export const defaultSettings = {
     questions: questions,
@@ -22,5 +23,5 @@ export const defaultSettings = {
         this.timeLeft = time;
         this.timerBarWidth = '100.00%';
     },
-    highScores: []
+    highScores: retrieveHighScores()
 }

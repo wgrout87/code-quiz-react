@@ -32,10 +32,6 @@ function QuizSpace() {
         });
     }, []);
 
-    useEffect(() => {
-        console.log(state.highScores);
-    }, [state.highScores]);
-
     // Updates the timer whenever timeRemaining changes
     useEffect(() => {
         if (state.timerActive && state.timeRemaining > 0) {
