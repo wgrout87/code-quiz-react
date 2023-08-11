@@ -1,7 +1,12 @@
 const HIGHSCORES = 'HIGHSCORES';
 
 export function retrieveHighScores() {
-    return localStorage.getItem(HIGHSCORES) ?? [];
+    let highScores = localStorage.getItem(HIGHSCORES);
+    return JSON.parse(highScores) ?? [];
+}
+
+export function saveHighScores(array) {
+    localStorage.setItem(HIGHSCORES, JSON.stringify(array));
 }
 
 export function determineNewHighScore(highScoresArray, currentScore) {

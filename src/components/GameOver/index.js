@@ -45,22 +45,17 @@ function GameOver() {
                 newHighScoresArray = [...state.highScores];
                 newHighScoresArray.splice(newHighScorePosition, 0, {fullInitials: state.fullInitials, score: state.score});
                 console.log(newHighScoresArray);
+                dispatch({
+                    type: UPDATE_HIGHSCORES,
+                    highScores: newHighScoresArray
+                })
             }
-            dispatch({
-                type: UPDATE_HIGHSCORES,
-                highScores: newHighScoresArray
-            })
             dispatch({
                 type: UPDATE_CURRENTCATEGORY,
                 currentCategory: "highScores"
             });
         }
     }, [state.fullInitials]);
-
-    // This useEffect hook looks for changes to the highScores property of the Global State and saves the high scores locally whenever new high scores are achieved.
-    useEffect(() => {
-        console.log(state.highScores);
-    }, [state.highScores]);
 
     return (
         <div>
