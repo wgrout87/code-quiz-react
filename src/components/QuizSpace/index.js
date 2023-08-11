@@ -16,7 +16,8 @@ import {
     UPDATE_UPDATETIMER,
     UPDATE_TIMERBARKEY,
     UPDATE_TIMERBARACTIVE,
-    UPDATE_HIGHSCORES
+    UPDATE_HIGHSCORES,
+    UPDATE_VISIBILITY
 } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 import { retrieveHighScores } from "../../utils/highScores";
@@ -86,6 +87,10 @@ function QuizSpace() {
             dispatch({
                 type: UPDATE_CURRENTCATEGORY,
                 currentCategory: "gameOver"
+            });
+            dispatch({
+                type: UPDATE_VISIBILITY,
+                visibility: 0
             });
             dispatch({
                 type: UPDATE_TIMERBARACTIVE,
