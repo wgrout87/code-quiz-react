@@ -13,6 +13,13 @@ function GameOver() {
     const [removeBlink, setRemoveBlink] = useState();
     const [newHighScore, setNewHighScore] = useState(false);
 
+    // Whenever the GameOver component is loaded, this useEffect hook will trigger to determine whether a new high score was achieved or not. This will dynamically impact what content the component displays.
+    useEffect(() => {
+        const newHighScorePosition = determineNewHighScore(state.highScores, state.score);
+        (newHighScorePosition < 10) ? setNewHighScore(true) : setNewHighScore(false);
+    }, []);
+
+    // This useEffect hook handles the blinking cursor for initials entry.
     useEffect(() => {
         if (state.score > 0 && newHighScore) {
             if (initial > 0) {
@@ -28,11 +35,7 @@ function GameOver() {
         }
     }, [initial, newHighScore]);
 
-    useEffect(() => {
-        const newHighScorePosition = determineNewHighScore(state.highScores, state.score);
-        (newHighScorePosition < 10) ? setNewHighScore(true) : setNewHighScore(false);
-    }, []);
-
+    // This useEffect hook looks for changes to the fullInitials property of the Global State and updates the highScores property with an updated array after initials have been entered.
     useEffect(() => {
         if (state.fullInitials.length === 3) {
             let newHighScoresArray;
@@ -47,21 +50,17 @@ function GameOver() {
                 type: UPDATE_HIGHSCORES,
                 highScores: newHighScoresArray
             })
-        }
-    }, [state.fullInitials]);
-
-    useEffect(() => {
-        console.log(state.highScores);
-    }, [state.highScores]);
-
-    useEffect(() => {
-        if (initial === 3) {
             dispatch({
                 type: UPDATE_CURRENTCATEGORY,
                 currentCategory: "highScores"
             });
         }
-    }, [initial]);
+    }, [state.fullInitials]);
+
+    // This useEffect hook looks for changes to the highScores property of the Global State and saves the high scores locally whenever new high scores are achieved.
+    useEffect(() => {
+        console.log(state.highScores);
+    }, [state.highScores]);
 
     return (
         <div>
