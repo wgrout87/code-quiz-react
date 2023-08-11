@@ -39,7 +39,9 @@ function GameOver() {
     useEffect(() => {
         if (state.fullInitials.length === 3) {
             let newHighScoresArray;
+            console.log(state.highScores, state.score);
             const newHighScorePosition = determineNewHighScore(state.highScores, state.score);
+            console.log(newHighScorePosition);
             if (newHighScorePosition < 10) {
                 newHighScoresArray = [...state.highScores];
                 newHighScoresArray.splice(newHighScorePosition, 0, {fullInitials: state.fullInitials, score: state.score});
