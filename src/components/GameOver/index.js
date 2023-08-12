@@ -45,6 +45,9 @@ function GameOver() {
             if (newHighScorePosition < 10) {
                 newHighScoresArray = [...state.highScores];
                 newHighScoresArray.splice(newHighScorePosition, 0, {fullInitials: state.fullInitials, score: state.score});
+                while (newHighScoresArray.length > 10) {
+                    newHighScoresArray.pop();
+                }
                 dispatch({
                     type: UPDATE_HIGHSCORES,
                     highScores: newHighScoresArray
