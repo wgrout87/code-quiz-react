@@ -19,7 +19,8 @@ import {
     UPDATE_HIGHSCORES,
     CORRECT_ANSWER_GIVEN,
     INCORRECT_ANSWER_GIVEN,
-    PLAY_AGAIN
+    PLAY_AGAIN,
+    BEGIN_QUIZ
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -135,6 +136,13 @@ export const reducer = (state, action) => {
                 timeRemaining: action.timeRemaining,
                 timerActive: action.timerActive,
                 visibility: action.visibility
+            };
+        case BEGIN_QUIZ:
+            return {
+                ...state,
+                currentCategory: action.currentCategory,
+                visibility: action.visibility,
+                timerActive: action.timerActive
             }
 
         default:

@@ -1,6 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { useSiteContext } from "../../utils/GlobalState";
-import { UPDATE_QUIZQUESTIONS, UPDATE_VISIBILITY, UPDATE_CURRENTCATEGORY, UPDATE_TIMERACTIVE } from "../../utils/actions"
+import { UPDATE_VISIBILITY, UPDATE_CURRENTCATEGORY, UPDATE_TIMERACTIVE, BEGIN_QUIZ } from "../../utils/actions"
 
 function Instructions() {
     const [state, dispatch] = useSiteContext();
@@ -21,15 +21,9 @@ function Instructions() {
                     type="button"
                     onClick={() => {
                         dispatch({
-                            type: UPDATE_CURRENTCATEGORY,
-                            currentCategory: "quiz"
-                        });
-                        dispatch({
-                            type: UPDATE_VISIBILITY,
-                            visibility: 1
-                        });
-                        dispatch({
-                            type: UPDATE_TIMERACTIVE,
+                            type: BEGIN_QUIZ,
+                            currentCategory: "quiz",
+                            visibility: 1,
                             timerActive: true,
                         });
                     }}
