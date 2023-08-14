@@ -24,6 +24,7 @@ import {
     COMBO_TIMER_DOWN,
     GAME_OVER
 } from "./actions";
+import { defaultSettings } from "./defaultSettings";
 
 export const reducer = (state, action) => {
     switch (action.type) {
@@ -132,12 +133,17 @@ export const reducer = (state, action) => {
         case PLAY_AGAIN:
             return {
                 ...state,
-                currentQuestion: action.currentQuestion,
+                currentQuestion: 0,
                 currentCategory: action.currentCategory,
-                score: action.score,
-                timeRemaining: action.timeRemaining,
+                score: defaultSettings.score,
+                timeRemaining: defaultSettings.timeRemaining,
                 timerActive: action.timerActive,
-                visibility: action.visibility
+                visibility: action.visibility,
+                timerBarWidth: defaultSettings.timerBarWidth,
+                timerBarKey: state.timerBarKey + 1,
+                timerBarActive: defaultSettings.timerBarActive,
+                combo: defaultSettings.combo,
+                pointsMultiplier: defaultSettings.pointsMultiplier
             };
         case BEGIN_QUIZ:
             return {

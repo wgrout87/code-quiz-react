@@ -44,7 +44,7 @@ function GameOver() {
             console.log(newHighScorePosition);
             if (newHighScorePosition < 10) {
                 newHighScoresArray = [...state.highScores];
-                newHighScoresArray.splice(newHighScorePosition, 0, {fullInitials: state.fullInitials, score: state.score});
+                newHighScoresArray.splice(newHighScorePosition, 0, { fullInitials: state.fullInitials, score: state.score });
                 while (newHighScoresArray.length > 10) {
                     newHighScoresArray.pop();
                 }
@@ -105,10 +105,7 @@ function GameOver() {
                             onClick={() => {
                                 dispatch({
                                     type: PLAY_AGAIN,
-                                    currentQuestion: 0,
                                     currentCategory: "quiz",
-                                    score: defaultSettings.score,
-                                    timeRemaining: defaultSettings.timeRemaining,
                                     timerActive: true,
                                     visibility: 1
                                 });
@@ -125,7 +122,18 @@ function GameOver() {
                             Y
                         </button>
                         <div className="btnBetween">/</div>
-                        <button className="charBtn">N</button>
+                        <button className="charBtn"
+                            onClick={() => {
+                                dispatch({
+                                    type: PLAY_AGAIN,
+                                    currentCategory: "instructions",
+                                    visibility: 0
+                                });
+                            }
+                            }
+                        >
+                            N
+                        </button>
                     </div>
                 </div>}
         </div>
