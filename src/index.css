@@ -266,9 +266,9 @@ section {
 }
 
 /* Font size for the "Play Again" button on the high score screen */
-.quizSpace #playAgain {
+.quizSpace .high-scores-btn {
   font-size: 1vw;
-  margin: 0px auto;
+  margin: 8px auto;
 }
 
 /* Styles the display notifying the user that there are no high scores yet */
@@ -324,7 +324,7 @@ section {
     font-size: 1.8vw;
   }
 
-  .quizSpace #playAgain {
+  .quizSpace .high-scores-btn {
     font-size: 1.8vw;
   }
 }
@@ -442,7 +442,7 @@ section {
     font-size: 2.4vw;
   }
 
-  .quizSpace #playAgain {
+  .quizSpace .high-scores-btn {
     font-size: 2.4vw;
   }
 }
