@@ -7,7 +7,7 @@ export const defaultSettings = {
     currentCategory: 'instructions',
     visibility: 0,
     // timeRemaining is the total time left for the quiz
-    timeRemaining: 20,
+    timeRemaining: 180,
     timerActive: false,
     timerBarWidth: '100.00%',
     // timeLeft is the time left to maintain a combo
