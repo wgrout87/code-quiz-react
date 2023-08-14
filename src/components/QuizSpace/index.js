@@ -8,17 +8,12 @@ import GameOver from "../GameOver";
 import HighScores from "../HighScores";
 import {
     UPDATE_QUIZQUESTIONS,
-    UPDATE_CURRENTCATEGORY,
     UPDATE_TIMEREMAINING,
-    UPDATE_TIMERACTIVE,
-    UPDATE_COMBO,
-    UPDATE_POINTSMULTIPLIER,
     UPDATE_CORRECTANSWERGIVEN,
     UPDATE_UPDATETIMER,
-    UPDATE_TIMERBARKEY,
-    UPDATE_TIMERBARACTIVE,
     UPDATE_HIGHSCORES,
-    UPDATE_VISIBILITY
+    COMBO_TIMER_DOWN,
+    GAME_OVER
 } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 import { retrieveHighScores } from "../../utils/highScores";
@@ -87,11 +82,8 @@ function QuizSpace() {
     useEffect(() => {
         if (state.timeLeft === 0) {
             dispatch({
-                type: UPDATE_COMBO,
+                type: COMBO_TIMER_DOWN,
                 combo: 0,
-            });
-            dispatch({
-                type: UPDATE_POINTSMULTIPLIER,
                 pointsMultiplier: 1,
             });
         }
@@ -100,24 +92,11 @@ function QuizSpace() {
     useEffect(() => {
         if (state.timeRemaining === 0 || state.currentQuestion === 15) {
             dispatch({
-                type: UPDATE_CURRENTCATEGORY,
-                currentCategory: "gameOver"
-            });
-            dispatch({
-                type: UPDATE_VISIBILITY,
-                visibility: 0
-            });
-            dispatch({
-                type: UPDATE_TIMERBARACTIVE,
-                timerBarActive: false
-            })
-            state.resetTimerBar(15);
-            dispatch({
-                type: UPDATE_TIMERBARKEY,
-                timerBarKey: state.timerBarKey + 1
-            })
-            dispatch({
-                type: UPDATE_TIMERACTIVE,
+                type: GAME_OVER,
+                currentCategory: "gameOver",
+                visibility: 0,
+                timerBarActive: false,
+                timerBarKey: state.timerBarKey + 1,
                 timerActive: false,
             });
         }

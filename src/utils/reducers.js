@@ -20,7 +20,9 @@ import {
     CORRECT_ANSWER_GIVEN,
     INCORRECT_ANSWER_GIVEN,
     PLAY_AGAIN,
-    BEGIN_QUIZ
+    BEGIN_QUIZ,
+    COMBO_TIMER_DOWN,
+    GAME_OVER
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -142,6 +144,21 @@ export const reducer = (state, action) => {
                 ...state,
                 currentCategory: action.currentCategory,
                 visibility: action.visibility,
+                timerActive: action.timerActive
+            };
+        case COMBO_TIMER_DOWN:
+            return {
+                ...state,
+                combo: action.combo,
+                pointsMultiplier: action.pointsMultiplier
+            };
+        case GAME_OVER:
+            return {
+                ...state,
+                currentCategory: action.currentCategory,
+                visibility: action.visibility,
+                timerActive: action.timerActive,
+                timerBarKey: action.timerBarKey,
                 timerActive: action.timerActive
             }
 
