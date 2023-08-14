@@ -1,5 +1,5 @@
 import React from "react";
-import { UPDATE_TIMEREMAINING, UPDATE_COMBO, UPDATE_POINTSMULTIPLIER, UPDATE_SCORE, UPDATE_CORRECTANSWERGIVEN, UPDATE_TIMERBARKEY, UPDATE_CURRENTQUESTION, UPDATE_TIMERBARACTIVE } from "../../utils/actions";
+import { UPDATE_TIMEREMAINING, UPDATE_COMBO, UPDATE_POINTSMULTIPLIER, UPDATE_SCORE, UPDATE_CORRECTANSWERGIVEN, UPDATE_TIMERBARKEY, UPDATE_CURRENTQUESTION, UPDATE_TIMERBARACTIVE, CORRECT_ANSWER_GIVEN, INCORRECT_ANSWER_GIVEN } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 
 function Answer({
@@ -18,41 +18,20 @@ function Answer({
                 })
                 if (answerCorrect) {
                     dispatch({
-                        type: UPDATE_CURRENTQUESTION,
-                        currentQuestion: state.currentQuestion + 1
-                    })
-                    dispatch({
-                        type: UPDATE_TIMERBARACTIVE,
-                        timerBarActive: true
-                    })
-                    dispatch({
-                        type: UPDATE_COMBO,
+                        type: CORRECT_ANSWER_GIVEN,
+                        currentQuestion: state.currentQuestion + 1,
+                        timerBarActive: true,
                         combo: state.combo + 1,
-                    });
-                    dispatch({
-                        type: UPDATE_POINTSMULTIPLIER,
                         pointsMultiplier: state.pointsMultiplier + .1,
-                    });
-                    dispatch({
-                        type: UPDATE_SCORE,
                         score: state.score + (1000 * state.pointsMultiplier),
                     });
                     state.resetTimerBar(15);
                 } else {
                     dispatch({
-                        type: UPDATE_TIMEREMAINING,
+                        type: INCORRECT_ANSWER_GIVEN,
                         timeRemaining: Math.max(0, (state.timeRemaining - 10)),
-                    });
-                    dispatch({
-                        type: UPDATE_TIMERBARACTIVE,
-                        timerBarActive: false
-                    })
-                    dispatch({
-                        type: UPDATE_COMBO,
+                        timerBarActive: false,
                         combo: 0,
-                    });
-                    dispatch({
-                        type: UPDATE_POINTSMULTIPLIER,
                         pointsMultiplier: 1,
                     });
                     state.resetTimerBar(0);

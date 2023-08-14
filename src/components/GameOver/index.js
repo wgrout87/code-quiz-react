@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { UPDATE_CURRENTCATEGORY, UPDATE_CURRENTQUESTION, UPDATE_FULLINITIALS, UPDATE_HIGHSCORES, UPDATE_SCORE, UPDATE_TIMERACTIVE, UPDATE_TIMEREMAINING, UPDATE_UPDATETIMER } from "../../utils/actions";
+import { PLAY_AGAIN, UPDATE_CURRENTCATEGORY, UPDATE_CURRENTQUESTION, UPDATE_FULLINITIALS, UPDATE_HIGHSCORES, UPDATE_SCORE, UPDATE_TIMERACTIVE, UPDATE_TIMEREMAINING, UPDATE_UPDATETIMER } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
 import { defaultSettings } from "../../utils/defaultSettings";
 import { determineNewHighScore } from "../../utils/highScores";
@@ -104,25 +104,13 @@ function GameOver() {
                             className="charBtn"
                             onClick={() => {
                                 dispatch({
-                                    type: UPDATE_CURRENTQUESTION,
-                                    currentQuestion: 0
-                                })
-                                dispatch({
-                                    type: UPDATE_CURRENTCATEGORY,
-                                    currentCategory: "quiz"
-                                });
-                                dispatch({
-                                    type: UPDATE_SCORE,
-                                    score: defaultSettings.score
-                                })
-                                // Set the timer here
-                                dispatch({
-                                    type: UPDATE_TIMEREMAINING,
+                                    type: PLAY_AGAIN,
+                                    currentQuestion: 0,
+                                    currentCategory: "quiz",
+                                    score: defaultSettings.score,
                                     timeRemaining: defaultSettings.timeRemaining,
-                                });
-                                dispatch({
-                                    type: UPDATE_TIMERACTIVE,
                                     timerActive: true,
+                                    visibility: 1
                                 });
                                 setTimeout(() => {
                                     // If there is time remaining, the timer will be updated every second

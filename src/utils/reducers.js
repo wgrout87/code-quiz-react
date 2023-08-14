@@ -16,7 +16,10 @@ import {
     UPDATE_CURRENTQUESTION,
     UPDATE_FULLINITIALS,
     UPDATE_TIMERBARACTIVE,
-    UPDATE_HIGHSCORES
+    UPDATE_HIGHSCORES,
+    CORRECT_ANSWER_GIVEN,
+    INCORRECT_ANSWER_GIVEN,
+    PLAY_AGAIN
 } from "./actions";
 
 export const reducer = (state, action) => {
@@ -106,6 +109,33 @@ export const reducer = (state, action) => {
                 ...state,
                 highScores: action.highScores,
             };
+        case CORRECT_ANSWER_GIVEN:
+            return {
+                ...state,
+                currentQuestion: action.currentQuestion,
+                timerBarActive: action.timerBarActive,
+                combo: action.combo,
+                pointsMultiplier: action.pointsMultiplier,
+                score: action.score,
+            };
+        case INCORRECT_ANSWER_GIVEN:
+            return {
+                ...state,
+                timeRemaining: action.timeRemaining,
+                timerBarActive: action.timerBarActive,
+                combo: action.combo,
+                pointsMultiplier: action.pointsMultiplier,
+            };
+        case PLAY_AGAIN:
+            return {
+                ...state,
+                currentQuestion: action.currentQuestion,
+                currentCategory: action.currentCategory,
+                score: action.score,
+                timeRemaining: action.timeRemaining,
+                timerActive: action.timerActive,
+                visibility: action.visibility
+            }
 
         default:
             return {
