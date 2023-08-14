@@ -4,20 +4,6 @@ import { UPDATE_QUIZQUESTIONS, UPDATE_VISIBILITY, UPDATE_CURRENTCATEGORY, UPDATE
 
 function Instructions() {
     const [state, dispatch] = useSiteContext();
-    const quizQuestions = [];
-    useEffect(() => {
-        while (quizQuestions.length < 15) {
-            let possibleQuestion = Math.floor(Math.random() * state.questions.length);
-
-            if (quizQuestions.indexOf(possibleQuestion) === -1) {
-                quizQuestions.push(possibleQuestion)
-                dispatch({
-                    type: UPDATE_QUIZQUESTIONS,
-                    quizQuestions: quizQuestions
-                });
-            }
-        }
-    }, []);
 
     return (
         <>

@@ -7,6 +7,7 @@ import TimerBar from "../TimerBar";
 import GameOver from "../GameOver";
 import HighScores from "../HighScores";
 import {
+    UPDATE_QUIZQUESTIONS,
     UPDATE_CURRENTCATEGORY,
     UPDATE_TIMEREMAINING,
     UPDATE_TIMERACTIVE,
@@ -24,6 +25,20 @@ import { retrieveHighScores } from "../../utils/highScores";
 
 function QuizSpace() {
     const [state, dispatch] = useSiteContext();
+    useEffect(() => {
+        const quizQuestions = [];
+        while (quizQuestions.length < 15) {
+            let possibleQuestion = Math.floor(Math.random() * state.questions.length);
+
+            if (quizQuestions.indexOf(possibleQuestion) === -1) {
+                quizQuestions.push(possibleQuestion)
+                dispatch({
+                    type: UPDATE_QUIZQUESTIONS,
+                    quizQuestions: quizQuestions
+                });
+            }
+        }
+    }, [state.currentCategory]);
 
     useEffect(() => {
         const currentHighScores = retrieveHighScores();
