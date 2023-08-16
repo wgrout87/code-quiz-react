@@ -1,6 +1,6 @@
 import React from "react";
 import { useSiteContext } from "../../utils/GlobalState";
-import { UPDATE_VISIBILITY, UPDATE_CURRENTCATEGORY, UPDATE_TIMERACTIVE, BEGIN_QUIZ } from "../../utils/actions"
+import { BEGIN_QUIZ } from "../../utils/actions"
 
 function Instructions() {
     const [state, dispatch] = useSiteContext();
