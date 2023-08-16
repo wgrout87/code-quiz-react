@@ -40,5 +40,8 @@ export const defaultSettings = {
         this.timerBarWidth = '100.00%';
     },
     // highScores uses the retrieveHighScores() function to retrieve all saved high scores for comparison with the user's results
-    highScores: retrieveHighScores()
+    highScores: retrieveHighScores(),
+    highestScoreValues: function () {
+        return this.highScores[0] ?? {fullInitials: null, score: null};
+    }
 }
