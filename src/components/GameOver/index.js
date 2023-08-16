@@ -16,9 +16,11 @@ function GameOver() {
     // Whenever the GameOver component is loaded, this useEffect hook will trigger to determine whether a new high score was achieved or not. This will dynamically impact what content the component displays.
     // !!! - monitor state.currentCategory?
     useEffect(() => {
+        if(state.currentCategory === 'gameOver') {
         const newHighScorePosition = determineNewHighScore(state.highScores, state.score);
         (newHighScorePosition < 10) ? setNewHighScore(true) : setNewHighScore(false);
-    }, []);
+        }
+    }, [state.currentCategory]);
 
     // This useEffect hook handles the blinking cursor for initials entry.
     useEffect(() => {
