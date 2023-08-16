@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { PLAY_AGAIN, UPDATE_CURRENTCATEGORY, UPDATE_CURRENTQUESTION, UPDATE_FULLINITIALS, UPDATE_HIGHSCORES, UPDATE_SCORE, UPDATE_TIMERACTIVE, UPDATE_TIMEREMAINING, UPDATE_UPDATETIMER } from "../../utils/actions";
+import { PLAY_AGAIN, UPDATE_CURRENTCATEGORY, UPDATE_FULLINITIALS, UPDATE_HIGHSCORES, UPDATE_UPDATETIMER } from "../../utils/actions";
 import { useSiteContext } from "../../utils/GlobalState";
-import { defaultSettings } from "../../utils/defaultSettings";
 import { determineNewHighScore } from "../../utils/highScores";
 
 const letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
@@ -14,7 +13,6 @@ function GameOver() {
     const [newHighScore, setNewHighScore] = useState(false);
 
     // Whenever the GameOver component is loaded, this useEffect hook will trigger to determine whether a new high score was achieved or not. This will dynamically impact what content the component displays.
-    // !!! - monitor state.currentCategory?
     useEffect(() => {
         if(state.currentCategory === 'gameOver') {
         const newHighScorePosition = determineNewHighScore(state.highScores, state.score);

@@ -133,17 +133,18 @@ export const reducer = (state, action) => {
         case PLAY_AGAIN:
             return {
                 ...state,
-                currentQuestion: 0,
                 currentCategory: action.currentCategory,
-                score: defaultSettings.score,
+                visibility: action.visibility,
                 timeRemaining: defaultSettings.timeRemaining,
                 timerActive: action.timerActive,
-                visibility: action.visibility,
                 timerBarWidth: defaultSettings.timerBarWidth,
-                timerBarKey: state.timerBarKey + 1,
-                timerBarActive: defaultSettings.timerBarActive,
                 combo: defaultSettings.combo,
-                pointsMultiplier: defaultSettings.pointsMultiplier
+                pointsMultiplier: defaultSettings.pointsMultiplier,
+                score: defaultSettings.score,
+                timerBarKey: state.timerBarKey + 1,
+                currentQuestion: 0,
+                fullInitials: defaultSettings.fullInitials,
+                timerBarActive: defaultSettings.timerBarActive,
             };
         case BEGIN_QUIZ:
             return {
@@ -163,7 +164,7 @@ export const reducer = (state, action) => {
                 ...state,
                 currentCategory: action.currentCategory,
                 visibility: action.visibility,
-                timerActive: action.timerActive,
+                timerBarActive: action.timerBarActive,
                 timerBarKey: action.timerBarKey,
                 timerActive: action.timerActive
             }
