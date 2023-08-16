@@ -15,6 +15,7 @@ function Header() {
                     <p id="highScoreInitials">{state.highestScoreValues().fullInitials ?? '---'}</p>
                     <p id="highScorePoints">{state.highestScoreValues().score ?? '-'}</p>
                 </div>
+                {/* Takes the user to the high scores screen */}
                 <button
                     id="viewTheScoreboard"
                     onClick={() => {
