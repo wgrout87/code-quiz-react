@@ -21,7 +21,7 @@ export default function Question() {
                         return (
                             <Answer
                                 key={answer.answerString + state.currentQuestion}
-                                // the answer prop will be the string to be displayed in the <p> element in the Answer component
+                                // the answer prop will be the string to be displayed in the <button> element in the Answer component
                                 answer={answer.answerString}
                                 // the answerCorrect prop will be a boolean value that is used to determine if the answer chosen is correct or not
                                 answerCorrect={answer.answerValue}

@@ -47,7 +47,7 @@ function QuizSpace() {
     // Updates the timer whenever timeRemaining changes
     useEffect(() => {
         if (state.timerActive && state.timeRemaining > 0) {
-            // Won't start a new timeout when an incorrect answer is given and timeRemaining is changed
+            // Won't start a new timeout when an incorrect answer is given and timeRemaining is changed - this is to handle time deductions for incorrect answers
             if (state.correctAnswerGiven) {
                 setTimeout(() => {
                     // If there is time remaining, the timer will be updated every second
