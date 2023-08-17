@@ -68,12 +68,14 @@ function QuizSpace() {
 
     // Updates the timer using the current timeRemaining
     useEffect(() => {
+        // A second will be subtracted from the current time remaining every time updateTimer is set to true
         if (state.updateTimer) {
             dispatch({
                 type: UPDATE_TIMEREMAINING,
                 timeRemaining: Math.max(0, (state.timeRemaining - 1)),
             });
         }
+        // After the timer has been updated, updateTimer is set to false again
         dispatch({
             type: UPDATE_UPDATETIMER,
             updateTimer: false
