@@ -20,6 +20,7 @@ import { retrieveHighScores } from "../../utils/highScores";
 
 function QuizSpace() {
     const [state, dispatch] = useSiteContext();
+    // This useEffect will randomize questions to be asked on initial load and every time currentCategory changes, so new quizzes will have fresh questions
     useEffect(() => {
         const quizQuestions = [];
         while (quizQuestions.length < 15) {

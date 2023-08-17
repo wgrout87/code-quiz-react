@@ -7,6 +7,7 @@ function Answer({
     answerCorrect,
 }) {
     const [state, dispatch] = useSiteContext();
+
     return (
         <button
             data-index={0}

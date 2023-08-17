@@ -6,6 +6,23 @@ export const defaultSettings = {
     questions: questions,
     // quizQuestions begins as an empty array so that it can be filled with randomized questions from those available
     quizQuestions: [],
+    // This function returns an array of all possible answers for the current question in a randomized order
+    randomizeAnswers: function() {
+        const answersArr = [];
+        const questionAnswersOrder = [];
+        while (questionAnswersOrder.length < 4) {
+            let possibleQuestion = Math.floor(Math.random() * 4);
+
+            // This if statement ensures that no values are repeated in the questionAnswersOrder array
+            if (questionAnswersOrder.indexOf(possibleQuestion) === -1) {
+                questionAnswersOrder.push(possibleQuestion);
+            }
+        }
+        questionAnswersOrder.forEach(element => {
+            answersArr.push(this.questions[this.quizQuestions[this.currentQuestion]].answers[element])
+        })
+        return answersArr
+    }, 
     // currentCategory is used to determine which components display at any given time
     currentCategory: 'instructions',
     // visibility is initially set to zero for the game elements that appear only when a quiz is in progress
