@@ -8,7 +8,7 @@ function Instructions() {
 
     return (
         <>
-            <div>
+            <div data-testid="instructions">
                 <h2>QUIZ EXPLANATION:</h2>
                 <p>
                     YOU WILL BE GIVEN 3 MINUTES TO ANSWER 15 QUESTIONS. INCORRECT ANSWERS WILL DEDUCT 10 SECONDS
@@ -32,6 +32,7 @@ function Instructions() {
                             timerActive: true,
                         });
                     }}
+                    data-testid="beginQuiz"
                 >
                     TAKE THE QUIZ
                 </button>

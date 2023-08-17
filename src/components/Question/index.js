@@ -13,7 +13,7 @@ export default function Question() {
     }, [state.currentQuestion]);
 
     return (
-        <div className="quiz" id="quiz">
+        <div className="quiz" id="quiz" data-testid="question">
             <p className="question">{state.questions[state.quizQuestions[state.currentQuestion]].question}</p>
             <div className="quizAnswers">
                 {
