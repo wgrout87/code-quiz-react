@@ -1,19 +1,8 @@
 import React from "react";
-import { render, fireEvent, screen } from "@testing-library/react";
+import { render, fireEvent } from "@testing-library/react";
 import QuizSpace from "../components/QuizSpace";
 import { SiteProvider } from "../utils/GlobalState";
 import Header from "../components/Header";
-
-test("QuizSpace component displays instructions upon page load", () => {
-    const { getByTestId } = render(
-        <SiteProvider>
-            <Header />
-            <QuizSpace />
-        </SiteProvider>
-    );
-    expect(getByTestId("header")).toBeInTheDocument();
-    expect(getByTestId("instructions")).toBeInTheDocument();
-});
 
 test("Clicking the 'View the Scoreboard' button displays the high scores and back again", () => {
     const { getByTestId } = render(
@@ -22,6 +11,8 @@ test("Clicking the 'View the Scoreboard' button displays the high scores and bac
             <QuizSpace />
         </SiteProvider>
     );
+    expect(getByTestId("header")).toBeInTheDocument();
+    expect(getByTestId("instructions")).toBeInTheDocument();
     fireEvent.click(getByTestId("viewScoreboard"));
     expect(getByTestId("scoreboard")).toBeInTheDocument();
     fireEvent.click(getByTestId("instructionsBtn"));
