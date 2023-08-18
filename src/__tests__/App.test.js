@@ -24,7 +24,8 @@ test("Clicking the 'Take the Quiz' button begins a quiz", () => {
     );
     fireEvent.click(getByTestId("beginQuiz"));
     expect(getByTestId("question")).toBeInTheDocument();
-    expect(getAllByTestId("answer").length).toBe(4);
+    expect(getAllByTestId("incorrectAnswer").length).toBe(3);
+    expect(getAllByTestId("correctAnswer").length).toBe(1);
 });
 
 test("Clicking the 'View the Scoreboard' button displays the high scores", () => {
