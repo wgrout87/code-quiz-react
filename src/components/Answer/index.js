@@ -11,6 +11,7 @@ function Answer({
     return (
         <button
             data-index={0}
+            data-testid='answer'
             className="questionAnswer"
             onClick={(e) => {
                 // The timerBarKey is incremented so that the timer bar will snap to full

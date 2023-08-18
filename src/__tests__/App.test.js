@@ -16,7 +16,7 @@ test("QuizSpace component displays instructions upon page load", () => {
 });
 
 test("Clicking the 'Take the Quiz' button begins a quiz", () => {
-    const { getByTestId } = render(
+    const { getByTestId, getAllByTestId } = render(
         <SiteProvider>
             <Header />
             <QuizSpace />
@@ -24,6 +24,7 @@ test("Clicking the 'Take the Quiz' button begins a quiz", () => {
     );
     fireEvent.click(getByTestId("beginQuiz"));
     expect(getByTestId("question")).toBeInTheDocument();
+    expect(getAllByTestId("answer").length).toBe(4);
 });
 
 test("Clicking the 'View the Scoreboard' button displays the high scores", () => {
