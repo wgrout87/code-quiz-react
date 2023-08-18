@@ -1,5 +1,5 @@
 import React from "react";
-import { render, fireEvent } from "@testing-library/react";
+import { render, fireEvent, screen } from "@testing-library/react";
 import QuizSpace from "../components/QuizSpace";
 import { SiteProvider } from "../utils/GlobalState";
 import Header from "../components/Header";
@@ -60,6 +60,7 @@ test("From 'instructions' to 'scoreboard' with perfect answers and begin new qui
     fireEvent.click(getAllByTestId("charBtn")[1]);
     fireEvent.click(getAllByTestId("charBtn")[2]);
     expect(getByTestId("scoreboard")).toBeInTheDocument();
+    expect(getByTestId("ABC")).toBeInTheDocument();
     fireEvent.click(getByTestId("playAgainBtn"));
     expect(getByTestId("question")).toBeInTheDocument();
 });
