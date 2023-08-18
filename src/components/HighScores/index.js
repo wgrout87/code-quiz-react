@@ -23,6 +23,7 @@ export default function HighScores() {
                 }
             </ol>
             <button
+                data-id="playAgainBtn"
                 className="centered high-scores-btn"
                 onClick={() => {
                     dispatch({
@@ -43,6 +44,7 @@ export default function HighScores() {
                 Play Again
             </button>
             <button
+                data-id="instructionsBtn"
                 className="centered high-scores-btn"
                 onClick={() => {
                     dispatch({

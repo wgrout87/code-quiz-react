@@ -15,7 +15,18 @@ test("QuizSpace component displays instructions upon page load", () => {
     expect(getByTestId("instructions")).toBeInTheDocument();
 });
 
-test("Clicking the 'Take the Quiz' button begins a quiz", () => {
+test("Clicking the 'View the Scoreboard' button displays the high scores", () => {
+    const { getByTestId } = render(
+        <SiteProvider>
+            <Header />
+            <QuizSpace />
+        </SiteProvider>
+    );
+    fireEvent.click(getByTestId("viewScoreboard"));
+    expect(getByTestId("scoreboard")).toBeInTheDocument();
+});
+
+test("From 'instructions' to 'scoreboard' with perfect answers", () => {
     const { getByTestId, getAllByTestId } = render(
         <SiteProvider>
             <Header />
@@ -42,15 +53,9 @@ test("Clicking the 'Take the Quiz' button begins a quiz", () => {
     fireEvent.click(getByTestId("correctAnswer"));
     fireEvent.click(getByTestId("correctAnswer"));
     expect(getByTestId("gameOver")).toBeInTheDocument();
-});
-
-test("Clicking the 'View the Scoreboard' button displays the high scores", () => {
-    const { getByTestId } = render(
-        <SiteProvider>
-            <Header />
-            <QuizSpace />
-        </SiteProvider>
-    );
-    fireEvent.click(getByTestId("viewScoreboard"));
+    expect(getAllByTestId("charBtn").length).toBe(26);
+    fireEvent.click(getAllByTestId("charBtn")[0]);
+    fireEvent.click(getAllByTestId("charBtn")[1]);
+    fireEvent.click(getAllByTestId("charBtn")[2]);
     expect(getByTestId("scoreboard")).toBeInTheDocument();
 });

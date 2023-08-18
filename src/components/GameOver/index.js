@@ -103,6 +103,7 @@ function GameOver() {
                         {letters.map((letter, index) => <button
                             className="charBtn"
                             key={index}
+                            data-testid="charBtn"
                             onClick={() => {
                                 // if all 3 initials haven't been entered yet
                                 if (initial < 3) {
