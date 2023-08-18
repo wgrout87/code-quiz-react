@@ -15,7 +15,7 @@ test("QuizSpace component displays instructions upon page load", () => {
     expect(getByTestId("instructions")).toBeInTheDocument();
 });
 
-test("Clicking the 'View the Scoreboard' button displays the high scores", () => {
+test("Clicking the 'View the Scoreboard' button displays the high scores and back again", () => {
     const { getByTestId } = render(
         <SiteProvider>
             <Header />
@@ -24,9 +24,11 @@ test("Clicking the 'View the Scoreboard' button displays the high scores", () =>
     );
     fireEvent.click(getByTestId("viewScoreboard"));
     expect(getByTestId("scoreboard")).toBeInTheDocument();
+    fireEvent.click(getByTestId("instructionsBtn"));
+    expect(getByTestId("instructions")).toBeInTheDocument();
 });
 
-test("From 'instructions' to 'scoreboard' with perfect answers", () => {
+test("From 'instructions' to 'scoreboard' with perfect answers and begin new quiz", () => {
     const { getByTestId, getAllByTestId } = render(
         <SiteProvider>
             <Header />
@@ -58,4 +60,6 @@ test("From 'instructions' to 'scoreboard' with perfect answers", () => {
     fireEvent.click(getAllByTestId("charBtn")[1]);
     fireEvent.click(getAllByTestId("charBtn")[2]);
     expect(getByTestId("scoreboard")).toBeInTheDocument();
+    fireEvent.click(getByTestId("playAgainBtn"));
+    expect(getByTestId("question")).toBeInTheDocument();
 });
