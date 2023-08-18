@@ -78,7 +78,7 @@ function GameOver() {
     }, [state.fullInitials]);
 
     return (
-        <div>
+        <div data-testid="gameOver">
             <h2 className="results">
                 You scored {state.score} points!
             </h2>

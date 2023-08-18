@@ -26,6 +26,22 @@ test("Clicking the 'Take the Quiz' button begins a quiz", () => {
     expect(getByTestId("question")).toBeInTheDocument();
     expect(getAllByTestId("incorrectAnswer").length).toBe(3);
     expect(getAllByTestId("correctAnswer").length).toBe(1);
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    expect(getByTestId("gameOver")).toBeInTheDocument();
 });
 
 test("Clicking the 'View the Scoreboard' button displays the high scores", () => {
