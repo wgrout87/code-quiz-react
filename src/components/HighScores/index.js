@@ -7,7 +7,7 @@ export default function HighScores() {
     const [state, dispatch] = useSiteContext();
 
     return (
-        <div>
+        <div data-testid="scoreboard">
             <h2 className="highScoreListTitle centered">High Scores</h2>
             <ol>
                 {

@@ -6,7 +6,7 @@ function Header() {
     const [state, dispatch] = useSiteContext();
 
     return (
-        <header>
+        <header data-testid="header">
             <h1 className="pageTitle">TIMED CODE QUIZ</h1>
             <div className="highScore">
                 <p>CURRENT HIGH SCORE</p>
@@ -25,6 +25,7 @@ function Header() {
                         })
                     }
                     }
+                    data-testid="viewScoreboard"
                 >
                     VIEW THE SCOREBOARD
                 </button>
