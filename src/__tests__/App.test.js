@@ -85,11 +85,11 @@ test("From 'instructions' to 'scoreboard' with perfect answers and begin new qui
     fireEvent.click(getByTestId("correctAnswer"));
     expect(getByTestId("gameOver")).toBeInTheDocument();
     expect(getAllByTestId("charBtn").length).toBe(26);
-    fireEvent.click(getAllByTestId("charBtn")[0]);
     fireEvent.click(getAllByTestId("charBtn")[1]);
     fireEvent.click(getAllByTestId("charBtn")[2]);
+    fireEvent.click(getAllByTestId("charBtn")[3]);
     expect(getByTestId("scoreboard")).toBeInTheDocument();
-    // expect(getAllByTestId("ABC")).length.toBeGreaterThanOrEqual(1);
+    expect(getByTestId("BCD")).toBeInTheDocument();
     fireEvent.click(getByTestId("playAgainBtn"));
     expect(getByTestId("question")).toBeInTheDocument();
 });
