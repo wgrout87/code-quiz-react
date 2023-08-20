@@ -55,3 +55,41 @@ test("From 'instructions' to 'scoreboard' with perfect answers and begin new qui
     fireEvent.click(getByTestId("playAgainBtn"));
     expect(getByTestId("question")).toBeInTheDocument();
 });
+
+test("From 'instructions' to 'scoreboard' with perfect answers and begin new quiz", () => {
+    const { getByTestId, getAllByTestId } = render(
+        <SiteProvider>
+            <Header />
+            <QuizSpace />
+        </SiteProvider>
+    );
+    fireEvent.click(getByTestId("beginQuiz"));
+    expect(getByTestId("question")).toBeInTheDocument();
+    expect(getAllByTestId("incorrectAnswer").length).toBe(3);
+    expect(getAllByTestId("correctAnswer").length).toBe(1);
+    fireEvent.click(getByTestId("incorrectAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    expect(getByTestId("gameOver")).toBeInTheDocument();
+    expect(getAllByTestId("charBtn").length).toBe(26);
+    fireEvent.click(getAllByTestId("charBtn")[0]);
+    fireEvent.click(getAllByTestId("charBtn")[1]);
+    fireEvent.click(getAllByTestId("charBtn")[2]);
+    expect(getByTestId("scoreboard")).toBeInTheDocument();
+    expect(getByTestId("ABC")).toBeInTheDocument();
+    fireEvent.click(getByTestId("playAgainBtn"));
+    expect(getByTestId("question")).toBeInTheDocument();
+});
