@@ -117,6 +117,61 @@ test("From 'instructions' to 'scoreboard' with perfect answers and begin new qui
     expect(getByTestId("question")).toBeInTheDocument();
 });
 
+test("From 'instructions' to 'scoreboard' with some correct answers and begin new quiz", () => {
+    const { getByTestId, getAllByTestId, container } = render(
+        <SiteProvider>
+            <Header />
+            <QuizSpace />
+        </SiteProvider>
+    );
+    fireEvent.click(getByTestId("beginQuiz"));
+    expect(getByTestId("question")).toBeInTheDocument();
+    expect(getAllByTestId("incorrectAnswer").length).toBe(3);
+    expect(getAllByTestId("correctAnswer").length).toBe(1);
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:0');
+    expect(container.querySelector("#currentCombo").textContent).toBe('0');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('1.0');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180');
+    fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:1000');
+    expect(container.querySelector("#currentCombo").textContent).toBe('1');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('1.1');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180');
+    fireEvent.click(getAllByTestId("incorrectAnswer")[0]);
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:1000');
+    expect(container.querySelector("#currentCombo").textContent).toBe('0');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('1.0');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('170');
+    fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:2000');
+    expect(container.querySelector("#currentCombo").textContent).toBe('1');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('1.1');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('170');
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getByTestId("correctAnswer"));
+    expect(getByTestId("gameOver")).toBeInTheDocument();
+    expect(getAllByTestId("charBtn").length).toBe(26);
+    fireEvent.click(getAllByTestId("charBtn")[2]);
+    fireEvent.click(getAllByTestId("charBtn")[3]);
+    fireEvent.click(getAllByTestId("charBtn")[4]);
+    expect(getByTestId("scoreboard")).toBeInTheDocument();
+    expect(getByTestId("CDE")).toBeInTheDocument();
+    // expect(getByTestId("ABC30000")).toBeInTheDocument('30000');
+    fireEvent.click(getByTestId("playAgainBtn"));
+    expect(getByTestId("question")).toBeInTheDocument();
+});
+
 test("From 'instructions' to 'scoreboard' with incorrect answers and begin new quiz", () => {
     const { getByTestId, getAllByTestId, container } = render(
         <SiteProvider>
