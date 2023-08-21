@@ -5,7 +5,7 @@ export default function HighScoreListItem({ highScoreObj, place }) {
     return (
         <li className="highScoreListItem" data-testid={initials}>
             <p>{`${place.toLocaleString('en-US', {minimumIntegerDigits: 2, useGrouping:false})}. ${initials}`}</p>
-            <p>{`${highScoreObj.score}`}</p>
+            <p data-testid={initials + highScoreObj.score}>{`${highScoreObj.score}`}</p>
         </li>
     );
 };

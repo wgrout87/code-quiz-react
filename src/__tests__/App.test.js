@@ -20,7 +20,7 @@ test("Clicking the 'View the Scoreboard' button displays the high scores and bac
 });
 
 test("From 'instructions' to 'scoreboard' with perfect answers and begin new quiz", () => {
-    const { getByTestId, getAllByTestId } = render(
+    const { getByTestId, getAllByTestId, container } = render(
         <SiteProvider>
             <Header />
             <QuizSpace />
@@ -30,20 +30,80 @@ test("From 'instructions' to 'scoreboard' with perfect answers and begin new qui
     expect(getByTestId("question")).toBeInTheDocument();
     expect(getAllByTestId("incorrectAnswer").length).toBe(3);
     expect(getAllByTestId("correctAnswer").length).toBe(1);
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:0');
+    expect(container.querySelector("#currentCombo").textContent).toBe('0');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('1.0');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:1000');
+    expect(container.querySelector("#currentCombo").textContent).toBe('1');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('1.1');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:2100');
+    expect(container.querySelector("#currentCombo").textContent).toBe('2');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('1.2');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:3300');
+    expect(container.querySelector("#currentCombo").textContent).toBe('3');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('1.3');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:4600');
+    expect(container.querySelector("#currentCombo").textContent).toBe('4');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('1.4');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:6000');
+    expect(container.querySelector("#currentCombo").textContent).toBe('5');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('1.5');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:7500');
+    expect(container.querySelector("#currentCombo").textContent).toBe('6');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('1.6');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:9100');
+    expect(container.querySelector("#currentCombo").textContent).toBe('7');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('1.7');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:10800');
+    expect(container.querySelector("#currentCombo").textContent).toBe('8');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('1.8');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:12600');
+    expect(container.querySelector("#currentCombo").textContent).toBe('9');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('1.9');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:14500');
+    expect(container.querySelector("#currentCombo").textContent).toBe('10');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('2.0');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:16500');
+    expect(container.querySelector("#currentCombo").textContent).toBe('11');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('2.1');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:18600');
+    expect(container.querySelector("#currentCombo").textContent).toBe('12');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('2.2');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:20800');
+    expect(container.querySelector("#currentCombo").textContent).toBe('13');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('2.3');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180')
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:23100');
+    expect(container.querySelector("#currentCombo").textContent).toBe('14');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('2.4');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180')
     fireEvent.click(getByTestId("correctAnswer"));
     expect(getByTestId("gameOver")).toBeInTheDocument();
     expect(getAllByTestId("charBtn").length).toBe(26);
@@ -52,6 +112,7 @@ test("From 'instructions' to 'scoreboard' with perfect answers and begin new qui
     fireEvent.click(getAllByTestId("charBtn")[2]);
     expect(getByTestId("scoreboard")).toBeInTheDocument();
     expect(getByTestId("ABC")).toBeInTheDocument();
+    expect(getByTestId("ABC30000")).toBeInTheDocument('30000');
     fireEvent.click(getByTestId("playAgainBtn"));
     expect(getByTestId("question")).toBeInTheDocument();
 });
@@ -67,6 +128,10 @@ test("From 'instructions' to 'scoreboard' with incorrect answers and begin new q
     expect(getByTestId("question")).toBeInTheDocument();
     expect(getAllByTestId("incorrectAnswer").length).toBe(3);
     expect(getAllByTestId("correctAnswer").length).toBe(1);
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:0');
+    expect(container.querySelector("#currentCombo").textContent).toBe('0');
+    expect(container.querySelector("#currentPointsMultiplier").textContent).toBe('1.0');
+    expect(container.querySelector("#timeRemaining").textContent).toBe('180');
     fireEvent.click(getAllByTestId("incorrectAnswer")[0]);
     expect(container.querySelector("#timeRemaining").textContent).toBe('170');
     fireEvent.click(getAllByTestId("incorrectAnswer")[1]);
