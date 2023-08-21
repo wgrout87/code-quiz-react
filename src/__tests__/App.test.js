@@ -184,6 +184,8 @@ test("From 'instructions' to 'scoreboard' with incorrect answers and begin new q
     fireEvent.click(getAllByTestId("charBtn")[3]);
     expect(getByTestId("scoreboard")).toBeInTheDocument();
     expect(getByTestId("BCD")).toBeInTheDocument();
+    expect(getByTestId("BCD")).toBeInTheDocument();
+    expect(getByTestId("BCD5000")).toBeInTheDocument('5000');
     fireEvent.click(getByTestId("playAgainBtn"));
     expect(getByTestId("question")).toBeInTheDocument();
 });
