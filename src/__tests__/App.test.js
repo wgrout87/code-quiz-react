@@ -74,6 +74,7 @@ test("From 'instructions' to 'scoreboard' with incorrect answers and begin new q
     fireEvent.click(getAllByTestId("incorrectAnswer")[2]);
     expect(container.querySelector("#timeRemaining").textContent).toBe('150');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:1000');
     fireEvent.click(getAllByTestId("incorrectAnswer")[0]);
     expect(container.querySelector("#timeRemaining").textContent).toBe('140');
     fireEvent.click(getAllByTestId("incorrectAnswer")[1]);
@@ -81,6 +82,7 @@ test("From 'instructions' to 'scoreboard' with incorrect answers and begin new q
     fireEvent.click(getAllByTestId("incorrectAnswer")[2]);
     expect(container.querySelector("#timeRemaining").textContent).toBe('120');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:2000');
     fireEvent.click(getAllByTestId("incorrectAnswer")[0]);
     expect(container.querySelector("#timeRemaining").textContent).toBe('110');
     fireEvent.click(getAllByTestId("incorrectAnswer")[1]);
@@ -88,6 +90,7 @@ test("From 'instructions' to 'scoreboard' with incorrect answers and begin new q
     fireEvent.click(getAllByTestId("incorrectAnswer")[2]);
     expect(container.querySelector("#timeRemaining").textContent).toBe('90');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:3000');
     fireEvent.click(getAllByTestId("incorrectAnswer")[0]);
     expect(container.querySelector("#timeRemaining").textContent).toBe('80');
     fireEvent.click(getAllByTestId("incorrectAnswer")[1]);
@@ -95,6 +98,7 @@ test("From 'instructions' to 'scoreboard' with incorrect answers and begin new q
     fireEvent.click(getAllByTestId("incorrectAnswer")[2]);
     expect(container.querySelector("#timeRemaining").textContent).toBe('60');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:4000');
     fireEvent.click(getAllByTestId("incorrectAnswer")[0]);
     expect(container.querySelector("#timeRemaining").textContent).toBe('50');
     fireEvent.click(getAllByTestId("incorrectAnswer")[1]);
@@ -102,6 +106,7 @@ test("From 'instructions' to 'scoreboard' with incorrect answers and begin new q
     fireEvent.click(getAllByTestId("incorrectAnswer")[2]);
     expect(container.querySelector("#timeRemaining").textContent).toBe('30');
     fireEvent.click(getByTestId("correctAnswer"));
+    expect(container.querySelector("#score").textContent).toBe('CURRENT SCORE:5000');
     fireEvent.click(getAllByTestId("incorrectAnswer")[0]);
     expect(container.querySelector("#timeRemaining").textContent).toBe('20');
     fireEvent.click(getAllByTestId("incorrectAnswer")[1]);
