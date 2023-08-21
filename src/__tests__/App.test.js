@@ -56,8 +56,8 @@ test("From 'instructions' to 'scoreboard' with perfect answers and begin new qui
     expect(getByTestId("question")).toBeInTheDocument();
 });
 
-test("From 'instructions' to 'scoreboard' with perfect answers and begin new quiz", () => {
-    const { getByTestId, getAllByTestId } = render(
+test("From 'instructions' to 'scoreboard' with incorrect answers and begin new quiz", () => {
+    const { getByTestId, getAllByTestId, container } = render(
         <SiteProvider>
             <Header />
             <QuizSpace />
@@ -68,21 +68,45 @@ test("From 'instructions' to 'scoreboard' with perfect answers and begin new qui
     expect(getAllByTestId("incorrectAnswer").length).toBe(3);
     expect(getAllByTestId("correctAnswer").length).toBe(1);
     fireEvent.click(getAllByTestId("incorrectAnswer")[0]);
+    expect(container.querySelector("#timeRemaining").textContent).toBe('170');
+    fireEvent.click(getAllByTestId("incorrectAnswer")[1]);
+    expect(container.querySelector("#timeRemaining").textContent).toBe('160');
+    fireEvent.click(getAllByTestId("incorrectAnswer")[2]);
+    expect(container.querySelector("#timeRemaining").textContent).toBe('150');
     fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getAllByTestId("incorrectAnswer")[0]);
+    expect(container.querySelector("#timeRemaining").textContent).toBe('140');
+    fireEvent.click(getAllByTestId("incorrectAnswer")[1]);
+    expect(container.querySelector("#timeRemaining").textContent).toBe('130');
+    fireEvent.click(getAllByTestId("incorrectAnswer")[2]);
+    expect(container.querySelector("#timeRemaining").textContent).toBe('120');
     fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getAllByTestId("incorrectAnswer")[0]);
+    expect(container.querySelector("#timeRemaining").textContent).toBe('110');
+    fireEvent.click(getAllByTestId("incorrectAnswer")[1]);
+    expect(container.querySelector("#timeRemaining").textContent).toBe('100');
+    fireEvent.click(getAllByTestId("incorrectAnswer")[2]);
+    expect(container.querySelector("#timeRemaining").textContent).toBe('90');
     fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getAllByTestId("incorrectAnswer")[0]);
+    expect(container.querySelector("#timeRemaining").textContent).toBe('80');
+    fireEvent.click(getAllByTestId("incorrectAnswer")[1]);
+    expect(container.querySelector("#timeRemaining").textContent).toBe('70');
+    fireEvent.click(getAllByTestId("incorrectAnswer")[2]);
+    expect(container.querySelector("#timeRemaining").textContent).toBe('60');
     fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getAllByTestId("incorrectAnswer")[0]);
+    expect(container.querySelector("#timeRemaining").textContent).toBe('50');
+    fireEvent.click(getAllByTestId("incorrectAnswer")[1]);
+    expect(container.querySelector("#timeRemaining").textContent).toBe('40');
+    fireEvent.click(getAllByTestId("incorrectAnswer")[2]);
+    expect(container.querySelector("#timeRemaining").textContent).toBe('30');
     fireEvent.click(getByTestId("correctAnswer"));
-    fireEvent.click(getByTestId("correctAnswer"));
-    fireEvent.click(getByTestId("correctAnswer"));
-    fireEvent.click(getByTestId("correctAnswer"));
-    fireEvent.click(getByTestId("correctAnswer"));
-    fireEvent.click(getByTestId("correctAnswer"));
-    fireEvent.click(getByTestId("correctAnswer"));
-    fireEvent.click(getByTestId("correctAnswer"));
-    fireEvent.click(getByTestId("correctAnswer"));
-    fireEvent.click(getByTestId("correctAnswer"));
-    fireEvent.click(getByTestId("correctAnswer"));
+    fireEvent.click(getAllByTestId("incorrectAnswer")[0]);
+    expect(container.querySelector("#timeRemaining").textContent).toBe('20');
+    fireEvent.click(getAllByTestId("incorrectAnswer")[1]);
+    expect(container.querySelector("#timeRemaining").textContent).toBe('10');
+    fireEvent.click(getAllByTestId("incorrectAnswer")[2]);
     expect(getByTestId("gameOver")).toBeInTheDocument();
     expect(getAllByTestId("charBtn").length).toBe(26);
     fireEvent.click(getAllByTestId("charBtn")[1]);
