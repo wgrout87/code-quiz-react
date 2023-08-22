@@ -5,7 +5,7 @@ import { SiteProvider } from "../../utils/GlobalState";
 
 jest.spyOn(global, 'setTimeout');
 
-test("The timer decreases each second", async () => {
+test("The timer decreases each second and game ends at 0 time remaining", async () => {
     const { getByTestId, getAllByTestId, container } = render(
         <SiteProvider>
             <QuizSpace />
@@ -19,5 +19,24 @@ test("The timer decreases each second", async () => {
     expect(setTimeout).toHaveBeenCalledTimes(1);
     setTimeout(() => {
         expect(container.querySelector("#timeRemaining").textContent).toBe('179');
-    }, 1000)
+    }, 1000);
+    setTimeout(() => {
+        expect(container.querySelector("#timeRemaining").textContent).toBe('178');
+    }, 1000);
+    setTimeout(() => {
+        expect(container.querySelector("#timeRemaining").textContent).toBe('177');
+    }, 1000);
+    setTimeout(() => {
+        expect(container.querySelector("#timeRemaining").textContent).toBe('1');
+    }, 176000);
+    setTimeout(() => {
+        expect(container.querySelector("#timeRemaining").textContent).toBe('0');
+        expect(container.querySelector("#timeRemaining").style.visibility).toBe('1');
+        expect(getByTestId("gameOver")).toBeInTheDocument();
+    }, 1000);
+    setTimeout(() => {
+        expect(container.querySelector("#timeRemaining").textContent).toBe('0');
+        expect(container.querySelector("#timeRemaining").style.visibility).toBe('0');
+        expect(getByTestId("gameOver")).toBeInTheDocument();
+    }, 1000);
 })
