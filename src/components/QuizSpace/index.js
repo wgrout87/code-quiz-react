@@ -18,22 +18,30 @@ import {
 import { useSiteContext } from "../../utils/GlobalState";
 import { retrieveHighScores } from "../../utils/highScores";
 
+// QuizSpace holds the brunt of the app's content including the timer functionality and the logic for determining what content to show on the page
 function QuizSpace() {
     const [state, dispatch] = useSiteContext();
-    // This useEffect will randomize questions to be asked on initial load and every time currentCategory changes, so new quizzes will have fresh questions
+    // This useEffect will randomize numbers corresponding to questions to be asked on initial load and every time currentCategory changes, so new quizzes will have fresh questions
     useEffect(() => {
+        // This is a temporary variable to store the randomized numbers for quiz questions before dispatching them to the Global State
         const quizQuestions = [];
+        // This while loop is used to fill the quizQuestions variable with 15 questions
         while (quizQuestions.length < 15) {
+            // A number corresponding to a question in the state.questions array of all possible questions is randomly generated
             let possibleQuestion = Math.floor(Math.random() * state.questions.length);
 
+            // If the number is not already in the quizQuestions array...
             if (quizQuestions.indexOf(possibleQuestion) === -1) {
+                // The number is added to the quizQuestions array
                 quizQuestions.push(possibleQuestion)
+                // And the Global State is updated with the updated array
                 dispatch({
                     type: UPDATE_QUIZQUESTIONS,
                     quizQuestions: quizQuestions
                 });
             }
         }
+        // state.currentCategory is used to change the questions if a new quiz is taken. It will not modify the quiz questions during an in-progress quiz since the currentCategory doesn't change
     }, [state.currentCategory]);
 
     useEffect(() => {
