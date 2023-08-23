@@ -66,6 +66,7 @@ function QuizSpace() {
                 }, 1000);
             }
             else {
+                // Sets the correctAnswerGiven variable to true again after an incorrect answer has been given (This variable keeps the time deduction that comes with an incorrect answer from causing a second timeout to start)
                 dispatch({
                     type: UPDATE_CORRECTANSWERGIVEN,
                     correctAnswerGiven: true
@@ -90,6 +91,7 @@ function QuizSpace() {
         })
     }, [state.updateTimer]);
 
+    // This useEffect hook is for resetting the combo and points multiplier back to the original values when the 15 seconds for a combo runs out
     useEffect(() => {
         if (state.timeLeft === 0) {
             dispatch({
@@ -100,25 +102,33 @@ function QuizSpace() {
         }
     }, [state.timeLeft]);
 
+    // This useEffect hook is for the end of a quiz, either from time running out or all questions being answered
     useEffect(() => {
         if (state.timeRemaining === 0 || state.currentQuestion === 15) {
             dispatch({
                 type: GAME_OVER,
+                // The app advances to the game over screen
                 currentCategory: "gameOver",
+                // The game elements are rendered invisible again
                 visibility: 0,
+                // The timer bar is deactivated
                 timerBarActive: false,
+                // The timer bar key is advanced to reset it for any future quizzes
                 timerBarKey: state.timerBarKey + 1,
+                // The timer countdown is deactivated
                 timerActive: false,
             });
         }
     }, [state.timeRemaining, state.currentQuestion]);
 
+    // The returned JSX
     return (
         <section>
             <div id="quizContent" className="transition">
                 <CurrentScore
                     score={state.score}
                 />
+                {/* The quizSpace div displays variable content based on the currentCategory */}
                 <div className="quizSpace">
                     {state.currentCategory === 'instructions' && <Instructions />}
                     {(state.currentCategory === 'quiz' && state.currentQuestion < 15) && <Question />}
